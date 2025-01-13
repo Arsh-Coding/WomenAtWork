@@ -1,0 +1,86 @@
+
+  
+  .jobApp {
+    padding: 40px;
+    /* text-align: center; */
+  }
+  
+  .header {
+    font-size: 24px;
+    margin-left: 200px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Tabs styling */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 10px;
+  }
+  
+  .tab {
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .tab.active {
+    background-color: #6c5ce7;
+    color: #fff;
+    border-color: #6c5ce7;
+  }
+  
+  .tab:hover {
+    background-color: #dfe6e9;
+  }
+  
+  /* Categories grid */
+  .categories-grid {
+    display: grid;
+    margin: 0 auto;
+    justify-content: center;
+    grid-template-columns: repeat(4, 0.18fr);
+    gap: 20px;
+  }
+  
+  .category-card {
+    position: relative;
+    max-width: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .category-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .category-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .category-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    padding: 10px;
+    color: white;
+    text-align: left;
+  }
+  
+  .category-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  

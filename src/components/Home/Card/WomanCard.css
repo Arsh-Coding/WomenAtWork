@@ -1,0 +1,56 @@
+/* General styling */
+
+.wcTitle{
+    margin-left: 200px;
+}
+  
+  .womanApp {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Card styling */
+  .card {
+    background-color: rgba(255, 239, 253, 1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    max-width: 200px;
+    border-radius: 40px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .card-image {
+    width: 140px;
+    height: 100px;
+    /* object-fit: cover; */
+    margin-bottom: 20px;
+    /* border-radius: 50%; */
+  }
+  
+  .card-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .card-description {
+    font-size: 0.9em;
+    color: #666;
+  }
+  
