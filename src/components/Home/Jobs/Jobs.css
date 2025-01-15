@@ -6,6 +6,7 @@
   }
   
   .header {
+    font-family: "Zilla Slab", serif;
     font-size: 24px;
     margin-left: 100px;
     font-weight: 400;
@@ -111,4 +112,21 @@
     font-size: 18px;
     font-weight: 700;
   }
-  
+  @media (max-width : 768px){
+    .header{
+      margin-left: 50px;
+    }
+    .tabs{
+      width: 100%;
+      display: grid;
+    }
+    .categories-grid{
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .category-overlay{
+      left: 0;
+      margin-left: 5px;
+      bottom: 10%;
+      height: fit-content;
+    }
+  }

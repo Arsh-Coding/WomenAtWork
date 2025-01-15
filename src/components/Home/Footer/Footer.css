@@ -9,7 +9,7 @@
   
   .footer-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 0.18fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 10px;
     margin-left: 60px;
   }
@@ -70,4 +70,8 @@
     font-size: 14px;
     color: #bbb;
   }
-  
+  @media (max-width : 768px){
+    .footer{
+      padding: 40px;
+    }
+  }

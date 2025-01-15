@@ -1,22 +1,24 @@
-.navbar{
+.navbar {
     position: absolute;
     display: flex;
     align-items: center;
     width: 100%;
     height: 60px;
     z-index: 10;
-}
-.logo{
+  }
+  
+  .logo {
     display: flex;
-    /* justify-content: center; */
     padding-left: 10vw;
     align-items: center;
     width: 50%;
-}
-.logo img{
+  }
+  
+  .logo img {
     width: 150px;
-}
-.navLinks{
+  }
+  
+  .navLinks {
     height: 100%;
     width: 50%;
     display: flex;
@@ -24,41 +26,72 @@
     align-items: center;
     gap: 35px;
     background-color: white;
-}
-.Links{
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .navLinks.active {
     display: flex;
-    justify-content: center;
-    /* margin-left: auto; */
-    align-items: center;
-}
-.Links ul{
-    /* background-color: antiquewhite; */
-    max-width: 400px;
-    list-style-type: none;
-    display: flex;
-    gap: 25px;
-}
-.Links li:hover{
-    cursor: pointer;
-    color: #F62DE2;
-    text-decoration: underline;
-}   
-.navLinks button{
+    transform: translateX(0);
+  }
+  
+  .navLinks button {
     width: 170px;
     height: 40px;
     font-size: 16px;
     border-radius: 5px;
     border: none;
     color: white;
-    /* background: linear-gradient(
-    #F62DE2 100%,
-    #229AF0 100%,
-  ); */
-  background-image: linear-gradient(#F62DE2, #229AF0);
-}
-.navLinks button:hover{
+    background-image: linear-gradient(#F62DE2, #229AF0);
+  }
+  
+  .navLinks button:hover {
     color: aqua;
-    /* font-size: 20px; */
     cursor: pointer;
     background-image: linear-gradient(#c241b7, #6493b7);
-}
+  }
+  
+  .Links ul {
+    max-width: 400px;
+    list-style-type: none;
+    display: flex;
+    gap: 25px;
+  }
+  
+  .Links li:hover {
+    cursor: pointer;
+    color: #F62DE2;
+    text-decoration: underline;
+  }
+  
+  .hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    /* padding-right: 10vw; */
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .navbar{
+        justify-content: space-around;
+    }
+    .navLinks {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      background-color: white;
+      padding: 10px 0;
+    }
+  
+    .navLinks.active {
+      display: flex;
+    }
+  
+    .hamburger {
+      display: block;
+    }
+  }
+  

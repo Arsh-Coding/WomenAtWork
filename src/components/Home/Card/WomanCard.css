@@ -1,7 +1,7 @@
 /* General styling */
 
 .wcTitle{
-  font-style: Zilla Slab;
+  font-family: "Zilla Slab", serif;
     margin-left: 150px;
     font-size: 26px;
     font-weight: 400;
@@ -64,4 +64,8 @@
     font-size: 0.9em;
     color: #666;
   }
-  
+  @media (max-width : 768px) {
+    .wcTitle{
+      margin-left: 100px;
+    }
+  }
