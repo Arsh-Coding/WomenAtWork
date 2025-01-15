@@ -1,6 +1,6 @@
 /* Footer General Styling */
 .footer {
-    background-color: #222;
+    background-color: #1E1E1E;
 
     color: #fff;
     font-family: Arial, sans-serif;
@@ -9,8 +9,9 @@
   
   .footer-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 0.18fr));
+    gap: 10px;
+    margin-left: 60px;
   }
   
   .footer-column {
@@ -22,7 +23,7 @@
     font-size: 18px;
     margin-bottom: 15px;
     color: #fff;
-    border-bottom: 2px solid #555;
+    /* border-bottom: 2px solid #555; */
     padding-bottom: 5px;
   }
   

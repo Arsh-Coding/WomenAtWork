@@ -41,7 +41,7 @@ function womanCard() {
 
   return (
     <>
-        <h4 className="wcTitle">What we Offer</h4>
+    <h4 className="wcTitle">What we Offer</h4>
     <div className="womanApp">
       <div className="card-container">
         {cards.map((card, index) => (

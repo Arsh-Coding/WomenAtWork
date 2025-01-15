@@ -5,6 +5,8 @@ import WomanCard from './Card/WomanCard';
 import './Home.css'
 import Jobs from './Jobs/Jobs';
 import Footer from './Footer/Footer';
+import SectionWithVideoSlider from './SectionWithVideoSlider/SectionWithVideoSlider';
+import Contact from './Contact/Contact';
 const Home = () => {
     const images = [
         '/slideshow1.png',
@@ -31,6 +33,7 @@ const Home = () => {
         <div className='Hero'>
         <Navbar/>
         <div className='slideshow'>
+          
           {images.map((image, index) => (
             <img
               key={index}
@@ -40,24 +43,46 @@ const Home = () => {
             />
           ))}
         </div>
+        <div className='hero-text'>
+            <p>Find Best Jobs at any location</p>
+            <h1 className='hero-large-text'>Discover <span className='lightweight-text-hero'>Best Jobs For</span> Career Growth</h1>
+            <button className='hero-btn'>READ MORE</button>
         </div>
-        <div className='searchWrap'>
-            <div className='searchInput'>
-                <p>Keywords</p>
-                <input type="text" />
-            </div>
-            <div className='searchInput'>
-                <p>Location</p>
-                <input type="text" />
-            </div>
-            <div className='searchInput'>
-                <p>Area Of Expertise</p>
-                <input type="text" />
-            </div>
-            <button>Go</button>
         </div>
+        <div className="search-box">
+          <div className='section'>
+          <p>Keywords</p>
+      <input
+        type="text"
+        placeholder="Enter job title"
+        className="search-input"
+        />
+      </div>
+      <div className='section'>
+      <p>Location</p>
+      <select className="search-select">
+        <option value="">Select your preferred location</option>
+        <option value="location1">Location 1</option>
+        <option value="location2">Location 2</option>
+        <option value="location3">Location 3</option>
+      </select>
+      </div>
+      <div className='section'>
+      <p>Area of Expertise</p>
+      <select className="search-select">
+        <option value="">Select your area of expertise</option>
+        <option value="expertise1">Expertise 1</option>
+        <option value="expertise2">Expertise 2</option>
+        <option value="expertise3">Expertise 3</option>
+      </select>
+      </div>
+      
+      <button className="search-button">GO</button>
+    </div>
         <WomanCard/>
         <Jobs/>
+        <SectionWithVideoSlider/>
+        <Contact/>
         <Footer/>
     </>
   )

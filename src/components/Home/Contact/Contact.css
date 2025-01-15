@@ -1,0 +1,137 @@
+
+.contacts{
+    display: flex;
+    /* width: 70%; */
+    padding: 20px;
+    justify-content: center;
+
+    /* margin: 0 auto; */
+}
+.contact-section1{
+    display: grid;
+    width: 40%;
+}
+.contact-heading{
+    display: grid;
+    gap: 15px;
+}
+.contact-heading h3{
+    font-family: Zilla Slab;
+    /* display: grid; */
+    /* gap: 10px; */
+    font-weight: 400;
+}
+.contact-heading h3::after{
+  content: "";
+      display: block;
+      background-color: #DCDCDC;
+      width: 7%;
+      height: 5px;
+      /* margin-bottom: -10px; */
+}
+.contact-heading p{
+    max-width: 509px;
+    font-size: 18px;
+}
+.contact-form{
+    padding: 50px 0;
+    max-width: 509px;
+}
+.contact-name{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+.contact-name input{
+    border: none;
+    /* font-size: 16px;
+    text-decoration: underline;
+    margin: 10px;    
+    gap: 10px;   */
+    border-bottom: 1px solid black;
+    font-size: 16px;
+    font-weight: 500;
+    padding-bottom: 5px; /* Adds space between the text and underline */
+    margin: 10px;
+    gap: 5px;
+}
+.contact-name input[name="message"]{
+  /* margin-top: 50px; */
+  padding-bottom: 50px;
+  width: 205%;
+}
+.rectangle {
+  display: grid;
+  gap: 50px;
+    background-color: #BF49B3; /* Matches the purple background */
+    padding: 30px;
+    border-radius: 10px;
+    color: white;
+    font-family: Arial, sans-serif;
+    max-width: 550px;
+    margin: auto;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .icon img{
+    width: 70px;
+    margin-right: 5px;
+    /* background: white; */
+    /* color: #c26cb4; */
+    padding: 10px;
+    /* border-radius: 50%; */
+  }
+  
+  .contact-item h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .contact-item p {
+    margin: 5px 0 0;
+    font-size: 14px;
+  }
+  
+  .socials {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .socials h3 {
+    margin-bottom: 10px;
+  }
+  
+  .social-icons span {
+    display: inline-block;
+    font-size: 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .social-icons span:hover {
+    color: #f0e68c; /* Highlight color on hover */
+  }
+  .contact-btn{
+    width: 162px;
+    height: 48px;
+    border: none;
+    border-radius: 32px;
+    background-color: #BF49B3;
+    color: white;
+    margin-top: 30px;
+  }
+  .contact-icons{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 10px;
+  }
+  .contact-icons img{
+    width: 30px;
+  }
