@@ -89,9 +89,9 @@
   
   
   .category-overlay {
-    display: grid;
-    /* left: 7%; */
-    position: absolute;
+  display: grid;
+  /* left: 7%; */
+  position: absolute;
   bottom: 3%;
   margin-left: 15px;
   align-items: center;
@@ -99,7 +99,7 @@
   width: 90%;
   height: 45px;
   border-radius: 10px;
-  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
   padding: 10px;
   color: white;
   font-size: 16px;

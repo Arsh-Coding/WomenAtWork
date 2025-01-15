@@ -19,9 +19,12 @@
 .contact-heading h3 {
   font-family: "Zilla Slab", serif;
   font-weight: 400;
-  font-size: 26px;
+  font-size: 24px;
 }
-
+.contact-heading h2{
+  /* font-family: "Zilla Slab", serif; */
+  font-weight: 400;
+}
 .contact-heading h3::after {
   content: "";
   display: block;
