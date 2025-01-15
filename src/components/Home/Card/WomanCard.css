@@ -52,7 +52,9 @@
     margin-bottom: 20px;
     /* border-radius: 50%; */
   }
-  
+  .card:first-of-type .card-image{
+    width: 153px;
+  }
   .card-title {
     font-size: 1.2em;
     font-weight: bold;
