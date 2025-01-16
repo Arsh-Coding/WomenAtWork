@@ -28,6 +28,10 @@ const Home = () => {
         const interval = setInterval(nextSlide, 5000);
         return () => clearInterval(interval);
       }, []);
+      const handleDotClick = (index) => {
+        setCurrentIndex(index);
+      };
+      const heroTextClass = currentIndex >= 2 ? 'hero-text-colored' : 'hero-text';
   return (
       <>
         <div className='Hero'>
@@ -42,8 +46,17 @@ const Home = () => {
               className={index === currentIndex ? 'active' : 'inactive'}
             />
           ))}
+          <div className='dots-navigation'>
+            {images.map((_, index) => (
+              <span
+                key={index}
+                className={`dot ${index === currentIndex ? 'active-dot' : ''}`}
+                onClick={() => handleDotClick(index)}
+              ></span>
+            ))}
+          </div>
         </div>
-        <div className='hero-text'>
+        <div className={heroTextClass}>
             <p>Find Best Jobs at any location</p>
             <h1 className='hero-large-text'>Discover <span className='lightweight-text-hero'>Best Jobs For</span> Career Growth</h1>
             <button className='hero-btn'>READ MORE</button>

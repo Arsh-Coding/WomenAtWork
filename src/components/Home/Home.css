@@ -13,6 +13,21 @@
   max-width: 400px;
   top: 20vh;
   left: 12vw;
+  transition: color 0.3s;
+}
+.Hero .hero-text-colored {
+  position: absolute;
+  display: grid;
+  top: 20vh;
+  left: 12vw;
+  max-width: 400px;
+  color: #0b00a3; 
+}
+.Hero .hero-text-colored p{
+  font-family: "Noto Sans", serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 2px;
 }
 
 .hero-text p {
@@ -71,7 +86,33 @@ h1 {
 .slideshow .active {
   opacity: 1;
 }
+.dots-navigation {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  bottom: 12vh;
+  justify-content: center;
+  align-items:  flex-end;
+  margin-top: 10px;
+  z-index: 1;
+}
 
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.dots-navigation .dot.active-dot {
+  width: 20px;
+  border-radius: 40%;
+  background-color: rgba(191, 73, 179, 1);
+}
 .search-box {
   position: relative;
   display: flex;
@@ -98,7 +139,7 @@ h1 {
 .search-input,
 .search-select {
   flex: 1;
-  min-width: 200px;
+  min-width: 250px;
   height: 48px;
   max-width: 300px;
   padding: 10px;
