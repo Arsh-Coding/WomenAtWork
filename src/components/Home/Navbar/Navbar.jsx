@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Navbar.css';
-
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -17,9 +17,9 @@ const Navbar = () => {
         <div className={`navLinks ${menuOpen ? 'active' : ''}`}>
           <div className='Links'>
             <ul>
-              <li>Home</li>
+              <li><Link to="/">Home</Link></li>
               <li>About</li>
-              <li>Jobs</li>
+              <li><Link to="/JobPage">Jobs</Link></li>
               <li>WOW</li>
               <li>Contact</li>
             </ul>

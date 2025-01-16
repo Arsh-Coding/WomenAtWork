@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import Navbar from './Navbar/Navbar'
+// import Navbar from './Navbar/Navbar'
 import WomanCard from './Card/WomanCard';
 import './Home.css'
 import Jobs from './Jobs/Jobs';
@@ -12,7 +12,7 @@ const Home = () => {
         '/slideshow1.png',
         '/slideshow2.png',
         '/slideshow3.png',
-        '/slideshow4.png'
+        '/slideshow4.png',
       ];
     
       // State to manage current image index
@@ -34,8 +34,8 @@ const Home = () => {
       const heroTextClass = currentIndex >= 2 ? 'hero-text-colored' : 'hero-text';
   return (
       <>
+        {/* <Navbar/> */}
         <div className='Hero'>
-        <Navbar/>
         <div className='slideshow'>
           
           {images.map((image, index) => (

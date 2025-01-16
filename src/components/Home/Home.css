@@ -120,8 +120,9 @@ h1 {
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  top: -70px;
-  width: 79%;
+  top: -60px;
+  left: 1vw;
+  width: 82%;
   height: auto;
   margin: 0 auto;
   margin-bottom: -10px;
