@@ -60,6 +60,7 @@
 
 .more-about-button:hover {
   background-color: #b329e0;
+  transition: 0.2s ease-in;
 }
 
 .slider-container {

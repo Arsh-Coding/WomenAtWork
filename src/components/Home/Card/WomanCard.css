@@ -1,74 +1,75 @@
 /* General styling */
 
-.wcTitle{
+.wcTitle {
   font-family: "Zilla Slab", serif;
-    margin-left: 150px;
-    font-size: 24px;
-    font-weight: 400;
-    margin-bottom: 20px;
+  margin-left: 150px;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 20px;
 }
-.wcTitle::after{
+.wcTitle::after {
   content: "";
   display: block;
-  background-color: #DCDCDC;
+  background-color: #dcdcdc;
   width: 5%;
   height: 5px;
   margin-top: 5px;
   /* border-radius: ; */
 }
-  .womanApp {
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.womanApp {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Card styling */
+.card {
+  background-color: rgba(255, 239, 253, 1);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 20px;
+  max-width: 315px;
+  border-radius: 40px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  transition: 0.2s ease-in;
+}
+
+.card-image {
+  width: 160px;
+  /* height: 100px; */
+  /* object-fit: cover; */
+  margin-bottom: 20px;
+  /* border-radius: 50%; */
+}
+.card:first-of-type .card-image {
+  width: 153px;
+}
+.card-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.card-description {
+  font-size: 0.9em;
+  color: #666;
+}
+@media (max-width: 768px) {
+  .wcTitle {
+    margin-left: 100px;
   }
-  
-  .card-container {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  /* Card styling */
-  .card {
-    background-color: rgba(255, 239, 253, 1);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    padding: 20px;
-    max-width: 260px;
-    border-radius: 40px;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .card:hover {
-    transform: translateY(-10px);
-  }
-  
-  .card-image {
-    width: 160px;
-    /* height: 100px; */
-    /* object-fit: cover; */
-    margin-bottom: 20px;
-    /* border-radius: 50%; */
-  }
-  .card:first-of-type .card-image{
-    width: 153px;
-  }
-  .card-title {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .card-description {
-    font-size: 0.9em;
-    color: #666;
-  }
-  @media (max-width : 768px) {
-    .wcTitle{
-      margin-left: 100px;
-    }
-  }
+}

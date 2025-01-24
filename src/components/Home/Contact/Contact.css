@@ -119,6 +119,7 @@
 
 .social-icons span:hover {
   color: #f0e68c;
+  transition: 0.2s ease-in;
 }
 
 .contact-btn {

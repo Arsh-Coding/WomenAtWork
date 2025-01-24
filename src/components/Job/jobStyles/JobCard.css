@@ -1,0 +1,88 @@
+.job-card {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  background-color: #fff;
+  border-bottom: 0.5px solid lightgrey;
+  /* border-radius: 8px; */
+  padding: 16px;
+  margin-bottom: 2px;
+  /* margin: 16px 0; */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  font-family: Arial, sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-height: 200px;
+}
+.job-card-details {
+  display: grid;
+  justify-content: space-between;
+}
+
+.job-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+.job-card.featured {
+  border: none;
+  position: relative;
+  border-bottom: 0.5px solid lightgrey;
+}
+
+.job-card.featured::before {
+  content: url("/Featured.png");
+  /* color: #fff; */
+  /* background-color: rgba(191, 73, 179, 1); */
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+  /* border-radius: 4px; */
+  position: absolute;
+  top: -20px;
+  right: -35px;
+  z-index: 100;
+}
+.job-class-minor-detail {
+  display: flex;
+  gap: 35px;
+}
+.job-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.job-card p {
+  position: relative;
+  font-size: 14px;
+  /* right: 1vw; */
+  color: #666;
+  margin: 4px 0;
+}
+
+.button-job-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.job-card button {
+  align-self: flex-start;
+  background-color: white;
+  color: rgba(191, 73, 179, 1);
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid rgba(191, 73, 179, 1);
+  border-radius: 4px;
+  margin-top: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.job-card button:hover {
+  background-color: #59718aa2;
+  transition: 0.1s ease-in;
+}

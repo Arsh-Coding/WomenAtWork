@@ -1,50 +1,107 @@
-import React from 'react'
-import './MainJob.css'
-import Navbar from '../Home/Navbar/Navbar'
-import Footer from '../Home/Footer/Footer'
-
+import React, { useState } from "react";
+import "./MainJob.css";
+import Footer from "../Home/Footer/Footer";
+import { jobData, categories } from "./JobData/JobData";
+import JobList from "./jobComponent/JobList";
 const MainJob = () => {
+  const [filters, setFilters] = useState({
+    keyword: "",
+    location: "",
+    categoryId: "",
+  });
+
+  const [filteredJobs, setFilteredJobs] = useState(jobData);
+
+  // Extract unique locations
+  const uniqueLocations = [...new Set(jobData.map((job) => job.location))];
+
+  //handle input change
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [name]: value,
+    }));
+  };
+
+  const applyFilters = () => {
+    const filtered = jobData.filter((job) => {
+      const matchesKeyword =
+        filters.keyword === "" ||
+        job.title.toLowerCase().includes(filters.keyword.toLowerCase());
+      const matchesLocation =
+        filters.location === "" || job.location === filters.location;
+      const matchesCategory =
+        filters.categoryId === "" ||
+        job.categoryIds.includes(Number(filters.categoryId));
+
+      return matchesKeyword && matchesLocation && matchesCategory;
+    });
+
+    setFilteredJobs(filtered);
+  };
+
   return (
-    <>
-        <div className='job-container'>
-          <div className='job-Heading'>
-            <h1>Find Your Dream Job Now</h1>
-            <p>5 Lakh+ jobs for you to explore</p>
+    <div className="job-search-container">
+      <div className="job-container">
+        <div className="job-Heading">
+          <h1>Find Your Dream Job Now</h1>
+          <p>5 Lakh+ jobs for you to explore</p>
+        </div>
+
+        <div className="filter-box">
+          <div className="section">
+            <label>Keywords</label>
+            <input
+              type="text"
+              name="keyword"
+              placeholder="Enter job title"
+              value={filters.keyword}
+              onChange={handleInputChange}
+              className="filterBox-entry"
+            />
           </div>
-        <div className="job-search-box">
-          <div className='section'>
-          <p>Keywords</p>
-      <input
-        type="text"
-        placeholder="Enter job title"
-        className="search-input"
-        />
+          <div className="section">
+            <label>Location</label>
+            <select
+              name="location"
+              value={filters.location}
+              onChange={handleInputChange}
+              className="search-select"
+            >
+              <option value="">Select your preferred location</option>
+              {uniqueLocations.map((location, index) => (
+                <option key={index} value={location}>
+                  {location}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="section">
+            <label>Area of Expertise</label>
+            <select
+              name="categoryId"
+              value={filters.categoryId}
+              onChange={handleInputChange}
+              className="search-select"
+            >
+              <option value="">Select your area of expertise</option>
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <button onClick={applyFilters} className="filterBox-btn">
+            GO
+          </button>
+        </div>
       </div>
-      <div className='section'>
-      <p>Location</p>
-      <select className="search-select">
-        <option value="">Select your preferred location</option>
-        <option value="location1">Location 1</option>
-        <option value="location2">Location 2</option>
-        <option value="location3">Location 3</option>
-      </select>
-      </div>
-      <div className='section'>
-      <p>Area of Expertise</p>
-      <select className="search-select">
-        <option value="">Select your area of expertise</option>
-        <option value="expertise1">Expertise 1</option>
-        <option value="expertise2">Expertise 2</option>
-        <option value="expertise3">Expertise 3</option>
-      </select>
-      </div>
-      
-      <button className="search-button">GO</button>
+
+      <JobList initialJobs={filteredJobs} />
     </div>
-    </div>
-    <Footer/>
-    </>
-  )
-}
+  );
+};
 
 export default MainJob;
