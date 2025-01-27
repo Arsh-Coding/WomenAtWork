@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./MainJob.css";
 import Footer from "../Home/Footer/Footer";
-import { jobData, categories } from "./JobData/JobData";
+import axios from "axios";
 import JobList from "./jobComponent/JobList";
+
 const MainJob = () => {
   const [filters, setFilters] = useState({
     keyword: "",
@@ -10,7 +11,29 @@ const MainJob = () => {
     categoryId: "",
   });
 
-  const [filteredJobs, setFilteredJobs] = useState(jobData);
+  const [categories, setCategories] = useState([]);
+  const [jobData, setJobData] = useState([]);
+  const [filteredJobs, setFilteredJobs] = useState([]);
+
+  // Fetch job and category data from backend
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const categoryResponse = await axios.get(
+          "http://localhost:3000/categories"
+        );
+        const jobResponse = await axios.get("http://localhost:3000/jobs");
+
+        setCategories(categoryResponse.data);
+        setJobData(jobResponse.data);
+        setFilteredJobs(jobResponse.data); // Initialize with all jobs
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   // Extract unique locations from jobData
   const uniqueLocations = [...new Set(jobData.map((job) => job.location))];

@@ -20,7 +20,7 @@ const SignupPage = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  
   // Validate form fields
   const validateForm = () => {
     const { username, email, password, confirmPassword } = formData;
