@@ -1,7 +1,7 @@
 export const categories = [
-  { id: 1, name: "Development" }, // Merged Backend Developer, Full-stack Developer, Frontend Developer
-  { id: 2, name: "Design" }, // UX/UI Designer, Graphic Designer
-  { id: 3, name: "Management" }, // IT Manager, Business Development, Operations
+  { id: 1, name: "Development" },
+  { id: 2, name: "Design" },
+  { id: 3, name: "Management" },
   { id: 4, name: "Customer Service" },
   { id: 5, name: "Finance" },
   { id: 6, name: "Marketing & Communication" },

@@ -1,0 +1,144 @@
+/* General Container */
+.login-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Left Section */
+.login-left {
+  flex: 1;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.illustration {
+  position: relative;
+}
+
+.arrows {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.arrow {
+  width: 100px;
+  height: 10px;
+  margin: 10px;
+  background: gray;
+}
+
+.arrow.purple {
+  background: purple;
+}
+
+.arrow.orange {
+  background: orange;
+}
+
+.arrow.yellow {
+  background: yellow;
+}
+
+/* Right Section */
+.login-right {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-right h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #333;
+}
+
+.login-right p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+form input {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.password-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.password-field input {
+  flex: 1;
+}
+
+.password-field .toggle-password {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+form button {
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background: purple;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+.social-login button {
+  margin: 5px 0;
+  padding: 10px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.social-login .linkedin {
+  background: #0077b5;
+  color: #fff;
+}
+
+.social-login .google {
+  background: #db4437;
+  color: #fff;
+}
+
+.signup-link {
+  margin-top: 20px;
+  color: #555;
+}
+
+.signup-link a {
+  color: purple;
+  text-decoration: none;
+}

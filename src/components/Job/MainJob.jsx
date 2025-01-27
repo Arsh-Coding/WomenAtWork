@@ -12,10 +12,10 @@ const MainJob = () => {
 
   const [filteredJobs, setFilteredJobs] = useState(jobData);
 
-  // Extract unique locations
+  // Extract unique locations from jobData
   const uniqueLocations = [...new Set(jobData.map((job) => job.location))];
 
-  //handle input change
+  // Handle input changes for filters
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFilters((prevFilters) => ({
@@ -24,6 +24,7 @@ const MainJob = () => {
     }));
   };
 
+  // Apply filters when the "GO" button is clicked
   const applyFilters = () => {
     const filtered = jobData.filter((job) => {
       const matchesKeyword =
@@ -99,7 +100,9 @@ const MainJob = () => {
         </div>
       </div>
 
+      {/* Pass the filtered jobs to the JobList component */}
       <JobList initialJobs={filteredJobs} />
+      <Footer />
     </div>
   );
 };
