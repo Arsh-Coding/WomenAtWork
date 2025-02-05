@@ -1,0 +1,30 @@
+.main-contact-container {
+  display: grid;
+  position: relative;
+  top: 10vh;
+  justify-content: center;
+  gap: 5vh;
+  /* text-align: center; */
+}
+.contact-hero {
+  background-image: url("/contactHero.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 11vw;
+  width: 100vw;
+  height: 55vh;
+}
+.contact-hero-heading::after {
+  display: block;
+  content: "";
+  background-color: rgba(191, 73, 179, 1);
+  width: 10%;
+  height: 5px;
+  margin-bottom: 10px;
+}
+.text-contact {
+  width: 35vw;
+}
+.middle-contact-text {
+  text-align: center;
+}

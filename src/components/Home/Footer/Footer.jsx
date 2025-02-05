@@ -52,8 +52,8 @@ const Footer = () => {
             <li>Catering, Cleaning & Logistics</li>
             <li>Charity & Fundraising</li>
             <li>Construction, Property & Engineering</li>
-            </ul>
-            <ul>
+          </ul>
+          <ul>
             <li>Education</li>
             <li>Finance, Procurement & Legal</li>
             <li>Housing, Revenues & Benefits</li>

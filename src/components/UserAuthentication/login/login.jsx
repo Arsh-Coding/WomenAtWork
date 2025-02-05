@@ -78,7 +78,7 @@ const LoginPage = () => {
       <Toast ref={toast} />
       <div className="login-left">
         <div className="illustration">
-          <div className="woman-with-telescope"></div>
+          <div className="login-woman-with-telescope"></div>
           <div className="arrows">
             <div className="arrow purple"></div>
             <div className="arrow orange"></div>
@@ -89,7 +89,7 @@ const LoginPage = () => {
       <div className="login-right">
         <h2>Login</h2>
         <p>Enter your details below</p>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="login-form">
           <input
             type="email"
             name="email"
@@ -121,7 +121,7 @@ const LoginPage = () => {
           <button className="google">Google</button>
         </div>
         <p className="signup-link">
-          Not a Member? <a href="/signup">Sign Up</a>
+          Not a Member? 
         </p>
       </div>
     </div>

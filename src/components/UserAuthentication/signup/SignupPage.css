@@ -10,24 +10,27 @@
   flex: 1;
   background: #f5f5f5;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  max-width: 45%;
+  /* align-items: center; */
+  /* justify-content: center; */
 }
 
 .illustration {
   position: relative;
+  /* top: 25vh;  */
 }
 
 .woman-with-telescope {
-  position: relative;
-  bottom: 2px;
-  width: 200px;
-  height: 200px;
-  background: url("/loginimage.png") no-repeat center;
+  position: absolute;
+  bottom: 0px;
+  width: 45vw;
+  height: 70vh;
+  background: url("/loginimage.png") no-repeat;
   background-size: cover;
 }
 
 .arrows {
+  display: NONE;
   position: absolute;
   bottom: -50px;
   left: 50%;
@@ -57,6 +60,7 @@
 .signup-right {
   flex: 1;
   padding: 40px;
+  margin-top: 5vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,22 +78,7 @@
   color: #555;
 }
 
-form {
-  width: 100%;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-}
-
-form input {
-  margin-bottom: 15px;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-form button {
+/* form button {
   padding: 10px;
   font-size: 16px;
   color: #fff;
@@ -97,7 +86,7 @@ form button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
+} */
 
 .social-login {
   margin-top: 20px;

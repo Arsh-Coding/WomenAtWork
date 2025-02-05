@@ -7,6 +7,8 @@ import Jobs from "./Jobs/Jobs";
 import Footer from "./Footer/Footer";
 import SectionWithVideoSlider from "./SectionWithVideoSlider/SectionWithVideoSlider";
 import Contact from "./Contact/Contact";
+import JobFilter from "../JobFilter/JobFilter";
+
 const Home = () => {
   const images = [
     "/slideshow1.png",
@@ -15,6 +17,11 @@ const Home = () => {
     "/slideshow4.png",
   ];
 
+  const [filters, setFilter] = useState({
+    keyword: "",
+    location: "",
+    categoryId: "",
+  });
   // State to manage current image index
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -65,35 +72,8 @@ const Home = () => {
           <button className="hero-btn">READ MORE</button>
         </div>
       </div>
-      <div className="search-box">
-        <div className="section">
-          <p>Keywords</p>
-          <input
-            type="text"
-            placeholder="Enter job title"
-            className="search-input"
-          />
-        </div>
-        <div className="section">
-          <p>Location</p>
-          <select className="search-select">
-            <option value="">Select your preferred location</option>
-            <option value="location1">Location 1</option>
-            <option value="location2">Location 2</option>
-            <option value="location3">Location 3</option>
-          </select>
-        </div>
-        <div className="section">
-          <p>Area of Expertise</p>
-          <select className="search-select">
-            <option value="">Select your area of expertise</option>
-            <option value="expertise1">Expertise 1</option>
-            <option value="expertise2">Expertise 2</option>
-            <option value="expertise3">Expertise 3</option>
-          </select>
-        </div>
-
-        <button className="search-button">GO</button>
+      <div className="job-filter-home">
+        <JobFilter width={1050} height={150} initialFilters={filters} />
       </div>
       <WomanCard />
       <Jobs />

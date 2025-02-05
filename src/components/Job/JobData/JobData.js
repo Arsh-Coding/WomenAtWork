@@ -13,10 +13,34 @@ export const jobData = [
     title: "Business Developer",
     location: "Panchkula",
     remote: true,
-    categoryIds: [1, 3], // Development + Management
+    categoryIds: [1, 3],
     jobType: "Full-time",
     datePosted: "6 days ago",
     featured: true,
+    roles: [
+      {
+        role: "Business Developer",
+        requirements: [
+          "Bachelor's degree in Business Administration or related field",
+          "3+ years of experience in business development",
+          "Strong communication and negotiation skills",
+        ],
+        responsibilities: [
+          "Identify new business opportunities",
+          "Build and maintain relationships with clients",
+          "Develop and execute growth strategies",
+        ],
+        optionalConditions: [
+          "Experience in the tech industry is a plus",
+          "Willingness to travel occasionally",
+        ],
+        importantDetails: [
+          "Competitive salary and performance bonuses",
+          "Flexible working hours",
+          "Health and wellness benefits",
+        ],
+      },
+    ],
   },
   {
     id: 2,
@@ -27,6 +51,30 @@ export const jobData = [
     jobType: "Full-time",
     datePosted: "6 days ago",
     featured: false,
+    roles: [
+      {
+        role: "Business Developer",
+        requirements: [
+          "Bachelor's degree in Business Administration or related field",
+          "3+ years of experience in business development",
+          "Strong communication and negotiation skills",
+        ],
+        responsibilities: [
+          "Identify new business opportunities",
+          "Build and maintain relationships with clients",
+          "Develop and execute growth strategies",
+        ],
+        optionalConditions: [
+          "Experience in the tech industry is a plus",
+          "Willingness to travel occasionally",
+        ],
+        importantDetails: [
+          "Competitive salary and performance bonuses",
+          "Flexible working hours",
+          "Health and wellness benefits",
+        ],
+      },
+    ],
   },
   {
     id: 3,
@@ -37,6 +85,30 @@ export const jobData = [
     jobType: "Full-time",
     datePosted: "6 days ago",
     featured: true,
+    roles: [
+      {
+        role: "Business Developer",
+        requirements: [
+          "Bachelor's degree in Business Administration or related field",
+          "3+ years of experience in business development",
+          "Strong communication and negotiation skills",
+        ],
+        responsibilities: [
+          "Identify new business opportunities",
+          "Build and maintain relationships with clients",
+          "Develop and execute growth strategies",
+        ],
+        optionalConditions: [
+          "Experience in the tech industry is a plus",
+          "Willingness to travel occasionally",
+        ],
+        importantDetails: [
+          "Competitive salary and performance bonuses",
+          "Flexible working hours",
+          "Health and wellness benefits",
+        ],
+      },
+    ],
   },
   {
     id: 4,
@@ -47,6 +119,30 @@ export const jobData = [
     jobType: "Full-time",
     datePosted: "6 days ago",
     featured: false,
+    roles: [
+      {
+        role: "Business Developer",
+        requirements: [
+          "Bachelor's degree in Business Administration or related field",
+          "3+ years of experience in business development",
+          "Strong communication and negotiation skills",
+        ],
+        responsibilities: [
+          "Identify new business opportunities",
+          "Build and maintain relationships with clients",
+          "Develop and execute growth strategies",
+        ],
+        optionalConditions: [
+          "Experience in the tech industry is a plus",
+          "Willingness to travel occasionally",
+        ],
+        importantDetails: [
+          "Competitive salary and performance bonuses",
+          "Flexible working hours",
+          "Health and wellness benefits",
+        ],
+      },
+    ],
   },
   {
     id: 5,
@@ -57,6 +153,30 @@ export const jobData = [
     jobType: "Part-time",
     datePosted: "6 days ago",
     featured: false,
+    roles: [
+      {
+        role: "Business Developer",
+        requirements: [
+          "Bachelor's degree in Business Administration or related field",
+          "3+ years of experience in business development",
+          "Strong communication and negotiation skills",
+        ],
+        responsibilities: [
+          "Identify new business opportunities",
+          "Build and maintain relationships with clients",
+          "Develop and execute growth strategies",
+        ],
+        optionalConditions: [
+          "Experience in the tech industry is a plus",
+          "Willingness to travel occasionally",
+        ],
+        importantDetails: [
+          "Competitive salary and performance bonuses",
+          "Flexible working hours",
+          "Health and wellness benefits",
+        ],
+      },
+    ],
   },
   {
     id: 6,
@@ -67,6 +187,30 @@ export const jobData = [
     jobType: "Full-time",
     datePosted: "6 days ago",
     featured: false,
+    roles: [
+      {
+        role: "Business Developer",
+        requirements: [
+          "Bachelor's degree in Business Administration or related field",
+          "3+ years of experience in business development",
+          "Strong communication and negotiation skills",
+        ],
+        responsibilities: [
+          "Identify new business opportunities",
+          "Build and maintain relationships with clients",
+          "Develop and execute growth strategies",
+        ],
+        optionalConditions: [
+          "Experience in the tech industry is a plus",
+          "Willingness to travel occasionally",
+        ],
+        importantDetails: [
+          "Competitive salary and performance bonuses",
+          "Flexible working hours",
+          "Health and wellness benefits",
+        ],
+      },
+    ],
   },
   {
     id: 7,
@@ -77,6 +221,30 @@ export const jobData = [
     jobType: "Freelance",
     datePosted: "6 days ago",
     featured: false,
+    roles: [
+      {
+        role: "Business Developer",
+        requirements: [
+          "Bachelor's degree in Business Administration or related field",
+          "3+ years of experience in business development",
+          "Strong communication and negotiation skills",
+        ],
+        responsibilities: [
+          "Identify new business opportunities",
+          "Build and maintain relationships with clients",
+          "Develop and execute growth strategies",
+        ],
+        optionalConditions: [
+          "Experience in the tech industry is a plus",
+          "Willingness to travel occasionally",
+        ],
+        importantDetails: [
+          "Competitive salary and performance bonuses",
+          "Flexible working hours",
+          "Health and wellness benefits",
+        ],
+      },
+    ],
   },
   {
     id: 8,
@@ -87,6 +255,30 @@ export const jobData = [
     jobType: "Full-time",
     datePosted: "6 days ago",
     featured: true,
+    roles: [
+      {
+        role: "Business Developer",
+        requirements: [
+          "Bachelor's degree in Business Administration or related field",
+          "3+ years of experience in business development",
+          "Strong communication and negotiation skills",
+        ],
+        responsibilities: [
+          "Identify new business opportunities",
+          "Build and maintain relationships with clients",
+          "Develop and execute growth strategies",
+        ],
+        optionalConditions: [
+          "Experience in the tech industry is a plus",
+          "Willingness to travel occasionally",
+        ],
+        importantDetails: [
+          "Competitive salary and performance bonuses",
+          "Flexible working hours",
+          "Health and wellness benefits",
+        ],
+      },
+    ],
   },
   {
     id: 9,
@@ -97,6 +289,30 @@ export const jobData = [
     jobType: "Full-time",
     datePosted: "6 days ago",
     featured: false,
+    roles: [
+      {
+        role: "Business Developer",
+        requirements: [
+          "Bachelor's degree in Business Administration or related field",
+          "3+ years of experience in business development",
+          "Strong communication and negotiation skills",
+        ],
+        responsibilities: [
+          "Identify new business opportunities",
+          "Build and maintain relationships with clients",
+          "Develop and execute growth strategies",
+        ],
+        optionalConditions: [
+          "Experience in the tech industry is a plus",
+          "Willingness to travel occasionally",
+        ],
+        importantDetails: [
+          "Competitive salary and performance bonuses",
+          "Flexible working hours",
+          "Health and wellness benefits",
+        ],
+      },
+    ],
   },
   {
     id: 10,
@@ -107,6 +323,30 @@ export const jobData = [
     jobType: "Part-time",
     datePosted: "6 days ago",
     featured: false,
+    roles: [
+      {
+        role: "Business Developer",
+        requirements: [
+          "Bachelor's degree in Business Administration or related field",
+          "3+ years of experience in business development",
+          "Strong communication and negotiation skills",
+        ],
+        responsibilities: [
+          "Identify new business opportunities",
+          "Build and maintain relationships with clients",
+          "Develop and execute growth strategies",
+        ],
+        optionalConditions: [
+          "Experience in the tech industry is a plus",
+          "Willingness to travel occasionally",
+        ],
+        importantDetails: [
+          "Competitive salary and performance bonuses",
+          "Flexible working hours",
+          "Health and wellness benefits",
+        ],
+      },
+    ],
   },
   {
     id: 11,
@@ -117,5 +357,29 @@ export const jobData = [
     jobType: "Full-time",
     datePosted: "6 days ago",
     featured: true,
+    roles: [
+      {
+        role: "Business Developer",
+        requirements: [
+          "Bachelor's degree in Business Administration or related field",
+          "3+ years of experience in business development",
+          "Strong communication and negotiation skills",
+        ],
+        responsibilities: [
+          "Identify new business opportunities",
+          "Build and maintain relationships with clients",
+          "Develop and execute growth strategies",
+        ],
+        optionalConditions: [
+          "Experience in the tech industry is a plus",
+          "Willingness to travel occasionally",
+        ],
+        importantDetails: [
+          "Competitive salary and performance bonuses",
+          "Flexible working hours",
+          "Health and wellness benefits",
+        ],
+      },
+    ],
   },
 ];

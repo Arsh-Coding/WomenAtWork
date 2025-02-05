@@ -21,7 +21,11 @@ export default function Test() {
       },
     ],
   };
-
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= 2) {
+      setPage(newPage);
+    }
+  };
   useEffect(() => {
     console.log("running use effect");
   }, [page]);
@@ -31,15 +35,9 @@ export default function Test() {
       {data[page].map((item) => {
         return <div>{item.item}</div>;
       })}
-      <button
-        onClick={() => {
-          setPage((pre) => pre + 1);
-        }}
-      >
-        +
-      </button>
+      <button onClick={() => handlePageChange(page + 1)}>+</button>
       {page}
-      <button>-</button>
+      <button onClick={() => handlePageChange(page - 1)}>-</button>
     </div>
   );
 }

@@ -1,7 +1,11 @@
 /* General styling */
 
 .wcTitle {
+  position: relative;
+  top: 12vh;
+  margin: 5vw;
   font-family: "Zilla Slab", serif;
+
   margin-left: 150px;
   font-size: 24px;
   font-weight: 400;
@@ -25,6 +29,7 @@
 
 .card-container {
   display: flex;
+  margin: 10vh 0 0 50px;
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
@@ -37,7 +42,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   padding: 20px;
-  max-width: 315px;
+  max-width: 250px;
   border-radius: 40px;
   transition: transform 0.3s ease-in-out;
 }

@@ -6,23 +6,28 @@
 }
 
 /* Left Section */
+.login-woman-with-telescope {
+  position: absolute;
+  width: 45vw;
+  height: 70vh;
+  background: url("/loginimage.png") no-repeat;
+  background-size: cover;
+  /* bottom: 10vh; */
+  left: -24vw;
+  top: -20vh;
+}
+
 .login-left {
   flex: 1;
   background: #f5f5f5;
   display: flex;
   align-items: center;
+  max-width: 45% !important;
   justify-content: center;
 }
 
 .illustration {
   position: relative;
-}
-
-.arrows {
-  position: absolute;
-  bottom: -50px;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .arrow {
@@ -65,14 +70,14 @@
   color: #555;
 }
 
-form {
+.login-form {
   width: 100%;
   max-width: 400px;
   display: flex;
   flex-direction: column;
 }
 
-form input {
+.login-form input {
   margin-bottom: 15px;
   padding: 10px;
   font-size: 16px;
@@ -102,7 +107,7 @@ form input {
   margin-bottom: 20px;
 }
 
-form button {
+.login-form button {
   padding: 10px;
   font-size: 16px;
   color: #fff;
@@ -111,8 +116,6 @@ form button {
   border-radius: 5px;
   cursor: pointer;
 }
-
-
 
 .social-login button {
   margin: 5px 0;
@@ -141,4 +144,27 @@ form button {
 .signup-link a {
   color: purple;
   text-decoration: none;
+}
+.login-btn {
+  background-color: white !important;
+  color: #007bff;
+  border-color: #007bff;
+}
+
+/* Style for Signup Button on Login Page */
+.signup-btn {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* Hover Effects */
+.login-btn:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.signup-btn:hover {
+  background-color: white;
+  color: #007bff;
 }

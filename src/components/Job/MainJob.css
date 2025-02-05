@@ -5,12 +5,17 @@
   text-align: center;
   align-items: center;
   position: relative;
-  top: 20vh;
+  top: 15vh;
 }
 .job-Heading {
   display: grid;
+  position: relative;
+  top: 25vh;
+  text-align: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   gap: 20px;
+  justify-content: center;
+  align-items: center;
   margin: 30px;
 }
 .job-Heading h1 {
@@ -24,10 +29,10 @@
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  /* top: -60px; */
+  top: 25vh;
   /* left: 1vw; */
   right: 2.2vw;
-  width: 110%;
+  /* width: 70%; */
   height: auto;
   margin: 0 auto;
   margin-bottom: 30vh;
@@ -49,7 +54,10 @@
   border-radius: 5px;
   font-size: 14px;
 }
-
+.home-jobfilter {
+  position: relative;
+  top: -10vh;
+}
 .filterBox-btn {
   position: relative;
   flex-shrink: 0;
@@ -67,4 +75,7 @@
 .filterBox-btn:hover {
   background-color: #b329e0;
   transition: 0.2s ease-in;
+}
+.jobFilter-prop {
+  margin-left: 8vw;
 }

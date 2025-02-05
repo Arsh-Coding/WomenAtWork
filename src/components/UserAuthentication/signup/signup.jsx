@@ -20,7 +20,7 @@ const SignupPage = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  
+
   // Validate form fields
   const validateForm = () => {
     const { username, email, password, confirmPassword } = formData;
@@ -127,7 +127,7 @@ const SignupPage = () => {
       <div className="signup-right">
         <h2>Sign Up</h2>
         <p>Enter your details below</p>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="login-form">
           <input
             type="text"
             name="username"
