@@ -1,13 +1,28 @@
 import React, { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Toast } from "primereact/toast";
-import axios from "axios";
+import { URLS } from "../../../services/urls";
+import { httpPost } from "../../../services/api";
 import "./SignupPage.css";
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
+    phone: "",
+    website: "",
+    jobDescription: "",
+    address: "",
+    country: "",
+    state: "",
+    city: "",
+    zipCode: "",
+    google: "",
+    facebook: "",
+    twitter: "",
+    linkedin: "",
+    verificationEmail: "",
+    imageUrl: "",
     password: "",
     confirmPassword: "",
   });
@@ -25,52 +40,20 @@ const SignupPage = () => {
   const validateForm = () => {
     const { username, email, password, confirmPassword } = formData;
 
-    if (!username) {
-      toast.current.show({
-        severity: "error",
-        summary: "Error",
-        detail: "Full Name is required",
-        life: 3000,
-      });
-      return false;
-    }
-    if (!email) {
-      toast.current.show({
-        severity: "error",
-        summary: "Error",
-        detail: "Email Address is required",
-        life: 3000,
-      });
-      return false;
-    }
-    if (!password) {
-      toast.current.show({
-        severity: "error",
-        summary: "Error",
-        detail: "Password is required",
-        life: 3000,
-      });
-      return false;
-    }
-    if (!confirmPassword) {
-      toast.current.show({
-        severity: "error",
-        summary: "Error",
-        detail: "Confirm Password is required",
-        life: 3000,
-      });
-      return false;
-    }
-    if (password !== confirmPassword) {
-      toast.current.show({
-        severity: "error",
-        summary: "Error",
-        detail: "Passwords do not match",
-        life: 20000,
-      });
-      return false;
-    }
+    if (!username) return showToast("error", "Error", "Full Name is required");
+    if (!email) return showToast("error", "Error", "Email Address is required");
+    if (!password) return showToast("error", "Error", "Password is required");
+    if (!confirmPassword)
+      return showToast("error", "Error", "Confirm Password is required");
+    if (password !== confirmPassword)
+      return showToast("error", "Error", "Passwords do not match");
+
     return true;
+  };
+
+  const showToast = (severity, summary, detail) => {
+    toast.current.show({ severity, summary, detail, life: 3000 });
+    return false;
   };
 
   // Handle form submission
@@ -79,11 +62,12 @@ const SignupPage = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await axios.post(
-        "http://localhost:3000/auth/signup",
-        formData
-      );
-      setSuccess(response.data.message);
+      const response = await httpPost(URLS.signup, formData);
+      debugger;
+      console.log(response);
+      localStorage.setItem("authToken", response.token);
+      localStorage.setItem("userId", response.user?.userId);
+      localStorage.setItem("user", JSON.stringify(response.user));
 
       toast.current.show({
         severity: "success",
@@ -95,16 +79,38 @@ const SignupPage = () => {
       setFormData({
         username: "",
         email: "",
+        phone: "",
+        website: "",
+        jobDescription: "",
+        address: "",
+        country: "",
+        state: "",
+        city: "",
+        zipCode: "",
+        google: "",
+        facebook: "",
+        twitter: "",
+        linkedin: "",
+        verificationEmail: "",
+        imageUrl: "",
         password: "",
         confirmPassword: "",
       });
 
-      navigate("/");
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 2000);
     } catch (err) {
+      console.error("Signup Error:", err); // Debugging
+
+      const errorMessage =
+        err?.response?.data?.error ||
+        err?.message ||
+        "An unexpected error occurred";
       toast.current.show({
         severity: "error",
         summary: "Error",
-        detail: err.response?.data?.error || "An error occurred",
+        detail: errorMessage,
         life: 3000,
       });
     }
@@ -134,6 +140,7 @@ const SignupPage = () => {
             placeholder="Full Name"
             value={formData.username}
             onChange={handleChange}
+            required
           />
           <input
             type="email"
@@ -141,13 +148,41 @@ const SignupPage = () => {
             placeholder="Email Address"
             value={formData.email}
             onChange={handleChange}
+            required
           />
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone Number"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+          />
+
+          <input
+            type="text"
+            name="state"
+            placeholder="State"
+            value={formData.state}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            name="city"
+            placeholder="City"
+            value={formData.city}
+            onChange={handleChange}
+            required
+          />
+
           <input
             type="password"
             name="password"
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
+            required
           />
           <input
             type="password"
@@ -155,6 +190,7 @@ const SignupPage = () => {
             placeholder="Confirm Password"
             value={formData.confirmPassword}
             onChange={handleChange}
+            required
           />
           <button type="submit">Sign Up</button>
         </form>

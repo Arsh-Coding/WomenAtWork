@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
-
+import {
+  CountrySelect,
+  CitySelect,
+  StateSelect,
+} from "react-country-state-city";
+import "react-country-state-city/dist/react-country-state-city.css";
 export default function Test() {
+  const [countryId, setCountryId] = useState(null);
+  const [stateId, setStateId] = useState(null);
+  const [currentCity, setCurrentCity] = useState(null);
   const [page, setPage] = useState(1);
 
   const data = {
@@ -31,13 +39,55 @@ export default function Test() {
   }, [page]);
 
   return (
-    <div style={{ color: "red", fontSize: "100px", height: "100vh" }}>
-      {data[page].map((item) => {
-        return <div>{item.item}</div>;
-      })}
-      <button onClick={() => handlePageChange(page + 1)}>+</button>
-      {page}
-      <button onClick={() => handlePageChange(page - 1)}>-</button>
-    </div>
+    <>
+      <div
+        style={{
+          color: "red",
+          fontSize: "100px",
+          height: "70vh",
+        }}
+      >
+        {data[page].map((item) => {
+          return <div>{item.item}</div>;
+        })}
+        <button onClick={() => handlePageChange(page + 1)}>+</button>
+        {page}
+        <button onClick={() => handlePageChange(page - 1)}>-</button>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginBottom: "10vh",
+        }}
+      >
+        <CountrySelect
+          containerClassName="form-group"
+          inputClassName=""
+          onChange={(_country) => setCountryId(_country)}
+          onTextChange={(_txt) => console.log(_txt)}
+          placeHolder="Select Country"
+        />
+        <StateSelect
+          countryid={countryId?.id}
+          containerClassName="form-group"
+          inputClassName=""
+          onChange={(_state) => setStateId(_state)}
+          onTextChange={(_txt) => console.log(_txt)}
+          defaultValue={stateId}
+          placeHolder="Select State"
+        />
+        <CitySelect
+          countryid={countryId?.id}
+          stateid={stateId?.id}
+          containerClassName="form-group"
+          inputClassName=""
+          onChange={(_city) => setCurrentCity(_city)}
+          onTextChange={(_txt) => console.log(_txt)}
+          defaultValue={currentCity}
+          placeHolder="Select City"
+        />
+      </div>
+    </>
   );
 }

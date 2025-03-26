@@ -1,12 +1,12 @@
 import React from "react";
 import "./About.css";
-import Footer from '../Home/Footer/Footer'
+import Footer from "../Home/Footer/Footer";
 const AboutUs = () => {
   return (
     <div className="about-container">
       <div className="top-about">
         <div className="textPart">
-          <h2 >About Us</h2>
+          <h2>About Us</h2>
           <p>
             <strong>
               Welcome to <span class="highlight">Women in Workforce</span>
@@ -31,12 +31,12 @@ const AboutUs = () => {
           </p>
         </div>
         <div className="about-image">
-          <img src="/Podcast.png" alt="Woman speaking in podcast" width={450} />
+          <img src="/Podcast.png" alt="Woman speaking in podcast" />
         </div>
       </div>
       <div className="bottom-about">
         <div className="about-image">
-          <img src="/Meeting.png" alt="Woman speaking in podcast" width={450} />
+          <img src="/Meeting.png" alt="Woman speaking in podcast" />
         </div>
         <div className="textPart">
           <p>
@@ -69,7 +69,7 @@ const AboutUs = () => {
           </p>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

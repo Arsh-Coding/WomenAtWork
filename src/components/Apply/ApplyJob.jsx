@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+import { httpGet } from "../../services/api";
+import { URLS } from "../../services/urls";
 import "./ApplyJob.css";
 import Footer from "../Home/Footer/Footer";
 
@@ -13,31 +14,32 @@ const ApplyJob = () => {
   const [company, setCompany] = useState(null);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/jobs/${jobId}`)
-      .then((response) => {
-        console.log(response.data.job);
+    const fetchJobDetails = async () => {
+      try {
+        const jobData = await httpGet(URLS.jobs(jobId));
+        setJob(jobData.job);
+        setCompany(jobData.company);
+      } catch (error) {
+        console.error("Error fetching job details:", error);
+      }
+    };
 
-        setJob(response.data.job);
-        setCompany(response.data.company);
-      })
-      .catch((error) => console.error("Error fetching job details:", error));
-
-    axios
-      .get(`http://localhost:3000/companies/${companyId}`)
-      .then((response) => {
-        console.log("Company Data:", response.data);
-        setCompany(response.data.company);
-      })
-      .catch((error) =>
-        console.error("Error fetching company details:", error)
-      );
+    const fetchCompanyDetails = async () => {
+      try {
+        const companyData = await httpGet(URLS.companies(companyId));
+        setCompany(companyData.company);
+      } catch (error) {
+        console.error("Error fetching company details: ", error);
+      }
+    };
+    fetchJobDetails();
+    fetchCompanyDetails();
   }, [jobId, companyId]);
 
   if (!job) return <h2>Loading job details...</h2>;
 
   function handleApply(e) {
-    navigate("/profile");
+    navigate("/candidate profile");
   }
 
   return (

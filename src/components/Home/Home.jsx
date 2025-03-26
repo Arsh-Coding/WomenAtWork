@@ -32,6 +32,7 @@ const Home = () => {
 
   // Automatically change slide every 5 seconds.
   useEffect(() => {
+    // throw new Error("Something went wrong in the home page");
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -42,6 +43,7 @@ const Home = () => {
   return (
     <>
       {/* <Navbar/> */}
+
       <div className="Hero">
         <div className="slideshow">
           {images.map((image, index) => (

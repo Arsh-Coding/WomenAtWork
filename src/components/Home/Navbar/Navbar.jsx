@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from "react";
-
 import "./Navbar.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isAuthenticated, setisAuthenticated] = useState(false);
-  const location = useLocation();
+  const location = useLocation(); //React Router provides a useLocation hook that gives you access to the current location object.
   const navigate = useNavigate();
 
+  // useNavigate allows you to change the URL and therefore the displayed component in your React Router application from anywhere in your component, not just within a <Link> component.  This is particularly useful when you need to navigate based on some logic, like a button click, form submission, or the result of an API call.
+
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
-    setisAuthenticated(!!token);
+    const token = localStorage.getItem("authToken"); //if recieved its truthy else falsy
+    // const user = localStorage.setItem("userId", user.userId);
+    setisAuthenticated(!!token); //!! converts value of token to boolean (!first false then !true in this case);
   }, [location]);
+  // If token is a truthy value (meaning a token exists), !!token will be true.
+  // If token is a falsy value (meaning no token exists), !!token will be false.
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     setisAuthenticated(false);
-    navigate("/login"); //not important;
+    navigate("/login");
   };
 
   const toggleMenu = () => {
@@ -40,12 +45,14 @@ const Navbar = () => {
 
   return (
     <>
+      {/* main class navbar */}
       <div className="navbar">
         <div className="logo">
           <Link to="/" className="Logo">
             <img src="/logo.png" alt="Logo" />
           </Link>
         </div>
+        {/* links start from here */}
         <div className={`navLinks ${menuOpen ? "active" : ""}`}>
           <div className="Links">
             <ul>
@@ -68,7 +75,7 @@ const Navbar = () => {
           </div>
           {isAuthenticated ? (
             <>
-              <Link to="/profile">
+              <Link to="/candidate profile">
                 <div className="profile-icon">
                   <img
                     src="/profilePic.jpg"

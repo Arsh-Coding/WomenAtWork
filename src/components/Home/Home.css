@@ -16,6 +16,7 @@
   left: 12vw;
   transition: color 0.3s;
 }
+
 .Hero .hero-text-colored {
   position: absolute;
   display: grid;
@@ -24,6 +25,7 @@
   max-width: 400px;
   color: #0b00a3;
 }
+
 .Hero .hero-text-colored p {
   font-family: "Noto Sans", serif;
   font-size: 16px;

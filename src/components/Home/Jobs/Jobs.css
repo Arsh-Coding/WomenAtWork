@@ -3,7 +3,7 @@
   /* text-align: center; */
 }
 
-.header {
+.home-job-header {
   font-family: "Zilla Slab", serif;
   font-size: 24px;
   margin-left: 100px;
@@ -11,7 +11,7 @@
   margin-bottom: 20px;
   color: #333;
 }
-.header::after {
+.home-job-header::after {
   content: "";
   display: block;
   background-color: #dcdcdc;

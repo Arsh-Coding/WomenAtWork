@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
+import { httpGet } from "../../services/api";
+import { URLS } from "../../services/urls";
 import JobList from "./jobComponent/JobList";
 import Footer from "../Home/Footer/Footer";
 import JobFilter from "../JobFilter/JobFilter";
@@ -19,21 +20,35 @@ const MainJob = () => {
   const [categories, setCategories] = useState([]);
 
   // Fetch jobs and categories
-  const fetchData = async () => {
-    try {
-      const [categoryResponse, jobResponse] = await Promise.all([
-        axios.get("http://localhost:3000/categories"),
-        axios.get("http://localhost:3000/jobs"),
-      ]);
-      setCategories(categoryResponse.data);
-      setJobData(jobResponse.data);
-      setFilteredJobs(jobResponse.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const [categoryResponse, jobResponse] = await Promise.all([
+  //       axios.get("http://localhost:3000/categories"),
+  //       axios.get("http://localhost:3000/jobs"),
+  //     ]);
+  //     setCategories(categoryResponse.data);
+  //     setJobData(jobResponse.data);
+  //     setFilteredJobs(jobResponse.data);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // };
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [categoryData, jobData] = await Promise.all([
+          httpGet(URLS.categories),
+          httpGet(URLS.alljobs),
+        ]);
+
+        setCategories(categoryData);
+        setJobData(jobData);
+        setFilteredJobs(jobData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
     fetchData();
   }, []);
 
@@ -78,7 +93,7 @@ const MainJob = () => {
   //     return matchesKeyword && matchesLocation && matchesCategory;
   //   });
   //   // setFilteredJobs(filtered);
-  console.log("filters555", filters.categoryId, filteredJobs);
+  // console.log("filters555", filters.categoryId, filteredJobs);
 
   return (
     <div className="job-search-container">

@@ -46,7 +46,7 @@ const JobList = ({ initialJobs }) => {
     setDisplayJobs(filteredJobs);
   }, [filters, initialJobs]);
 
-  console.log("initialJobs", initialJobs);
+  // console.log("initialJobs", initialJobs);
 
   return (
     <div className="job-list-main">

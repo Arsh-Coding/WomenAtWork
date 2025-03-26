@@ -2,6 +2,8 @@ import React, { useState, useRef } from "react";
 import axios from "axios";
 import { Toast } from "primereact/toast";
 import "./LoginPage.css";
+import { httpPost } from "../../../services/api";
+import { URLS } from "../../../services/urls";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -45,29 +47,30 @@ const LoginPage = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await axios.post(
-        "http://localhost:3000/auth/login",
-        formData
-      );
+      const response = await httpPost(URLS.login, formData);
 
       toast.current.show({
         severity: "success",
         summary: "Success",
-        detail: response.data.message,
+        detail: response.message,
         life: 3000,
       });
 
-      localStorage.setItem("authToken", response.data.token);
+      let user = response.user;
+      // console.log("user: ", user);
+
+      localStorage.setItem("authToken", response.token);
+      localStorage.setItem("userId", user.userId);
       setFormData({ email: "", password: "" });
 
       setTimeout(() => {
         window.location.href = "/";
-      }, 1500);
+      }, 2000);
     } catch (err) {
       toast.current.show({
         severity: "error",
         summary: "Error",
-        detail: err.response?.data?.message || "An error occurred",
+        detail: err.response?.message || "An error occurred",
         life: 3000,
       });
     }
@@ -120,9 +123,7 @@ const LoginPage = () => {
           <button className="linkedin">LinkedIn</button>
           <button className="google">Google</button>
         </div>
-        <p className="signup-link">
-          Not a Member? 
-        </p>
+        <p className="signup-link">Not a Member?</p>
       </div>
     </div>
   );

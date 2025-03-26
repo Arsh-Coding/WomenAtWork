@@ -18,7 +18,7 @@ const Jobs = () => {
 
   return (
     <div className="jobApp">
-      <h1 className="header">Browse Jobs By</h1>
+      <h1 className="home-job-header">Browse Jobs By</h1>
 
       {/* Tabs */}
       <div className="tabs">

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { httpGet } from "../../services/api";
+import { URLS } from "../../services/urls";
 import axios from "axios";
 // import "./JobFilter.css";
 
@@ -24,12 +26,12 @@ const JobFilter = ({ width, height, initialFilters }) => {
     const fetchData = async () => {
       try {
         const [categoryResponse, jobResponse] = await Promise.all([
-          axios.get("http://localhost:3000/categories"),
-          axios.get("http://localhost:3000/jobs"),
+          httpGet(URLS.categories),
+          httpGet(URLS.alljobs),
         ]);
-
-        setCategories(categoryResponse.data);
-        setLocations([...new Set(jobResponse.data.map((job) => job.location))]);
+        // console.log(categoryResponse, "and ", jobResponse);
+        setCategories(categoryResponse);
+        setLocations([...new Set(jobResponse.map((job) => job.location))]);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -46,7 +48,7 @@ const JobFilter = ({ width, height, initialFilters }) => {
     navigate("/JobPage", { state: filters });
   };
 
-  console.log("filters33333", filters);
+  // console.log("filters33333", filters);
 
   return (
     <div className="filter-box" style={{ width, height }}>
