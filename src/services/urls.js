@@ -1,5 +1,5 @@
 // const apiEndpoint = "http://localhost:3000/";
-const apiEndpoint = "https://woman-at-workforce-backend.onrender.com";
+const apiEndpoint = "https://woman-at-workforce-backend.onrender.com/";
 
 export const URLS = {
   jobs: (jobId) => `${apiEndpoint}jobs/${jobId}`,
