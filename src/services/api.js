@@ -2,6 +2,8 @@ import axios from "axios";
 import { URLS } from "./urls";
 
 export const httpGet = async (url, options = {}) => {
+  // console.log("get request url: ", url);
+
   try {
     let response = await axios.get(url, options);
     return response.data;
@@ -12,7 +14,7 @@ export const httpGet = async (url, options = {}) => {
 };
 
 export const httpPost = async (url, data = {}, options = {}) => {
-  // console.log(options);
+  // console.log("api js ", url);
 
   try {
     let response = await axios.post(url, data, {
@@ -79,4 +81,14 @@ export const getCitiesByState = async (stateId) => {
 export const getAuthHeader = () => {
   const token = localStorage.getItem("authToken");
   return token ? { Authorization: `Bearer ${token}` } : {};
+};
+
+export const applyToJob = async (jobId) => {
+  return await httpPost(
+    URLS.applyJob,
+    { jobId },
+    {
+      headers: getAuthHeader(),
+    }
+  );
 };

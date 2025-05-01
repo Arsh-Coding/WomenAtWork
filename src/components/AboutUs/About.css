@@ -1,34 +1,46 @@
+/* About Section General Styling */
 .top-about {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 40px 0 30px 10%;
+  padding: 100px 10% 0 10%;
   background: #fff;
+  /* flex-wrap: wrap; */
 }
 
 .bottom-about {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 10% 30px 0;
+  padding: 0px 10%;
   background: #fff;
-  margin-top: -20vh;
+  /* flex-wrap: wrap; */
 }
+
 .textPart {
   display: grid;
-  gap: 40px;
+  gap: 30px;
+  max-width: 600px;
 }
+
+/* Highlight Text */
 .highlight {
   font-weight: bold;
   color: #d100ff; /* Purple color for highlights */
 }
+
+/* About Image Styling */
 .about-image {
   position: relative;
-  top: 10vh;
 }
+
 .about-image img {
   width: 450px;
+  max-width: 100%;
+  height: auto;
 }
+
+/* Heading Underline Effect */
 .textPart h2::after {
   display: block;
   content: "";
@@ -36,31 +48,45 @@
   width: 7%;
   height: 5px;
 }
-@media (max-width: 480px) {
+
+/* ✅ Responsive Design */
+@media (max-width: 1024px) {
+  .top-about,
+  .bottom-about {
+    flex-direction: column;
+    text-align: center;
+    padding: 50px 8%;
+  }
+  .about-image {
+    top: 0;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
   .top-about {
-    max-width: 100%;
-    padding: 100px 20px;
-    padding: 100px 5% 30px 2%;
-    display: grid;
-    /* text-align: center; */
+    padding: 50px 5%;
   }
   .bottom-about {
-    display: grid;
-    padding: 20px 10% 30px 5%;
+    padding: 30px 5%;
   }
   .about-image img {
     width: 350px;
   }
-  .textPart h2 {
+}
+
+@media (max-width: 480px) {
+  .top-about,
+  .bottom-about {
+    display: grid;
     text-align: center;
+    padding: 40px 5%;
+  }
+  .about-image img {
+    width: 300px;
   }
   .textPart h2::after {
-    justify-content: center;
-    margin: 0 36%;
-    display: block;
-    content: "";
-    background-color: rgb(249, 94, 119);
+    margin: 0 auto;
     width: 12%;
-    height: 5px;
   }
 }

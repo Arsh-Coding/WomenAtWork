@@ -61,7 +61,7 @@
 .signup-right {
   flex: 1;
   padding: 40px;
-  margin-top: 50vh;
+  margin-top: 15vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -126,39 +126,56 @@
 }
 /* PrimeReact Toast customization */
 .p-toast {
+  /* padding: 10px; */
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.059);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.p-toast-message-text {
+  /* position: absolute !important; */
+  /* left: 65vw !important; */
+  /* top: -2vh; */
   padding: 10px;
-  backdrop-filter: blur(10px); /* Blur effect */
-  background: rgba(255, 255, 255, 0.2); /* Transparent white background */
-  border: 1px solid rgba(255, 255, 255, 0.4); /* Subtle border */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a soft shadow */
-  border-radius: 12px; /* Rounded corners */
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.059);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  /* border-radius: 12px; */
+}
+.p-toast-message-content .p-icon .p-toast-message-icon {
+  /* position: absolute !important; */
+  /* left: 65vw !important; */
+  /* top: -2vh; */
+  /* padding: 10px; */
+  backdrop-filter: blur(100px);
+  background: rgba(255, 255, 255, 0.059);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  /* border-radius: 12px; */
 }
 
-/* Toast message text styles */
 .p-toast-message {
-  color: #fff; /* White text */
+  color: #fff;
   font-size: 1rem;
 }
 
-/* Success toast background gradient */
 .p-toast-message-success {
-  /* background: linear-gradient(135deg, #4caf50, #81c784); Green gradient */
-  color: #000000 !important; /* Override text color */
+  color: #000000 !important;
 }
 
-/* Error toast background gradient */
 .p-toast-message-error {
-  /* background: linear-gradient(135deg, #f44336, #e57373); Red gradient */
-  color: #000000 !important; /* Override text color */
+  color: #000000 !important;
 }
 
-/* Animation for fade-in effect */
 .p-toast .p-toast-message {
   animation: fadeIn 0.5s ease-in-out;
 }
+
 .p-icon {
   display: none;
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -168,4 +185,10 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Hide empty toast container */
+.p-toast:empty,
+.p-toast .p-component:empty {
+  display: none !important;
 }

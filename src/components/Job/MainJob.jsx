@@ -1,60 +1,53 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { fetchJobs } from "../../services/slices/jobSlice";
 import { httpGet } from "../../services/api";
 import { URLS } from "../../services/urls";
+
 import JobList from "./jobComponent/JobList";
-import Footer from "../Home/Footer/Footer";
 import JobFilter from "../JobFilter/JobFilter";
+import Footer from "../Home/Footer/Footer";
+
 import "./MainJob.css";
 
 const MainJob = () => {
   const location = useLocation();
+  const dispatch = useDispatch();
+
   const filters = location.state || {
     keyword: "",
     location: "",
     categoryId: "",
   };
 
-  const [jobData, setJobData] = useState([]);
+  const jobs = useSelector((state) => state.jobs.jobs);
+  const jobStatus = useSelector((state) => state.jobs.status);
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  // Fetch jobs and categories
-  // const fetchData = async () => {
-  //   try {
-  //     const [categoryResponse, jobResponse] = await Promise.all([
-  //       axios.get("http://localhost:3000/categories"),
-  //       axios.get("http://localhost:3000/jobs"),
-  //     ]);
-  //     setCategories(categoryResponse.data);
-  //     setJobData(jobResponse.data);
-  //     setFilteredJobs(jobResponse.data);
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //   }
-  // };
-
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [categoryData, jobData] = await Promise.all([
-          httpGet(URLS.categories),
-          httpGet(URLS.alljobs),
-        ]);
+    // Fetch jobs using redux only if not already fetched
+    if (jobStatus === "idle") {
+      dispatch(fetchJobs());
+    }
 
-        setCategories(categoryData);
-        setJobData(jobData);
-        setFilteredJobs(jobData);
+    // Fetch categories locally
+    const fetchCategories = async () => {
+      try {
+        const response = await httpGet(URLS.categories);
+        setCategories(response);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching categories", error);
       }
     };
-    fetchData();
-  }, []);
 
-  // Apply filters when jobData or filters change
+    fetchCategories();
+  }, [dispatch, jobStatus]);
+
   useEffect(() => {
-    let filtered = jobData;
+    let filtered = jobs;
 
     if (filters.keyword) {
       filtered = filtered.filter((job) =>
@@ -75,25 +68,7 @@ const MainJob = () => {
     }
 
     setFilteredJobs(filtered);
-  }, [filters, jobData]); // ✅ Include jobData and filters as dependencies
-
-  // Function to filter jobs based on filters
-  // const applyFilters = () => {
-  //   const filtered = jobData?.filter((job) => {
-  //     const matchesKeyword =
-  //       !filters.keyword ||
-  //       job.title.toLowerCase().includes(filters.keyword.toLowerCase());
-  //     const matchesLocation =
-  //       !filters.location ||
-  //       job.location.toLowerCase() === filters.location.toLowerCase();
-  //     const matchesCategory =
-  //       !filters.categoryId ||
-  //       job.categoryIds.includes(Number(filters.categoryId));
-
-  //     return matchesKeyword && matchesLocation && matchesCategory;
-  //   });
-  //   // setFilteredJobs(filtered);
-  // console.log("filters555", filters.categoryId, filteredJobs);
+  }, [filters, jobs]);
 
   return (
     <div className="job-search-container">

@@ -14,11 +14,21 @@ import AboutUs from "./components/AboutUs/AboutUs";
 import Wow from "./components/Wow/wow";
 import ProtectedRoute from "./ProtectedRoute";
 import ResumeUpload from "./components/Profile/ResumeProfile";
+import Dashboard from "./components/Profile/Dashboard";
+import AppliedJobs from "./components/Profile/AppliedJobs";
 
 function App() {
   function ErrorFallback({ error, resetErrorBoundary }) {
     return (
-      <div>
+      <div
+        style={{
+          display: "grid",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100vw",
+          height: " 100vh",
+        }}
+      >
         <h2>Something went wrong:</h2>
         <pre>{error.message}</pre>
         <button onClick={resetErrorBoundary}>Try again</button>
@@ -48,8 +58,9 @@ function App() {
           <Route path="/aboutUs" element={<AboutUs />} />
           <Route path="/testimonials" element={<Wow />} />
           <Route path="/resumeUpload" element={<ResumeUpload />} />
-          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-          {/* <Route path="/contact" element={<Contact />} /> */}
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/applied-jobs" element={<AppliedJobs />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </ErrorBoundary>
     </>

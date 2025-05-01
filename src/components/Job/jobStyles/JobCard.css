@@ -86,3 +86,6 @@
   background-color: #59718aa2;
   transition: 0.1s ease-in;
 }
+.job-card .p-toast {
+  display: none;
+}

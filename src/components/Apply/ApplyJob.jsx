@@ -1,17 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { httpGet } from "../../services/api";
+import { httpGet, applyToJob } from "../../services/api";
 import { URLS } from "../../services/urls";
 import "./ApplyJob.css";
 import Footer from "../Home/Footer/Footer";
+import { Toast } from "primereact/toast";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
 
 const ApplyJob = () => {
   const navigate = useNavigate();
   const { jobId, companyId } = useParams();
-  console.log("company id" + companyId);
+  const toast = useRef(null);
+  // console.log("company id" + companyId);
 
   const [job, setJob] = useState(null);
   const [company, setCompany] = useState(null);
+
+  const handleApply = async () => {
+    try {
+      await applyToJob(jobId);
+      toast.current.show({
+        severity: "success",
+        summary: "Success",
+        detail: "Applied Successfully",
+        life: 3000,
+        position: "top-right",
+      });
+      navigate("/candidate profile");
+    } catch (e) {
+      console.error("Error applying to job", e);
+      toast.current.show({
+        severity: "error",
+        summary: "Error",
+        detail: "Failed to apply.",
+        life: 3000,
+        position: "top-right",
+      });
+    }
+  };
 
   useEffect(() => {
     const fetchJobDetails = async () => {
@@ -21,6 +49,13 @@ const ApplyJob = () => {
         setCompany(jobData.company);
       } catch (error) {
         console.error("Error fetching job details:", error);
+        toast.current.show({
+          severity: "error",
+          summary: "Error",
+          detail: "Error fetching job details",
+          life: 3000,
+          position: "top-right",
+        });
       }
     };
 
@@ -38,13 +73,10 @@ const ApplyJob = () => {
 
   if (!job) return <h2>Loading job details...</h2>;
 
-  function handleApply(e) {
-    navigate("/candidate profile");
-  }
-
   return (
     <>
       <main className="job-details">
+        <Toast ref={toast} />
         <div className="apply-job-heading">
           <div>
             <h1>{job.title}</h1>

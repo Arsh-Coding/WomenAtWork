@@ -4,7 +4,12 @@ import "./Jobs.css";
 const Jobs = () => {
   const [activeTab, setActiveTab] = useState("Professions");
 
-  const tabs = ["Professions", "Recommended For You", "Featured Jobs", "Locations"];
+  const tabs = [
+    "Professions",
+    "Recommended For You",
+    "Featured Jobs",
+    "Locations",
+  ];
   const categories = [
     { title: "Analyst", image: "./job1.png" },
     { title: "Finance & Legal", image: "./job2.png" },

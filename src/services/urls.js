@@ -1,5 +1,5 @@
-// const apiEndpoint = "http://localhost:3000/";
-const apiEndpoint = "https://woman-at-workforce-backend.onrender.com/";
+const apiEndpoint = "http://localhost:3000/";
+// const apiEndpoint = "https://woman-at-workforce-backend.onrender.com/";
 
 export const URLS = {
   jobs: (jobId) => `${apiEndpoint}jobs/${jobId}`,
@@ -11,6 +11,7 @@ export const URLS = {
 
   // Profile related URLs
   user: (userId) => `${apiEndpoint}user/${userId}`,
+  applyJob: `${apiEndpoint}user/apply`,
   updateProfile: (userId) => `${apiEndpoint}profile/${userId}`,
   uploadProfilePic: `${apiEndpoint}profile/uploadProfilePic`,
 

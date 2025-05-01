@@ -1,35 +1,22 @@
 import React, { useState, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { Toast } from "primereact/toast";
-import { URLS } from "../../../services/urls";
-import { httpPost } from "../../../services/api";
+import { signupUser } from "../../../services/slices/authSlice";
+
 import "./SignupPage.css";
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
-    phone: "",
-    website: "",
-    jobDescription: "",
-    address: "",
-    country: "",
-    state: "",
-    city: "",
-    zipCode: "",
-    google: "",
-    facebook: "",
-    twitter: "",
-    linkedin: "",
-    verificationEmail: "",
-    imageUrl: "",
     password: "",
     confirmPassword: "",
   });
 
-  const [success, setSuccess] = useState("");
-  const navigate = useNavigate();
   const toast = useRef(null);
+  const dispatch = useDispatch();
+  const { status, error } = useSelector((state) => state.auth);
 
   // Handle input changes
   const handleChange = (e) => {
@@ -47,7 +34,6 @@ const SignupPage = () => {
       return showToast("error", "Error", "Confirm Password is required");
     if (password !== confirmPassword)
       return showToast("error", "Error", "Passwords do not match");
-
     return true;
   };
 
@@ -59,61 +45,31 @@ const SignupPage = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
-
-    try {
-      const response = await httpPost(URLS.signup, formData);
-      debugger;
-      console.log(response);
-      localStorage.setItem("authToken", response.token);
-      localStorage.setItem("userId", response.user?.userId);
-      localStorage.setItem("user", JSON.stringify(response.user));
-
-      toast.current.show({
-        severity: "success",
-        summary: "Success",
-        detail: "Sign up successful!",
-        life: 3000,
+    dispatch(signupUser(formData))
+      .unwrap()
+      .then(() => {
+        toast.current.show({
+          severity: "success",
+          summary: "Success",
+          detail: "SignUp Successfull!",
+          life: 3000,
+        });
+        setFormData({
+          username: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        });
+        setTimeout(() => (window.location.href = "/"), 2000);
+      })
+      .catch((error) => {
+        toast.current.show({
+          severity: "error",
+          summary: "Error",
+          detail: error || "signup failed",
+          life: 3000,
+        });
       });
-
-      setFormData({
-        username: "",
-        email: "",
-        phone: "",
-        website: "",
-        jobDescription: "",
-        address: "",
-        country: "",
-        state: "",
-        city: "",
-        zipCode: "",
-        google: "",
-        facebook: "",
-        twitter: "",
-        linkedin: "",
-        verificationEmail: "",
-        imageUrl: "",
-        password: "",
-        confirmPassword: "",
-      });
-
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 2000);
-    } catch (err) {
-      console.error("Signup Error:", err); // Debugging
-
-      const errorMessage =
-        err?.response?.data?.error ||
-        err?.message ||
-        "An unexpected error occurred";
-      toast.current.show({
-        severity: "error",
-        summary: "Error",
-        detail: errorMessage,
-        life: 3000,
-      });
-    }
   };
 
   return (
@@ -147,31 +103,6 @@ const SignupPage = () => {
             name="email"
             placeholder="Email Address"
             value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone Number"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            type="text"
-            name="state"
-            placeholder="State"
-            value={formData.state}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            name="city"
-            placeholder="City"
-            value={formData.city}
             onChange={handleChange}
             required
           />
