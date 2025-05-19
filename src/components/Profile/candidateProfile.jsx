@@ -25,7 +25,11 @@ const Profile = () => {
   const profileState = useSelector((state) => state.profile);
   const reduxUser = profileState?.user || null;
   const toast = useRef(null);
-  // console.log("reduxUser: ", profileState);
+  let isEmployer = reduxUser?.role;
+  let isDisabled; //disable the jobDescription
+  if (isEmployer === "employer") isDisabled = true;
+
+  // console.log("reduxUser: ", reduxUser?.role);
 
   const status = profileState?.status || "idle"; // ✅ Correct property
 
@@ -559,6 +563,7 @@ const Profile = () => {
                       name="jobDescription"
                       value={profile.jobDescription}
                       onChange={handleChange}
+                      disabled={isDisabled}
                     >
                       <option value="">Select a job</option>
                       {jobs.length > 0 ? (

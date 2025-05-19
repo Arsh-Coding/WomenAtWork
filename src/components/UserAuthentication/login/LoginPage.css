@@ -168,3 +168,63 @@
   background-color: white;
   color: #007bff;
 }
+/* Responsive Styling */
+@media screen and (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .login-left {
+    display: none;
+  }
+
+  .login-right {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .login-form {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .login-right h2 {
+    font-size: 20px;
+  }
+
+  .login-right p {
+    font-size: 14px;
+  }
+
+  .login-form input,
+  .login-form button,
+  .social-login button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .password-field {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .password-field .toggle-password {
+    margin-top: 8px;
+  }
+
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-options label,
+  .form-options a {
+    font-size: 14px;
+    margin: 4px 0;
+  }
+}

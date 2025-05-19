@@ -2,18 +2,19 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  background-color: #f7f7f7;
+  background-color: #ffddb269;
   border-radius: 10px;
-  padding: 20px;
+  padding: 30px;
+  height: 100%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   max-width: 500px;
-  max-height: 150px;
-  margin: 0 1rem;
+  max-height: 210px;
+  /* margin: 0 1rem; */
 }
 
 .user-avatar img {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #007bff;
@@ -33,4 +34,106 @@
   margin: 5px 0;
   font-size: 0.95rem;
   color: #555;
+}
+@media (max-width: 1024px) {
+  .main-dashboard {
+    flex-direction: column;
+    padding: 0 5vw;
+    margin-top: 1vh;
+  }
+
+  .main-dashboard-sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .main-dashboard-contentMain {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .main-dashboard-contentMain > div {
+    width: 100%;
+  }
+
+  .notifications,
+  .user-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .css-3vow6v-MuiPaper-root-MuiCard-root {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    margin-bottom: 0;
+  }
+
+  .profile-header h2 {
+    font-size: 20px;
+    margin-left: 0;
+  }
+
+  .user-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .user-avatar img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .user-info h2 {
+    font-size: 1.2rem;
+  }
+
+  .user-info p {
+    font-size: 0.85rem;
+  }
+
+  .notifications h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .notification-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-card {
+    padding: 20px;
+  }
+
+  .user-info h2 {
+    font-size: 1rem;
+  }
+
+  .user-info p {
+    font-size: 0.75rem;
+  }
+
+  .notifications {
+    padding: 10px;
+  }
+
+  .notification-text {
+    font-size: 0.85rem;
+  }
+
+  .css-3vow6v-MuiPaper-root-MuiCard-root {
+    max-width: 100% !important;
+    margin-bottom: 20px;
+  }
 }

@@ -21,6 +21,7 @@ export const httpPost = async (url, data = {}, options = {}) => {
       headers: {
         "Content-Type": "application/json",
         ...options.headers,
+        ...getAuthHeader(),
       },
       ...options,
     });
@@ -51,15 +52,15 @@ export const httpFormPost = async (url, formData, options = {}) => {
   try {
     const response = await axios.post(url, formData, {
       headers: {
-        "Content-Type": "multipart/ form-data",
+        "Content-Type": "multipart/form-data",
         ...options.headers,
       },
       ...options,
     });
     return response.data;
   } catch (err) {
-    console.log("API from post error", e);
-    throw e;
+    console.log("API from post error", err);
+    throw err;
   }
 };
 export const getCountries = async () => {
@@ -83,12 +84,22 @@ export const getAuthHeader = () => {
   return token ? { Authorization: `Bearer ${token}` } : {};
 };
 
-export const applyToJob = async (jobId) => {
+export const applyToJob = async (jobId, dateApplied) => {
   return await httpPost(
     URLS.applyJob,
-    { jobId },
+    { jobId, dateApplied },
     {
       headers: getAuthHeader(),
     }
   );
+};
+//plans
+export const getPlans = async () => {
+  return await httpGet(URLS.plans);
+};
+//delete user profile
+export const deleteUserProfile = async () => {
+  return await axios.delete(URLS.deleteProfile, {
+    headers: getAuthHeader(),
+  });
 };

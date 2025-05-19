@@ -16,6 +16,12 @@ import ProtectedRoute from "./ProtectedRoute";
 import ResumeUpload from "./components/Profile/ResumeProfile";
 import Dashboard from "./components/Profile/Dashboard";
 import AppliedJobs from "./components/Profile/AppliedJobs";
+import Pricing from "./components/PricingPage/Pricing";
+import EmployerRegister from "./components/EmployerRegister/EmployerRegister";
+import CompanyDetail from "./components/EmployerRegister/CompanyDetail";
+import AddJobs from "./components/EmployerRegister/AddJobs";
+import CompanyDetailsDashboard from "./components/Profile/Dashboard/CompanyDetailsDashboard";
+import JobsManager from "./components/Profile/Dashboard/JobsManager";
 
 function App() {
   function ErrorFallback({ error, resetErrorBoundary }) {
@@ -35,6 +41,7 @@ function App() {
       </div>
     );
   }
+
   return (
     <>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
@@ -42,11 +49,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/JobPage" element={<JobPage />} />
-          <Route path="/test" element={<Test />} />
+          <Route path="/company-details" element={<CompanyDetail />} />
+          <Route path="/job-details" element={<AddJobs />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route
-            path="/candidate profile"
+            path="/dashboard/candidate profile"
             element={
               <ProtectedRoute>
                 <Profile />
@@ -57,10 +65,16 @@ function App() {
           <Route path="/contactUs" element={<MainContact />} />
           <Route path="/aboutUs" element={<AboutUs />} />
           <Route path="/testimonials" element={<Wow />} />
-          <Route path="/resumeUpload" element={<ResumeUpload />} />
+          <Route path="/dashboard/resumeUpload" element={<ResumeUpload />} />
+          <Route
+            path="/dashboard/company-details"
+            element={<CompanyDetailsDashboard />}
+          />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/applied-jobs" element={<AppliedJobs />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/applied-jobs" element={<AppliedJobs />} />
+          <Route path="/dashboard/membership-plans" element={<Pricing />} />
+          <Route path="/EmployerRegister" element={<EmployerRegister />} />
+          <Route path="/dashboard/Jobs-Manager" element={<JobsManager />} />
         </Routes>
       </ErrorBoundary>
     </>

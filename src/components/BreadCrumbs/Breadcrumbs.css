@@ -19,3 +19,8 @@
   color: #ffffff;
   font-weight: bold;
 }
+@media (max-width: 768px) {
+  .profile-header{
+    margin-top: 10vh;
+  }
+}

@@ -1,0 +1,19 @@
+/* .jobs-manager-container */
+/* jobs-manager-container */
+/* jobs-manager-sidebar */
+/* jobs-mamager-form */
+
+.jobs-manager-container {
+  display: flex;
+  justify-content: center;
+  gap: 5vw;
+  margin-top: 10vh;
+}
+.jobs-manager-form {
+  display: grid;
+  gap: 4vh;
+  margin-top: 4vh;
+}
+.jobs-manager-form .form-container {
+  margin-top: 0;
+}

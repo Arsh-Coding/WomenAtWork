@@ -61,32 +61,7 @@ export default function Test() {
           marginBottom: "10vh",
         }}
       >
-        <CountrySelect
-          containerClassName="form-group"
-          inputClassName=""
-          onChange={(_country) => setCountryId(_country)}
-          onTextChange={(_txt) => console.log(_txt)}
-          placeHolder="Select Country"
-        />
-        <StateSelect
-          countryid={countryId?.id}
-          containerClassName="form-group"
-          inputClassName=""
-          onChange={(_state) => setStateId(_state)}
-          onTextChange={(_txt) => console.log(_txt)}
-          defaultValue={stateId}
-          placeHolder="Select State"
-        />
-        <CitySelect
-          countryid={countryId?.id}
-          stateid={stateId?.id}
-          containerClassName="form-group"
-          inputClassName=""
-          onChange={(_city) => setCurrentCity(_city)}
-          onTextChange={(_txt) => console.log(_txt)}
-          defaultValue={currentCity}
-          placeHolder="Select City"
-        />
+        
       </div>
     </>
   );

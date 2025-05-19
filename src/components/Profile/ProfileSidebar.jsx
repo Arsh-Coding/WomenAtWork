@@ -1,13 +1,21 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserProfile } from "../../services/slices/profileSlice";
+import { deleteUserProfile } from "../../services/api";
+import { ConfirmDialog } from "primereact/confirmdialog";
+import { confirmDialog } from "primereact/confirmdialog";
+import { Toast } from "primereact/toast";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
 import "./Profile.css";
+import "./confirm-box.css";
 
 const ProfileSidebar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
+  const toast = useRef(null);
   const profile = useSelector((state) => state.profile);
   const user = profile?.user || {};
   // const status = profile?.status || "idle";
@@ -60,9 +68,50 @@ const ProfileSidebar = () => {
   const progress = useSelector((state) => state.profile.progress);
   const currentPath = location.pathname;
   // console.log("sidebar progress ", progress);
+  //delete profile
+  const handleDeleteProfile = () => {
+    confirmDialog({
+      message:
+        "Are you sure you want to delete your profile? This action cannot be undone.",
+      header: "Delete Confirmation",
+      icon: "pi pi-exclamation-triangle",
+      acceptClassName: "p-button-danger",
+      accept: async () => {
+        try {
+          await deleteUserProfile();
+          toast.current.show({
+            severity: "success",
+            summary: "Deleted",
+            detail: "Your profile was deleted successfully.",
+            life: 3000,
+          });
+          localStorage.removeItem("authToken");
+          setTimeout(() => navigate("/signup"), 2000);
+        } catch (err) {
+          console.error(err);
+          toast.current.show({
+            severity: "error",
+            summary: "Error",
+            detail: "Failed to delete profile. Try again.",
+            life: 3000,
+          });
+        }
+      },
+      reject: () => {
+        toast.current.show({
+          severity: "info",
+          summary: "Cancelled",
+          detail: "Profile deletion cancelled",
+          life: 3000,
+        });
+      },
+    });
+  };
 
   return (
     <div className="profile-sidebar">
+      <Toast ref={toast} />
+      <ConfirmDialog />
       <img
         src={user?.imageUrl || "/tommy shelby.png"}
         alt="profile pic"
@@ -82,39 +131,74 @@ const ProfileSidebar = () => {
       </div>
       <ul className="sidebar-menu">
         <div
-          style={{ borderBottom: "1px solid lightgrey", marginBottom: "20px" }}
+          style={{ borderBottom: "1px solid lightgrey", margin: "20px 0px" }}
         >
           <Link to="/dashboard">
             <li className={currentPath === "/dashboard" ? "active" : ""}>
               Dashboard
             </li>
           </Link>
-          <Link to="/candidate profile">
+          <Link to="/dashboard/candidate%20profile">
             <li
-              className={currentPath === "/candidate%20profile" ? "active" : ""}
+              className={
+                currentPath === "/dashboard/candidate%20profile" ? "active" : ""
+              }
             >
               Edit Profile
             </li>
           </Link>
-          <Link to="/resumeUpload">
-            <li className={currentPath === "/resumeUpload" ? "active" : ""}>
-              Resume
+          <Link
+            to={
+              user?.role === "employer"
+                ? "/dashboard/company-details"
+                : "/dashboard/resumeUpload"
+            }
+          >
+            <li
+              className={
+                currentPath === "/dashboard/resumeUpload" ||
+                currentPath === "/dashboard/company-details"
+                  ? "active"
+                  : ""
+              }
+            >
+              {user?.role === "employer" ? "Company Details" : "Resume"}
             </li>
           </Link>
-          <Link to="/applied-jobs">
-            <li className={currentPath === "/applied-jobs" ? "active" : ""}>
-              Applied Job
+
+          <Link
+            to={
+              user?.role === "employer"
+                ? "/dashboard/Jobs-Manager"
+                : "/dashboard/applied-jobs"
+            }
+          >
+            <li
+              className={
+                currentPath === "/dashboard/applied-jobs" ||
+                currentPath === "/dashboard/Jobs-Manager"
+                  ? "active"
+                  : ""
+              }
+            >
+              {user?.role === "employer" ? "Manage Jobs" : "Applied Jobs"}
             </li>
           </Link>
-          <li className={currentPath === "/pricing-plans" ? "active" : ""}>
-            <Link to="/pricing-plans">Pricing Plans</Link>
-          </li>
+          <Link to="/dashboard/membership-plans">
+            <li
+              className={
+                currentPath === "/dashboard/membership-plans" ? "active" : ""
+              }
+            >
+              Pricing Plans
+            </li>
+          </Link>
         </div>
 
         <li className="logout-btn-sidebar" onClick={handleLogout}>
           Log Out
         </li>
-        <li>Delete Profile</li>
+        <li onClick={handleDeleteProfile}>Delete Profile</li>
       </ul>
     </div>
   );

@@ -21,7 +21,7 @@
 
   /* border-radius: ; */
 }
-/* Tabs styling */
+
 .tabs {
   display: flex;
   justify-content: center;
@@ -45,7 +45,6 @@
   cursor: pointer;
   transition: all 0.3s;
 }
-
 .tab.active {
   background-color: rgba(191, 73, 179, 1);
   color: #fff;
@@ -61,6 +60,7 @@
 .categories-grid {
   display: grid;
   margin: 0 auto;
+  padding-left: 3vw;
   justify-content: center;
   grid-template-columns: repeat(4, 0.22fr);
   gap: 20px;
@@ -113,7 +113,14 @@
   font-size: 18px;
   font-weight: 700;
 }
+
 @media (max-width: 768px) {
+  .jobApp {
+    margin-top: 90vh;
+  }
+  .home-job-header {
+    margin: 0 0 3vh 10vw;
+  }
   .header {
     margin-left: 50px;
   }

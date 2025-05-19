@@ -8,19 +8,26 @@ import { Toast } from "primereact/toast";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
+import { useSelector } from "react-redux";
 
 const ApplyJob = () => {
   const navigate = useNavigate();
+  const user = useSelector((state) => state.profile.user);
+
   const { jobId, companyId } = useParams();
   const toast = useRef(null);
-  // console.log("company id" + companyId);
+  // console.log(companyId);
 
   const [job, setJob] = useState(null);
   const [company, setCompany] = useState(null);
+  const [applicants, setApplicants] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
 
   const handleApply = async () => {
     try {
-      await applyToJob(jobId);
+      const dateApplied = new Date().toISOString();
+      await applyToJob(jobId, dateApplied);
+
       toast.current.show({
         severity: "success",
         summary: "Success",
@@ -28,7 +35,7 @@ const ApplyJob = () => {
         life: 3000,
         position: "top-right",
       });
-      navigate("/candidate profile");
+      navigate("/dashboard/candidate%20profile");
     } catch (e) {
       console.error("Error applying to job", e);
       toast.current.show({
@@ -42,34 +49,55 @@ const ApplyJob = () => {
   };
 
   useEffect(() => {
-    const fetchJobDetails = async () => {
+    const fetchDetails = async () => {
       try {
-        const jobData = await httpGet(URLS.jobs(jobId));
-        setJob(jobData.job);
-        setCompany(jobData.company);
+        const [jobData, companyData] = await Promise.all([
+          httpGet(URLS.jobs(jobId)),
+          httpGet(URLS.companies(companyId)),
+        ]);
+
+        setJob(jobData?.job ?? null);
+        setCompany(companyData ?? null);
       } catch (error) {
-        console.error("Error fetching job details:", error);
+        console.error("Error fetching details:", error);
         toast.current.show({
           severity: "error",
           summary: "Error",
-          detail: "Error fetching job details",
+          detail: "Failed to fetch job/company details",
           life: 3000,
           position: "top-right",
         });
       }
     };
 
-    const fetchCompanyDetails = async () => {
+    fetchDetails();
+  }, [jobId, companyId]);
+
+  useEffect(() => {
+    const fetchApplicants = async () => {
       try {
-        const companyData = await httpGet(URLS.companies(companyId));
-        setCompany(companyData.company);
+        // Replace this with your actual method of getting the current user
+        // const user = await httpGet(URLS.user());
+        setCurrentUser(user);
+
+        if (
+          user?.role === "employer" &&
+          user?.companyDetails?.companyId === companyId
+        ) {
+          const applicantsData = await httpGet(
+            `http://localhost:3000/applicants/${jobId}`
+          );
+          console.log(applicantsData);
+
+          setApplicants(applicantsData);
+        }
       } catch (error) {
-        console.error("Error fetching company details: ", error);
+        console.error("Error fetching applicants:", error);
       }
     };
-    fetchJobDetails();
-    fetchCompanyDetails();
-  }, [jobId, companyId]);
+
+    fetchApplicants();
+  }, [user, jobId, companyId]);
 
   if (!job) return <h2>Loading job details...</h2>;
 
@@ -77,11 +105,12 @@ const ApplyJob = () => {
     <>
       <main className="job-details">
         <Toast ref={toast} />
+
         <div className="apply-job-heading">
           <div>
-            <h1>{job.title}</h1>
+            <h1>{job?.title ?? "Job Title Not Available"}</h1>
             <p>
-              Salary: <strong>{job.salary}</strong>
+              Salary: <strong>{job?.salary ?? "Not specified"}</strong>
             </p>
           </div>
 
@@ -90,53 +119,112 @@ const ApplyJob = () => {
           </button>
         </div>
 
-        <h2>Company Description</h2>
-        <p>{company?.companyDescription || "No company details available."}</p>
-        <p>{job?.description || "No job.company details available."}</p>
+        <h2>{company?.companyName ?? "Company Name Not Available"}</h2>
+        <p>
+          {company?.companyDescription ?? "No company description available."}
+        </p>
+        <p>{job?.description ?? "No job description available."}</p>
 
         <h2>The Role</h2>
         <ul>
-          {job?.roles?.map((role, index) => (
-            <li key={index}>{role.role}</li>
-          ))}
+          {job?.roles?.length > 0 ? (
+            job.roles.map((role, index) => (
+              <li key={index}>{role?.role ?? "Role title not available"}</li>
+            ))
+          ) : (
+            <li>No roles defined.</li>
+          )}
         </ul>
-        <p>{job.description}</p>
 
         <h2>We Imagine that You are:</h2>
-        <ul>
-          {job.roles.map((role) =>
-            role.requirements.map((condition, index) => (
-              <li key={index}>{condition}</li>
-            ))
+        <ul className="apply-job-list">
+          {job?.roles?.length > 0 ? (
+            job.roles.map((role, i) =>
+              role?.requirements?.map((req, j) => (
+                <li key={`${i}-req-${j}`}>{req ?? "Requirement missing"}</li>
+              ))
+            )
+          ) : (
+            <li>No requirements listed.</li>
           )}
         </ul>
 
         <h2>Requirements</h2>
         <ul>
-          {job.roles.map((role) =>
-            role.requirements.map((condition, index) => (
-              <li key={index}>{condition}</li>
-            ))
+          {job?.roles?.length > 0 ? (
+            job.roles.map((role, i) =>
+              role?.requirements?.map((req, j) => (
+                <li key={`${i}-req2-${j}`}>{req ?? "Requirement missing"}</li>
+              ))
+            )
+          ) : (
+            <li>No requirements available.</li>
           )}
         </ul>
 
         <h2>Responsibilities</h2>
         <ul>
-          {job.roles.map((role) =>
-            role.responsibilities.map((condition, index) => (
-              <li key={index}>{condition}</li>
-            ))
+          {job?.roles?.length > 0 ? (
+            job.roles.map((role, i) =>
+              role?.responsibilities?.map((res, j) => (
+                <li key={`${i}-res-${j}`}>{res ?? "Responsibility missing"}</li>
+              ))
+            )
+          ) : (
+            <li>No responsibilities listed.</li>
           )}
         </ul>
 
         <h2>Important Details</h2>
         <ul>
-          {job.roles.map((role) =>
-            role.importantDetails.map((condition, index) => (
-              <li key={index}>{condition}</li>
-            ))
+          {job?.roles?.length > 0 ? (
+            job.roles.map((role, i) =>
+              role?.importantDetails?.map((detail, j) => (
+                <li key={`${i}-detail-${j}`}>{detail ?? "Detail missing"}</li>
+              ))
+            )
+          ) : (
+            <li>No additional details available.</li>
           )}
         </ul>
+        {currentUser?.role === "employer" &&
+          currentUser?.companyDetails?.companyId === companyId && (
+            <section>
+              <h2>Applicants</h2>
+              {applicants.length > 0 ? (
+                <table className="applicants-table">
+                  <thead>
+                    <tr>
+                      <th>Username</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Resume</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {applicants.map((applicant) => (
+                      <tr key={applicant._id}>
+                        <td>{applicant.username}</td>
+                        <td>{applicant.email}</td>
+                        <td>{applicant.phone}</td>
+                        <td>
+                          <a
+                            href={applicant.resumeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Download
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <p>No applicants have applied for this job yet.</p>
+              )}
+            </section>
+          )}
       </main>
       <Footer />
     </>

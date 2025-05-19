@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 // import Navbar from './Navbar/Navbar';
 import WomanCard from "./Card/WomanCard";
+import { Link } from "react-router-dom";
 import "./Home.css";
 import Jobs from "./Jobs/Jobs";
 import Footer from "./Footer/Footer";
@@ -71,7 +72,9 @@ const Home = () => {
             <span className="lightweight-text-hero">Best Jobs For</span> Career
             Growth
           </h1>
-          <button className="hero-btn">READ MORE</button>
+          <Link to="/testimonials">
+            <button className="hero-btn">READ MORE</button>
+          </Link>
         </div>
       </div>
       <div className="job-filter-home">

@@ -1,0 +1,16 @@
+.company-details-dashboard-container {
+  margin-top: 10vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 5vw;
+}
+/* .company-details-dashboard-sidebar {
+} */
+.company-dashboard-content {
+    width: 60vw;
+  margin-top: -10vh;
+}
+.company-dashboard-content .profile-form{
+    max-width: 80vw !important;
+}

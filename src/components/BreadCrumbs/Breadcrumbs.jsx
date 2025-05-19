@@ -26,7 +26,7 @@ const Breadcrumbs = () => {
         ) : (
           <Link key={pathTo} to={pathTo} className="breadcrumb-link">
             {" / "}
-            {formattedValue};
+            {formattedValue}
           </Link>
         );
       })}

@@ -8,7 +8,7 @@ const testimonials = [
     id: 1,
     name: "John Doe",
     role: "Web Developer",
-    text: "I highly recommend women in workforce to any employer seeking to build a diverse and inclusive workforce. It is a game-changer for organizations committed to gender equality, and I am proud to be a part of this empowering community.",
+    text: "लोरेम इप्सम एक छद्म-लैटिन पाठ है जिसका उपयोग मुद्रण और टाइपसेटिंग उद्योगों में किया जाता है। 1500 के दशक के बाद से, जब एक अज्ञात प्रिंटर ने एक प्रकार की नमूना पुस्तक बनाने के लिए एक गैली टाइप किया, लोरेम इप्सम उद्योग का मानक डमी टेक्स्ट रहा है। यह न केवल पांच शताब्दियों तक जीवित रहा है, बल्कि इलेक्ट्रॉनिक टाइपसेटिंग में भी परिवर्तन हुआ है, जो अनिवार्य रूप से अपरिवर्तित है। इसने 1960 के दशक में लोरेम इप्सम पैसेज वाले लेट्रासेट शीट्स के रिलीज के साथ लोकप्रियता हासिल की, और हाल ही में एल्डस पेजमेकर जैसे डेस्कटॉप प्रकाशन सॉफ्टवेयर के साथ, जिसमें लोरेम इप्सम संस्करण शामिल हैं।",
     image: "/profilePic.jpg",
   },
   {

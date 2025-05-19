@@ -126,6 +126,12 @@ const SignupPage = () => {
           <button type="submit">Sign Up</button>
         </form>
 
+        <Link to="/EmployerRegister" className="employer-register-link">
+          <button type="button" className="employer-btn">
+            Or Register as Employer
+          </button>
+        </Link>
+
         <div className="social-login">
           <p>Sign Up With</p>
           <button className="linkedin">LinkedIn</button>

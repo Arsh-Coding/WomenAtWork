@@ -2,13 +2,23 @@ import React, { useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Toast } from "primereact/toast";
+import { useSelector } from "react-redux";
 import "../jobStyles/JobCard.css";
+import AppliedJobs from "../../Profile/AppliedJobs";
 
 const JobCard = ({ job }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const toast = useRef(null);
-  const isAppliedPage = location.pathname === "/applied-jobs";
+  const isAppliedPage = location.pathname === "/dashboard/applied-jobs";
+  // console.log(job);
+
+  const user = useSelector((state) => state.profile);
+  const userProfile = user.user;
+  const companyRole = userProfile?.role;
+  const isEmployer = companyRole === "employer" ? true : false;
+
+  console.log(isEmployer);
 
   const handleApply = () => {
     navigate(`/apply-job/${job.id}/${job.companyId}`, { state: { job } });
@@ -35,7 +45,7 @@ const JobCard = ({ job }) => {
           detail: "Job removed from applied list!",
           life: 3000,
         });
-        if (onRemove) onRemove(job.id);
+        // if (onRemove) onRemove(job.id);
       }
       setTimeout(() => (window.location.href = "/"), 3000);
     } catch (err) {
@@ -49,6 +59,27 @@ const JobCard = ({ job }) => {
     }
   };
 
+  const dateOnly = new Date(job.datePosted).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  let appliedDate = null;
+  if (isAppliedPage && userProfile?.appliedJobs?.length > 0) {
+    const match = userProfile.appliedJobs.find(
+      (applied) => applied.jobId === job.id
+    );
+    if (match) {
+      appliedDate = new Date(match.dateApplied).toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      });
+    }
+  }
+  // console.log("applied date: ", userProfile?.appliedJobs?.length);
+
   return (
     <div className={`job-card ${job.featured ? "featured" : ""}`}>
       <Toast ref={toast} />
@@ -60,11 +91,18 @@ const JobCard = ({ job }) => {
         </div>
       </div>
       <div className="button-job-container">
-        <p className="date-posted">{job.datePosted}</p>
-        {!isAppliedPage ? (
-          <button onClick={handleApply}>Apply</button>
+        {!(isAppliedPage || isEmployer) ? (
+          <>
+            <p className="date-posted">{dateOnly}</p>
+            <button onClick={handleApply}>Apply</button>
+          </>
         ) : (
           <>
+            <p className="date-posted" style={{ margin: "auto" }}>
+              {isAppliedPage
+                ? `Applied on: ${appliedDate || "N/A"}`
+                : `Posted on: ${dateOnly}`}
+            </p>
             <button onClick={handleDetails}>Job Details</button>
             <button onClick={handleRemove} className="remove-btn">
               Remove Job

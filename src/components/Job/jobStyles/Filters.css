@@ -66,3 +66,34 @@ input[type="checkbox"] {
 input[type="checkbox"]:checked {
   accent-color: purple; /* Customizes checkbox color */
 }
+@media screen and (max-width: 768px) {
+  .filters-container {
+    width: 100%;
+  }
+
+  .filter-section {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .filter-section h3 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .filter-list {
+    display: grid;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    min-height: fit-content;
+  }
+
+  .filter-list li {
+    margin: 0;
+  }
+
+  .filter-list label {
+    margin: 0;
+  }
+}

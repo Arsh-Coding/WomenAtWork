@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileSidebar from "./ProfileSidebar";
 import profileData from "./data/profileData";
+import Breadcrumbs from "../BreadCrumbs/Breadcrumbs";
 import "./Profile.css";
 
 const ResumeUpload = () => {
@@ -50,46 +51,54 @@ const ResumeUpload = () => {
   };
 
   return (
-    <div className="profile-resume-container">
-      <div className="resume-sidebar">
-        <ProfileSidebar />
+    <>
+      <div className="profile-header">
+        <h2>Resume</h2>
+        <div style={{ marginRight: "8vw", width: "fit-content" }}>
+          <Breadcrumbs />
+        </div>
       </div>
-      <div className="profile-resume-main">
-        <h2>Upload Resume</h2>
-        <div>
-          <input
-            className="fileChangeInput"
-            type="file"
-            accept=".pdf,.doc,.docx"
-            onChange={handleFileChange}
-          />
-          <button className="save-btn-profile" onClick={uploadResume}>
-            Upload Resume
+      <div className="profile-resume-container">
+        <div className="resume-sidebar">
+          <ProfileSidebar />
+        </div>
+        <div className="profile-resume-main">
+          <h2>Upload Resume</h2>
+          <div>
+            <input
+              className="fileChangeInput"
+              type="file"
+              accept=".pdf,.doc,.docx"
+              onChange={handleFileChange}
+            />
+            <button className="save-btn-profile" onClick={uploadResume}>
+              Upload Resume
+            </button>
+          </div>
+          {user?.resumeUrl ? (
+            <iframe
+              src={user?.resumeUrl || fileUrl}
+              title="Resume Preview"
+              width={700}
+              height={500}
+            />
+          ) : (
+            <img
+              src="/resumedefault.png"
+              alt="Resume Preview"
+              width={500}
+              height={600}
+            />
+          )}
+          <button
+            className="resume-submit-btn"
+            onClick={() => navigate("/candidate profile")}
+          >
+            Go Back
           </button>
         </div>
-        {user?.resumeUrl ? (
-          <iframe
-            src={user?.resumeUrl || fileUrl}
-            title="Resume Preview"
-            width={700}
-            height={500}
-          />
-        ) : (
-          <img
-            src="/resumedefault.png"
-            alt="Resume Preview"
-            width={500}
-            height={600}
-          />
-        )}
-        <button
-          className="resume-submit-btn"
-          onClick={() => navigate("/candidate profile")}
-        >
-          Go Back
-        </button>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -192,3 +192,95 @@
 .p-toast .p-component:empty {
   display: none !important;
 }
+
+.employer-btn {
+  margin: 5px 0;
+  padding: 10px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* Responsive Styling */
+@media screen and (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .login-left {
+    display: none;
+  }
+
+  .login-right {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .login-form {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .login-right h2 {
+    font-size: 20px;
+  }
+
+  .login-right p {
+    font-size: 14px;
+  }
+
+  .login-form input,
+  .login-form button,
+  .social-login button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .password-field {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .password-field .toggle-password {
+    margin-top: 8px;
+  }
+
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-options label,
+  .form-options a {
+    font-size: 14px;
+    margin: 4px 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .signup-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .signup-left {
+    display: none;
+  }
+
+  .signup-right {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .signup-form input,
+  .signup-form button,
+  .social-login button {
+    font-size: 14px;
+    padding: 8px;
+  }
+}

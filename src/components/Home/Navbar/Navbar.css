@@ -86,32 +86,42 @@
   display: none;
   font-size: 24px;
   cursor: pointer;
-  /* padding-right: 10vw; */
+  padding-right: 10vw;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 488px) {
   .navbar {
-    justify-content: space-around;
+    justify-content: space-between;
   }
-  
   .navLinks {
-    display: none;
     flex-direction: column;
-    position: absolute;
-    top: 60px;
+    position: fixed;
+    top: 0;
     right: 0;
-    width: 100%;
-    background-color: white;
-    padding: 10px 0;
+    width: 70%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.491);
+    transform: translateX(100%); /* Hidden to the right initially */
+    z-index: 1000;
+    padding-top: 60px; /* So it doesn't hide behind navbar */
   }
 
   .navLinks.active {
-    display: flex;
+    transform: translateX(0); /* Slides in */
+  }
+
+  .Links ul {
+    flex-direction: column;
+    color: white;
+    align-items: center;
+    gap: 20px;
   }
 
   .hamburger {
     display: block;
+    z-index: 1100;
   }
-
+  .navLinks a {
+    color: white;
+  }
 }

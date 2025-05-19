@@ -1,0 +1,71 @@
+/* ConfirmDialog Container */
+.p-confirm-dialog {
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 400px;
+  font-family: Arial, sans-serif;
+  background-color: #fff7fc;
+  border: 2px solid #bf49b3;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+.p-confirm-dialog .p-dialog-header {
+  background-color: #fff0f9;
+  color: #bf49b3;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Message Content */
+.p-confirm-dialog .p-dialog-content {
+  font-size: 1rem;
+  color: #333;
+  padding-top: 0;
+}
+
+/* Icon */
+.p-confirm-dialog .p-confirm-dialog-icon {
+  color: #e91e63;
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+/* Buttons */
+.p-confirm-dialog .p-confirm-dialog-accept,
+.p-confirm-dialog .p-confirm-dialog-reject {
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Accept (Yes) Button */
+.p-confirm-dialog .p-confirm-dialog-accept {
+  background-color: #e91e63;
+  border: none;
+}
+
+/* Reject (No) Button */
+.p-confirm-dialog .p-confirm-dialog-reject {
+  background-color: #ccc;
+  color: #333;
+  border: none;
+}
+
+/* Button Hover Effects */
+.p-confirm-dialog .p-confirm-dialog-accept:hover {
+  background-color: #c2185b;
+}
+.p-confirm-dialog .p-confirm-dialog-reject:hover {
+  background-color: #999;
+}
+
+/* Dialog Footer */
+.p-confirm-dialog .p-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}

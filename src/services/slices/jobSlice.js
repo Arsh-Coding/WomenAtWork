@@ -47,4 +47,5 @@ const jobSlice = createSlice({
 });
 
 export const { setJobs } = jobSlice.actions;
+// export { fetchJobs };
 export default jobSlice.reducer;

@@ -59,6 +59,7 @@
   background-color: #bf49b3;
   margin: 40px 20px 20px 10px;
   cursor: pointer;
+  z-index: 1000;
 }
 
 .hero-btn:hover {
@@ -185,7 +186,10 @@ h1 {
   right: 0vw;
 }
 /* Media Queries for Responsive Design */
-
+.hero-text,
+.hero-text-colored {
+  z-index: 10;
+}
 @media (max-width: 1024px) {
   .hero-text {
     top: 15vh;

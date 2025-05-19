@@ -5,17 +5,18 @@ import { fetchJobs, setJobs } from "../../services/slices/jobSlice";
 import { httpGet } from "../../services/api";
 import { URLS } from "../../services/urls";
 import JobCard from "../Job/jobComponent/JobCard";
-
 import ProfileSidebar from "./ProfileSidebar";
+import Breadcrumbs from "../BreadCrumbs/Breadcrumbs";
 import "./Profile.css";
+
 const AppliedJobs = () => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.profile.user);
-  console.log(user);
+  // console.log(user);
 
   const jobs = useSelector((state) => state.jobs.jobs);
-  console.log(jobs);
+  // console.log(jobs);
 
   useEffect(() => {
     const loadInitialData = async () => {
@@ -37,12 +38,20 @@ const AppliedJobs = () => {
   }, [dispatch]);
 
   const appliedJobList = Array.isArray(jobs)
-    ? jobs.filter((job) => user?.appliedJobs?.includes(job.id))
+    ? jobs.filter((job) =>
+        user?.appliedJobs?.some((applied) => applied.jobId === job.id)
+      )
     : [];
-  console.log(appliedJobList);
+  // console.log(appliedJobList);
 
   return (
     <>
+      <div className="profile-header">
+        <h2>Applied Jobs</h2>
+        <div style={{ marginRight: "8vw", width: "fit-content" }}>
+          <Breadcrumbs />
+        </div>
+      </div>
       <div className="applied-jobs-container">
         <div className="applied-jobs-sidebar">
           <ProfileSidebar />

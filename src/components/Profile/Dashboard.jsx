@@ -3,8 +3,10 @@ import { useDispatch } from "react-redux";
 import { fetchUserProfile } from "../../services/slices/profileSlice";
 import UserCard from "./Dashboard/UserCard";
 import ProfileSidebar from "./ProfileSidebar";
+import JobAppliedChart from "./Dashboard/JobAppliedChart";
 import NotificationsPanel from "./Dashboard/NotificationsPanel";
 import JobPieChart from "./Dashboard/JobsPieChart";
+import Breadcrumbs from "../BreadCrumbs/Breadcrumbs";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -15,18 +17,29 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="main-dashboard">
-        <div className="main-dashboard-sidebar">
-          <ProfileSidebar />
-        </div>
-        <div className="main-dashboard-contentMain">
-          <div>
-            <UserCard />
-            <JobPieChart />
+      <div>
+        <div className="profile-header">
+          <h2>Dashboard</h2>
+          <div style={{ marginRight: "8vw", width: "fit-content" }}>
+            <Breadcrumbs />
           </div>
-          <NotificationsPanel />
         </div>
-        {/* <div></div> */}
+        <div className="main-dashboard">
+          <div className="main-dashboard-sidebar">
+            <ProfileSidebar />
+          </div>
+          <div className="main-dashboard-contentMain">
+            <div>
+              <UserCard />
+              <JobAppliedChart />
+            </div>
+            <div>
+              <NotificationsPanel />
+              <JobPieChart />
+            </div>
+          </div>
+          {/* <div></div> */}
+        </div>
       </div>
     </>
   );

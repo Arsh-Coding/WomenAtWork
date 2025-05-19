@@ -44,7 +44,7 @@ const NotificationsPanel = () => {
           <NotificationsNoneIcon style={{ fontSize: 20 }} />
           Notifications
         </h2>
-        <div className="space-y-4 max-h-[300px] overflow-y-auto">
+        <div className="notification-text">
           {notifications.length === 0 ? (
             <p className="text-gray-400 text-center">No Notifications</p>
           ) : (
@@ -52,12 +52,22 @@ const NotificationsPanel = () => {
               <div key={note._id} className="flex items-start space-x-3">
                 {/* <div className="mt-1"></div> */}
                 <div>
-                  <p className="font-medium">
-                    {getIcon(note.type)} {note.title}
-                  </p>
-                  <p className="text-gray-500 text-sm">
-                    {new Date(note.createdAt).toLocaleDateString()}
-                  </p>
+                  <div className="flex justify-between items-title">
+                    <p
+                      className="font-medium"
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <p style={{ display: "flex" }}>
+                        {getIcon(note.type)}
+                        <p style={{margin:"auto"}}>{note.title}</p>
+                      </p>
+                      {new Date(note.createdAt).toLocaleDateString()}
+                    </p>
+                    <p className="text-gray-500 text-sm date-class"></p>
+                  </div>
                   <p className="text-gray-600 text-xs">{note.message}</p>
                 </div>
               </div>

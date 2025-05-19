@@ -79,3 +79,16 @@
 .jobFilter-prop {
   margin-left: 8vw;
 }
+@media (max-width: 488px) {
+  .filter-box {
+    display: grid;
+    width: 80vw !important;
+    height: 70vh !important;
+    right: 0;
+    left: 5vw;
+    margin: 40px 0px;
+  }
+  .filterBox-btn {
+    margin: auto;
+  }
+}
