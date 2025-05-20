@@ -56,7 +56,7 @@ It follows an MVC-based architecture with RESTful APIs and a fully responsive fr
 | MongoDB      | NoSQL database (MongoDB Atlas)       |
 | JWT          | Authentication and Authorization     |
 | Tailwind CSS | Styling and responsiveness           |
-| EJS          | Templating for server-rendered pages |
+| Redux Toolkit| For Better State Management          |
 
 ---
 
