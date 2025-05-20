@@ -69,7 +69,7 @@ woman-at-workforce/
 │   ├── public/
 │   └── src/
 │       ├── components/
-│       ├── pages/
+│       ├── services/
 │       └── App.js
 │
 ├── server/                 # Node.js backend
