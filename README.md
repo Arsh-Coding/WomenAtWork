@@ -1,6 +1,3 @@
-Here's a professional and informative `README.md` file for your **"Woman at Workforce"** MERN stack project:
-
----
 
 # 👩‍💼 Woman at Workforce
 
