@@ -1,11 +1,12 @@
-import axios from "axios";
+// import axios from "axios";
+import axiosInstance from "./axiosInstance";
 import { URLS } from "./urls";
 
 export const httpGet = async (url, options = {}) => {
   // console.log("get request url: ", url);
 
   try {
-    let response = await axios.get(url, options);
+    let response = await axiosInstance.get(url, options);
     return response.data;
   } catch (e) {
     console.error("API get error:", e);
@@ -17,7 +18,7 @@ export const httpPost = async (url, data = {}, options = {}) => {
   // console.log("api js ", url);
 
   try {
-    let response = await axios.post(url, data, {
+    let response = await axiosInstance.post(url, data, {
       headers: {
         "Content-Type": "application/json",
         ...options.headers,
@@ -34,7 +35,7 @@ export const httpPost = async (url, data = {}, options = {}) => {
 
 export const httpPut = async (url, data = {}, options = {}) => {
   try {
-    const response = await axios.put(url, data, {
+    const response = await axiosInstance.put(url, data, {
       headers: {
         "Content-Type": "application/json",
         ...options.headers,
@@ -50,7 +51,7 @@ export const httpPut = async (url, data = {}, options = {}) => {
 
 export const httpFormPost = async (url, formData, options = {}) => {
   try {
-    const response = await axios.post(url, formData, {
+    const response = await axiosInstance.post(url, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         ...options.headers,
@@ -99,7 +100,7 @@ export const getPlans = async () => {
 };
 //delete user profile
 export const deleteUserProfile = async () => {
-  return await axios.delete(URLS.deleteProfile, {
+  return await axiosInstance.delete(URLS.deleteProfile, {
     headers: getAuthHeader(),
   });
 };

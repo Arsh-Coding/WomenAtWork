@@ -22,29 +22,32 @@ const MainJob = () => {
     categoryId: "",
   };
 
-  const jobs = useSelector((state) => state.jobs.jobs);
+  const jobs = useSelector((state) => state.jobs.jobs.jobs);
   const jobStatus = useSelector((state) => state.jobs.status);
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [categories, setCategories] = useState([]);
-
+  const [page, setPage] = useState(1);
+  const jobsPerPage = 10;
+  // console.log("main job page: ", jobs);
   useEffect(() => {
     // Fetch jobs using redux only if not already fetched
-    if (jobStatus === "idle") {
-      dispatch(fetchJobs());
-    }
+    dispatch(
+      fetchJobs({ offset: (page - 1) * jobsPerPage, limit: jobsPerPage })
+    );
 
     // Fetch categories locally
     const fetchCategories = async () => {
       try {
         const response = await httpGet(URLS.categories);
-        setCategories(response);
+        const jobList = response.jobs;
+        setCategories(jobList);
       } catch (error) {
         console.error("Error fetching categories", error);
       }
     };
 
     fetchCategories();
-  }, [dispatch, jobStatus]);
+  }, [dispatch, page]);
 
   useEffect(() => {
     let filtered = jobs;
@@ -70,6 +73,10 @@ const MainJob = () => {
     setFilteredJobs(filtered);
   }, [filters, jobs]);
 
+  const totalPages = Math.ceil(
+    useSelector((state) => state.jobs.totalJobs) / jobsPerPage
+  );
+
   return (
     <div className="job-search-container">
       <div className="job-Heading">
@@ -79,7 +86,18 @@ const MainJob = () => {
       <div className="jobFilter-prop">
         <JobFilter width={1050} height={150} />
       </div>
-      <JobList initialJobs={filteredJobs} />
+      <JobList initialJobs={Array.isArray(filteredJobs) ? filteredJobs : []} />
+      <div className="pagination">
+        {[...Array(totalPages)].map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setPage(i + 1)}
+            className={page === i + 1 ? "active" : ""}
+          >
+            {i + 1}
+          </button>
+        ))}
+      </div>
       <Footer />
     </div>
   );

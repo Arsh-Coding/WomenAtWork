@@ -29,9 +29,11 @@ const JobFilter = ({ width, height, initialFilters }) => {
           httpGet(URLS.categories),
           httpGet(URLS.alljobs),
         ]);
-        // console.log(categoryResponse, "and ", jobResponse);
+        console.log(categoryResponse, "and ", jobResponse.jobs);
         setCategories(categoryResponse);
-        setLocations([...new Set(jobResponse.map((job) => job.location))]);
+        setLocations([
+          ...new Set(jobResponse?.jobs.map((job) => job.location)),
+        ]);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

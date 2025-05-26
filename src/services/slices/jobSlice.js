@@ -6,9 +6,11 @@ import { URLS } from "../urls";
 
 export const fetchJobs = createAsyncThunk(
   "jobs/fetchJobs",
-  async (_, { rejectWithValue }) => {
+  async ({ offset = 0, limit = 10 }, { rejectWithValue }) => {
     try {
-      const response = await httpGet(URLS.alljobs);
+      const response = await httpGet(
+        `${URLS.alljobs}?offset=${offset}&limit=${limit}`
+      );
       return response;
     } catch (error) {
       return rejectWithValue(
@@ -22,6 +24,7 @@ const jobSlice = createSlice({
   name: "jobs",
   initialState: {
     jobs: [],
+    totalJobs: 0,
     status: "idle",
     error: null,
   },
@@ -38,6 +41,7 @@ const jobSlice = createSlice({
       .addCase(fetchJobs.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.jobs = action.payload;
+        state.totalJobs = action.payload.totalJobs;
       })
       .addCase(fetchJobs.rejected, (state, action) => {
         state.status = "failed";
