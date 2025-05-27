@@ -29,7 +29,7 @@ const ResumeUpload = () => {
     formData.append("resume", selectedFile);
 
     try {
-      const response = await fetch("http://localhost:3000/resume/upload", {
+      const response = await fetch(`${apiEndpoint}resume/upload`, {
         method: "POST",
         body: formData,
         headers: {

@@ -3,6 +3,7 @@ import "./Navbar.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfile } from "../../../services/slices/profileSlice";
+import { apiEndpoint } from "../../../services/urls";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const sidebarRef = useRef(null);
@@ -13,7 +14,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.profile.user);
-  const image = user?.imageUrl || "/profilePic.jpg";
+  const image = user?.imageUrl || `${apiEndpoint}`;
 
   // useNavigate allows you to change the URL and therefore the displayed component in your React Router application from anywhere in your component, not just within a <Link> component.  This is particularly useful when you need to navigate based on some logic, like a button click, form submission, or the result of an API call.
 

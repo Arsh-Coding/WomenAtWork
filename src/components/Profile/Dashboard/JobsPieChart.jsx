@@ -12,6 +12,7 @@ import {
 import { Card, CardContent, Typography } from "@mui/material";
 import { fetchCompanyById } from "../../../services/slices/companySlice";
 import { useDispatch, useSelector } from "react-redux";
+import { apiEndpoint } from "../../../services/urls";
 
 const COLORS = ["#8884d8", "#82ca9d", "#ffc658"];
 
@@ -31,7 +32,7 @@ const JobPieChart = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/jobs/job-stats", {
+      .get(`${apiEndpoint}jobs/job-stats`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

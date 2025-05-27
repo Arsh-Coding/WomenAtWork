@@ -9,6 +9,7 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { useSelector } from "react-redux";
+import { apiEndpoint } from "../../services/urls";
 
 const ApplyJob = () => {
   const navigate = useNavigate();
@@ -85,7 +86,7 @@ const ApplyJob = () => {
           user?.companyDetails?.companyId === companyId
         ) {
           const applicantsData = await httpGet(
-            `http://localhost:3000/applicants/${jobId}`
+            `${apiEndpoint}applicants/${jobId}`
           );
           console.log(applicantsData);
 

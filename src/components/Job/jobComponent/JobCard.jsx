@@ -4,6 +4,7 @@ import axios from "axios";
 import { Toast } from "primereact/toast";
 import { useSelector } from "react-redux";
 import "../jobStyles/JobCard.css";
+import { apiEndpoint } from "../../../services/urls";
 import AppliedJobs from "../../Profile/AppliedJobs";
 
 const JobCard = ({ job }) => {
@@ -29,7 +30,7 @@ const JobCard = ({ job }) => {
   const handleRemove = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:3000/user/remove-applied-job",
+        `${apiEndpoint}user/remove-applied-job`,
         { jobId: job.id },
         {
           headers: {

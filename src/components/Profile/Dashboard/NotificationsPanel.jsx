@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { apiEndpoint } from "../../../services/urls";
 
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import InfoIcon from "@mui/icons-material/Info";
@@ -16,7 +17,7 @@ const NotificationsPanel = () => {
 
   const fetchNotifications = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/notifications");
+      const res = await axios.get(`${apiEndpoint}notifications`);
       // console.log("response notification: ", res);
       setNotifications(res.data);
     } catch (error) {
@@ -62,7 +63,7 @@ const NotificationsPanel = () => {
                     >
                       <p style={{ display: "flex" }}>
                         {getIcon(note.type)}
-                        <p style={{margin:"auto"}}>{note.title}</p>
+                        <p style={{ margin: "auto" }}>{note.title}</p>
                       </p>
                       {new Date(note.createdAt).toLocaleDateString()}
                     </p>

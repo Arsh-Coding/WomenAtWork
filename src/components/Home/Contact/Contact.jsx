@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Toast } from "primereact/toast";
 import "./Contact.css";
-
+import { apiEndpoint } from "../../../services/urls";
 const Contact = () => {
   const [formData, setFormData] = useState({
     firstname: "",
@@ -21,7 +21,7 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/contact", {
+      const response = await fetch(`${apiEndpoint}contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
