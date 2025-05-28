@@ -19,7 +19,7 @@ const JobCard = ({ job }) => {
   const companyRole = userProfile?.role;
   const isEmployer = companyRole === "employer" ? true : false;
 
-  console.log(isEmployer);
+  // console.log(isEmployer);
 
   const handleApply = () => {
     navigate(`/apply-job/${job.id}/${job.companyId}`, { state: { job } });
@@ -27,28 +27,52 @@ const JobCard = ({ job }) => {
   const handleDetails = () => {
     navigate(`/apply-job/${job.id}/${job.companyId}`, { state: { job } });
   };
+
   const handleRemove = async () => {
     try {
-      const res = await axios.post(
-        `${apiEndpoint}user/remove-applied-job`,
-        { jobId: job.id },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-          },
-        }
-      );
+      if (isEmployer) {
+        // DELETE JOB from DB (for employers)
+        const res = await axios.post(
+          `${apiEndpoint}user/delete-job`,
+          { jobId: job.id },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+            },
+          }
+        );
 
-      if (res.data.success) {
-        toast.current.show({
-          severity: "success",
-          summary: "Success",
-          detail: "Job removed from applied list!",
-          life: 3000,
-        });
-        // if (onRemove) onRemove(job.id);
+        if (res.data.success) {
+          toast.current.show({
+            severity: "success",
+            summary: "Job Deleted",
+            detail: "Job successfully removed",
+            life: 3000,
+          });
+          setTimeout(() => window.location.reload(), 3000);
+        }
+      } else {
+        // REMOVE FROM APPLIED JOBS (existing logic for candidates)
+        const res = await axios.post(
+          `${apiEndpoint}user/remove-applied-job`,
+          { jobId: job.id },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+            },
+          }
+        );
+
+        if (res.data.success) {
+          toast.current.show({
+            severity: "success",
+            summary: "Success",
+            detail: "Job removed from applied list!",
+            life: 3000,
+          });
+          setTimeout(() => window.location.reload(), 3000);
+        }
       }
-      setTimeout(() => (window.location.href = "/"), 3000);
     } catch (err) {
       console.error("Error removing job", err);
       toast.current.show({

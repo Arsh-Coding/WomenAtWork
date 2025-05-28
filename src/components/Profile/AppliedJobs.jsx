@@ -2,10 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfile } from "../../services/slices/profileSlice";
 import { fetchJobs, setJobs } from "../../services/slices/jobSlice";
-import { httpGet } from "../../services/api";
-import { URLS } from "../../services/urls";
 import JobCard from "../Job/jobComponent/JobCard";
 import ProfileSidebar from "./ProfileSidebar";
+import { getAppliedJobs } from "../../services/api";
 import Breadcrumbs from "../BreadCrumbs/Breadcrumbs";
 import "./Profile.css";
 
@@ -26,8 +25,8 @@ const AppliedJobs = () => {
         }
 
         if (!Array.isArray(jobs) || jobs.length === 0) {
-          const response = await dispatch(fetchJobs()).unwrap(); // Await here!
-          dispatch(setJobs(response)); // response is already the data
+          const response = await getAppliedJobs(); // Await here!
+          dispatch(setJobs(response.jobs)); // response is already the data
         }
       } catch (err) {
         console.error("Error fetching data:", err);

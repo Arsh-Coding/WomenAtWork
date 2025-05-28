@@ -4,6 +4,7 @@ import AddJobForm from "../../EmployerRegister/AddJobs";
 import "./jobs-manager.css";
 import JobCard from "../../Job/jobComponent/JobCard";
 import { useDispatch, useSelector } from "react-redux";
+import { getPostedJobs } from "../../../services/api";
 import { fetchUserProfile } from "../../../services/slices/profileSlice";
 import { fetchJobs } from "../../../services/slices/jobSlice";
 import { setJobs } from "../../../services/slices/jobSlice";
@@ -17,17 +18,23 @@ const JobsManager = () => {
     const loadData = async () => {
       try {
         await dispatch(fetchUserProfile()).unwrap();
-        const response = await dispatch(fetchJobs()).unwrap();
-        dispatch(setJobs(response));
+        const response = await getPostedJobs();
+        dispatch(setJobs(response.jobs));
       } catch (err) {
-        console.error("error loading data ", err);
+        console.error("Error loading data", err);
       }
     };
     loadData();
   }, [dispatch]);
   const companyId = user?.companyDetails?.companyId;
   const postedJobs =
-    jobs?.filter((job) => job.companyId === Number(companyId)) || [];
+    companyId && jobs?.length > 0
+      ? jobs.filter((job) => job.companyId === Number(companyId))
+      : [];
+
+  if (!user || !companyId || !jobs) {
+    return <p className="submit-btn">Loading your posted jobs...</p>;
+  }
   return (
     <>
       <div className="jobs-manager-container">

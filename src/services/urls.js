@@ -2,11 +2,13 @@
 
 import { createOrUpdateCompany } from "./slices/companySlice";
 
-// export const apiEndpoint = "http://localhost:3000/";
-export const apiEndpoint = "https://woman-at-workforce-backend.onrender.com/";
+export const apiEndpoint = "http://localhost:3000/";
+// export const apiEndpoint = "https://woman-at-workforce-backend.onrender.com/";
 
 export const URLS = {
   jobs: (jobId) => `${apiEndpoint}jobs/${jobId}`,
+  appliedJobs: `${apiEndpoint}jobs/applied`,
+  postedJobs: `${apiEndpoint}jobs/posted`,
   companies: (companyId) => `${apiEndpoint}companies/${companyId}`,
   getAllCompanies: `${apiEndpoint}companies/get`,
   updateCompany: (id) => `${apiEndpoint}companies/${companyId}`,

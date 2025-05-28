@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import ProfileSidebar from "./ProfileSidebar";
 import profileData from "./data/profileData";
 import Breadcrumbs from "../BreadCrumbs/Breadcrumbs";
+import { apiEndpoint } from "../../services/urls";
 import "./Profile.css";
 
 const ResumeUpload = () => {

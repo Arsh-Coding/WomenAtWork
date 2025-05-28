@@ -162,7 +162,7 @@ const AddJobForm = () => {
           className="input-field"
           required
         />
-        <textarea
+        <input
           name="salary"
           placeholder="Salary"
           value={formData.salary}
@@ -192,14 +192,14 @@ const AddJobForm = () => {
         <h3 className="form-subtitle">Roles</h3>
         {formData.roles.map((roleObj, index) => (
           <div key={index} className="role-block">
-            <input
+            {/* <input
               type="text"
               placeholder="Role Title"
               value={roleObj.role}
               onChange={(e) => handleRoleChange(index, "role", e.target.value)}
               className="input-field"
               required
-            />
+            /> */}
             <textarea
               placeholder="Requirements (comma-separated)"
               value={roleObj.requirements.join(", ")}
@@ -234,9 +234,9 @@ const AddJobForm = () => {
             />
           </div>
         ))}
-        <button type="button" className="submit-btn" onClick={addNewRole}>
+        {/* <button type="button" className="submit-btn" onClick={addNewRole}>
           + Add Another Role
-        </button>
+        </button> */}
         <button type="submit" className="submit-btn">
           Post Job
         </button>

@@ -15,7 +15,7 @@ export const httpGet = async (url, options = {}) => {
 };
 
 export const httpPost = async (url, data = {}, options = {}) => {
-  // console.log("api js ", url);
+  console.log("api js post called ", url);
 
   try {
     let response = await axiosInstance.post(url, data, {
@@ -101,6 +101,18 @@ export const getPlans = async () => {
 //delete user profile
 export const deleteUserProfile = async () => {
   return await axiosInstance.delete(URLS.deleteProfile, {
+    headers: getAuthHeader(),
+  });
+};
+//applied jobs get
+export const getAppliedJobs = async () => {
+  return await httpGet(URLS.appliedJobs, {
+    headers: getAuthHeader(),
+  });
+};
+//posted jobs
+export const getPostedJobs = async () => {
+  return await httpGet(URLS.postedJobs, {
     headers: getAuthHeader(),
   });
 };

@@ -126,7 +126,7 @@ const ApplyJob = () => {
         </p>
         <p>{job?.description ?? "No job description available."}</p>
 
-        <h2>The Role</h2>
+        {/* <h2>The Role</h2>
         <ul>
           {job?.roles?.length > 0 ? (
             job.roles.map((role, index) => (
@@ -135,7 +135,7 @@ const ApplyJob = () => {
           ) : (
             <li>No roles defined.</li>
           )}
-        </ul>
+        </ul> */}
 
         <h2>We Imagine that You are:</h2>
         <ul className="apply-job-list">

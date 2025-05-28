@@ -68,7 +68,7 @@
 
 .category-card {
   position: relative;
-  max-width: 250px;
+  max-width: 19vw;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -82,7 +82,7 @@
 
 .category-image {
   width: 100%;
-  height: 120%; /* Make the image fill the entire card */
+  height: 130%; /* Make the image fill the entire card */
   object-fit: cover; /* Ensure the image covers the card without distortion */
 }
 
