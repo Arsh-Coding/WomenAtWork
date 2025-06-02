@@ -115,6 +115,9 @@
 }
 
 @media (max-width: 768px) {
+  .category-card {
+    max-width: 45vw;
+  }
   .jobApp {
     margin-top: 90vh;
   }

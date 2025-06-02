@@ -108,6 +108,10 @@
   color: white;
 }
 
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 /* Responsive Design */
 @media screen and (max-width: 768px) {
   .apply-job-heading {

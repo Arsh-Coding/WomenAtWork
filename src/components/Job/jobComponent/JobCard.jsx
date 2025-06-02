@@ -5,7 +5,6 @@ import { Toast } from "primereact/toast";
 import { useSelector } from "react-redux";
 import "../jobStyles/JobCard.css";
 import { apiEndpoint } from "../../../services/urls";
-import AppliedJobs from "../../Profile/AppliedJobs";
 
 const JobCard = ({ job }) => {
   const navigate = useNavigate();
@@ -128,7 +127,7 @@ const JobCard = ({ job }) => {
                 ? `Applied on: ${appliedDate || "N/A"}`
                 : `Posted on: ${dateOnly}`}
             </p>
-            <button onClick={handleDetails}>Job Details</button>
+            <button onClick={handleDetails}>Edit</button>
             <button onClick={handleRemove} className="remove-btn">
               Remove Job
             </button>

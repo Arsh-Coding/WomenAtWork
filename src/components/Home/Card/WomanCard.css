@@ -85,6 +85,11 @@
     margin-left: 0;
   }
   .card-container {
+    display: grid;
     margin: 0;
+  }
+  .card {
+    width: 85vw;
+    max-width: 85vw;
   }
 }

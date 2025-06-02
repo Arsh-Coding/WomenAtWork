@@ -116,3 +116,12 @@ export const getPostedJobs = async () => {
     headers: getAuthHeader(),
   });
 };
+//update job
+export const updateJob = async (id, jobData, token) => {
+  const response = await axios.put(URLS.updateJob(id), jobData, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.data;
+};

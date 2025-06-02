@@ -51,7 +51,8 @@ function App() {
           {/* job pages */}
           <Route path="/JobPage" element={<JobPage />} />
           <Route path="/company-details" element={<CompanyDetail />} />
-          <Route path="/job-details" element={<AddJobs />} />
+          {/* <Route path="/job-details" element={<AddJobs />} /> */}
+          <Route path="/edit-job/:jobId" element={<AddJobs />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route

@@ -7,6 +7,7 @@ export const apiEndpoint = "http://localhost:3000/";
 
 export const URLS = {
   jobs: (jobId) => `${apiEndpoint}jobs/${jobId}`,
+  updateJob: (jobId) => `${apiEndpoint}jobs/update-Job/${jobId}`,
   appliedJobs: `${apiEndpoint}jobs/applied`,
   postedJobs: `${apiEndpoint}jobs/posted`,
   companies: (companyId) => `${apiEndpoint}companies/${companyId}`,

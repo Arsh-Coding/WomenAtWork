@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Select from "react-select";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { httpPost } from "../../services/api";
+import { httpPost, httpGet, httpPut } from "../../services/api";
 import { URLS } from "../../services/urls";
 import { fetchJobs } from "../../services/slices/jobSlice";
 import "./AddJobForm.css"; // Import the CSS file
 
 const AddJobForm = () => {
   const dispatch = useDispatch();
+  const { jobId } = useParams();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     id: "",
@@ -32,7 +36,19 @@ const AddJobForm = () => {
 
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [categories, setCategories] = useState([]);
 
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await httpGet(URLS.categories);
+        setCategories(response);
+      } catch (err) {
+        console.error("Error found: ", err);
+      }
+    };
+    fetchCategories();
+  }, []);
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -48,7 +64,20 @@ const AddJobForm = () => {
       });
     }
   };
-
+  //fetch existing job data
+  useEffect(() => {
+    const fetchJobData = async () => {
+      if (jobId) {
+        try {
+          const res = await httpGet(URLS.jobs(jobId));
+          setFormData(res?.job);
+        } catch (error) {
+          console.error("Failed to fetch job for editing", error);
+        }
+      }
+    };
+    fetchJobData();
+  }, [jobId]);
   const addNewRole = () => {
     setFormData({
       ...formData,
@@ -92,15 +121,27 @@ const AddJobForm = () => {
     };
 
     try {
-      await httpPost(URLS.postJob, payload);
-      setMessage("Job posted successfully!");
+      if (jobId) {
+        // Updating job
+        await httpPut(URLS.updateJob(jobId), payload);
+        setMessage("Job updated successfully!");
+      } else {
+        // Creating job
+        await httpPost(URLS.postJob, payload);
+        setMessage("Job posted successfully!");
+      }
       setError("");
       dispatch(fetchJobs());
+      navigate("/dashboard/Jobs-Manager");
     } catch (err) {
       setError(err?.response?.data?.message || "Failed to post job");
       setMessage("");
     }
   };
+  const categoryOptions = categories.map((cat) => ({
+    value: cat.id,
+    label: cat.name,
+  }));
 
   return (
     <div className="form-container">
@@ -130,13 +171,26 @@ const AddJobForm = () => {
           className="input-field"
           required
         />
-        <input
+        <Select
+          isMulti
           name="categoryIds"
-          placeholder="Category IDs (comma-separated)"
-          value={formData.categoryIds.join(",")}
-          onChange={handleChange}
-          className="input-field"
+          options={categoryOptions}
+          className="basic-multi-select"
+          classNamePrefix="select"
+          value={categoryOptions.filter((option) =>
+            formData.categoryIds.includes(option.value)
+          )}
+          onChange={(selectedOptions) =>
+            setFormData({
+              ...formData,
+              categoryIds: selectedOptions.map((option) => option.value),
+            })
+          }
         />
+        <small>
+          Hold Ctrl (Windows) or Command (Mac) to select multiple categories
+        </small>
+
         <input
           name="companyId"
           placeholder="Company Id"

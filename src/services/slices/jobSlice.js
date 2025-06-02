@@ -19,7 +19,19 @@ export const fetchJobs = createAsyncThunk(
     }
   }
 );
-
+export const updateJobThunk = createAsyncThunk(
+  "jobs/updateJob",
+  async ({ id, jobData, token }, { rejectWithValue }) => {
+    try {
+      const res = await updateJob(id, jobData, token);
+      return res.job;
+    } catch (err) {
+      return rejectWithValue(
+        err.response?.data?.message || "Error updating job"
+      );
+    }
+  }
+);
 const jobSlice = createSlice({
   name: "jobs",
   initialState: {
@@ -31,6 +43,9 @@ const jobSlice = createSlice({
   reducers: {
     setJobs: (state, action) => {
       state.jobs = action.payload;
+    },
+    setSelectedJob: (state, action) => {
+      state.selectedJob = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -46,10 +61,22 @@ const jobSlice = createSlice({
       .addCase(fetchJobs.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
+      })
+      .addCase(updateJobThunk.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(updateJobThunk.fulfilled, (state, action) => {
+        state.loading = false;
+        state.selectedJob = action.payload;
+      })
+      .addCase(updateJobThunk.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });
 
-export const { setJobs } = jobSlice.actions;
+export const { setJobs, setSelectedJob } = jobSlice.actions;
 // export { fetchJobs };
 export default jobSlice.reducer;
