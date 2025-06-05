@@ -97,7 +97,7 @@ const Navbar = () => {
                   <li>
                     <Link to="/JobPage">Jobs</Link>
                   </li>
-                  <Link to="/dashboard/membership-plans">Pricing</Link>
+                  <Link to="/membership-plans">Pricing</Link>
                   <li>
                     <Link to="/contactUs">Contact</Link>
                   </li>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import "./testimonial-styles.css";
 import Footer from "../Home/Footer/Footer";
 
@@ -61,7 +61,7 @@ const TestimonialSection = () => {
               onClick={prevSlide}
               style={{ color: "black" }}
             >
-              Prev
+              <ChevronLeft size={24} />
             </button>
 
             <button
@@ -69,7 +69,7 @@ const TestimonialSection = () => {
               onClick={nextSlide}
               style={{ color: "black" }}
             >
-              Next
+              <ChevronRight size={24} />
             </button>
 
             <div className="testimonials-slider">

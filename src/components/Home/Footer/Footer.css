@@ -4,7 +4,7 @@
   background-color: #1e1e1e;
   color: #fff;
   font-family: Arial, sans-serif;
-  padding: 80px;
+  padding: 150px;
   max-width: 100%;
   box-sizing: border-box;
 }
@@ -39,6 +39,7 @@
 .footer-column ul li {
   margin-bottom: 10px;
   font-size: 14px;
+  font-weight: 600;
   color: #bbb;
 }
 
@@ -53,12 +54,13 @@
   margin-top: 15px;
   display: flex;
   flex-wrap: wrap;
+  color: white;
   gap: 10px;
 }
 
 .social-icons i {
   font-size: 18px;
-  color: #bbb;
+  color: #ffffff;
   cursor: pointer;
   transition: color 0.3s;
 }

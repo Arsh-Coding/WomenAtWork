@@ -6,6 +6,27 @@ import { useSelector } from "react-redux";
 import "../jobStyles/JobCard.css";
 import { apiEndpoint } from "../../../services/urls";
 
+const formatPostedDate = (dateString) => {
+  const now = new Date();
+  const postedDate = new Date(dateString);
+  const diffInMs = now - postedDate;
+  const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+
+  if (diffInDays < 30) {
+    return diffInDays === 0
+      ? "Today"
+      : diffInDays === 1
+      ? "1 day ago"
+      : `${diffInDays} days ago`;
+  }
+
+  return postedDate.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+};
+
 const JobCard = ({ job }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -83,11 +104,7 @@ const JobCard = ({ job }) => {
     }
   };
 
-  const dateOnly = new Date(job.datePosted).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
+  const dateOnly = formatPostedDate(job.datePosted);
 
   let appliedDate = null;
   if (isAppliedPage && userProfile?.appliedJobs?.length > 0) {
@@ -95,11 +112,7 @@ const JobCard = ({ job }) => {
       (applied) => applied.jobId === job.id
     );
     if (match) {
-      appliedDate = new Date(match.dateApplied).toLocaleDateString("en-GB", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      });
+      appliedDate = formatPostedDate(match.dateApplied);
     }
   }
   // console.log("applied date: ", userProfile?.appliedJobs?.length);

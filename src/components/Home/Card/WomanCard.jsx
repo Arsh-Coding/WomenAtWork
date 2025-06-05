@@ -11,7 +11,7 @@ const Card = ({ title, description, image }) => {
   );
 };
 
-function womanCard() {
+function WomanCard() {
   const cards = [
     {
       title: "Women Webinars",
@@ -58,4 +58,4 @@ function womanCard() {
   );
 }
 
-export default womanCard;
+export default WomanCard;

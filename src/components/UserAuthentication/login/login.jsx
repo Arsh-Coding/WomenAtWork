@@ -80,21 +80,39 @@ const LoginPage = () => {
         </div>
       </div>
       <div className="login-right">
-        <h2>Login</h2>
-        <p>Enter your details below</p>
+        <div className="login-header">
+          <h2>Login </h2>
+          <p>Please login to your account</p>
+        </div>
         <form onSubmit={handleSubmit} className="login-form">
+          <p
+            style={{
+              margin: "2px 0 2px 10px",
+              color: "rgba(107, 107, 107, 1)",
+            }}
+          >
+            E-mail address
+          </p>
           <input
             type="email"
             name="email"
-            placeholder="Email Address"
+            placeholder="Enter your Email here"
             value={formData.email}
             onChange={handleChange}
           />
+          <p
+            style={{
+              margin: "2px 0 2px 10px",
+              color: "rgba(107, 107, 107, 1)",
+            }}
+          >
+            Password
+          </p>
           <div className="password-field">
             <input
               type="password"
               name="password"
-              placeholder="Password"
+              placeholder="Enter your password here"
               value={formData.password}
               onChange={handleChange}
             />
@@ -106,13 +124,17 @@ const LoginPage = () => {
             </label>
             <a href="/forgot-password">Forgot password?</a>
           </div>
-          <button type="submit">Login</button>
+          <div className="numberContainer">
+            <button className="loginbtn" type="submit">
+              Login
+            </button>
+            <div className="social-login">
+              <p>Login With</p>
+              <div className="linkedin">LinkedIn</div>
+              <div className="google">Google</div>
+            </div>
+          </div>
         </form>
-        <div className="social-login">
-          <p>Login With</p>
-          <button className="linkedin">LinkedIn</button>
-          <button className="google">Google</button>
-        </div>
         <p className="signup-link">Not a Member?</p>
       </div>
     </div>

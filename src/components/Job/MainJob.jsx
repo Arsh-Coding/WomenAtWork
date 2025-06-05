@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchJobs } from "../../services/slices/jobSlice";
 import { httpGet } from "../../services/api";
 import { URLS } from "../../services/urls";
-
+import LoadingJobs from "./jobComponent/LoadingJobs";
 import JobList from "./jobComponent/JobList";
 import JobFilter from "../JobFilter/JobFilter";
 import Footer from "../Home/Footer/Footer";
@@ -86,17 +86,55 @@ const MainJob = () => {
       <div className="jobFilter-prop">
         <JobFilter width={1050} height={150} />
       </div>
-      <JobList initialJobs={Array.isArray(filteredJobs) ? filteredJobs : []} />
+      {jobStatus === "loading" ? (
+        <LoadingJobs />
+      ) : (
+        <JobList
+          initialJobs={Array.isArray(filteredJobs) ? filteredJobs : []}
+        />
+      )}
       <div className="pagination">
-        {[...Array(totalPages)].map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setPage(i + 1)}
-            className={page === i + 1 ? "active" : ""}
-          >
-            {i + 1}
-          </button>
-        ))}
+        <button onClick={() => setPage(page - 1)} disabled={page === 1}>
+          &lt;
+        </button>
+
+        {Array.from({ length: totalPages }, (_, i) => i + 1)
+          .filter((pageNum) => {
+            // Show first, last, current, and 1 before/after current
+            return (
+              pageNum === 1 ||
+              pageNum === totalPages ||
+              Math.abs(pageNum - page) <= 1
+            );
+          })
+          .reduce((acc, curr, i, arr) => {
+            // Add ellipsis if there's a gap between numbers
+            if (i > 0 && curr - arr[i - 1] > 1) acc.push("ellipsis");
+            acc.push(curr);
+            return acc;
+          }, [])
+          .map((item, i) =>
+            item === "ellipsis" ? (
+              <span key={`ellipsis-${i}`} className="ellipsis">
+                ...
+              </span>
+            ) : (
+              <button
+                key={item}
+                onClick={() => setPage(item)}
+                className={page === item ? "active" : ""}
+              >
+                {item}
+              </button>
+            )
+          )}
+
+        <button
+          onClick={() => setPage(page + 1)}
+          disabled={page === totalPages}
+        >
+          &gt;
+        </button>
       </div>
       <Footer />
     </div>

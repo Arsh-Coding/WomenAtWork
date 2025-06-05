@@ -3,6 +3,7 @@ import { Toast } from "primereact/toast";
 import "./mainContact.css";
 import Contact from "./Contact";
 import { apiEndpoint } from "../../../services/urls";
+import Footer from "../Footer/Footer";
 
 const mainContact = () => {
   const toast = useRef(null);
@@ -84,6 +85,7 @@ const mainContact = () => {
 
       {/* Contact Form */}
       <Contact />
+      <Footer />
     </div>
   );
 };

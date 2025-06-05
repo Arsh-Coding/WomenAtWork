@@ -90,59 +90,97 @@ const SignupPage = () => {
         <h2>Sign Up</h2>
         <p>Enter your details below</p>
         <form onSubmit={handleSubmit} className="login-form">
+          <p
+            style={{
+              margin: "2px 0 2px 10px",
+              color: "rgba(107, 107, 107, 1)",
+            }}
+          >
+            Full Name
+          </p>
           <input
             type="text"
             name="username"
-            placeholder="Full Name"
+            placeholder="Enter your Full Name"
             value={formData.username}
             onChange={handleChange}
             required
           />
+          <p
+            style={{
+              margin: "2px 0 2px 10px",
+              color: "rgba(107, 107, 107, 1)",
+            }}
+          >
+            E-mail address
+          </p>
           <input
             type="email"
             name="email"
-            placeholder="Email Address"
+            placeholder="Enter your Email Address"
             value={formData.email}
             onChange={handleChange}
             required
           />
-
+          <p
+            style={{
+              margin: "2px 0 2px 10px",
+              color: "rgba(107, 107, 107, 1)",
+            }}
+          >
+            Password
+          </p>
           <input
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="Enter your Password"
             value={formData.password}
             onChange={handleChange}
             required
           />
+          <p
+            style={{
+              margin: "2px 0 2px 10px",
+              color: "rgba(107, 107, 107, 1)",
+            }}
+          >
+            confirm Password
+          </p>
           <input
             type="password"
             name="confirmPassword"
-            placeholder="Confirm Password"
+            placeholder="Re-Enter your Password"
             value={formData.confirmPassword}
             onChange={handleChange}
             required
           />
-          <button type="submit">Sign Up</button>
+
+          <div className="numberContainer">
+            <button className="loginbtn" type="submit">
+              Sign Up
+            </button>
+            <div className="social-login">
+              <p>Login With</p>
+              <div className="linkedin">LinkedIn</div>
+              <div className="google">Google</div>
+            </div>
+          </div>
+          <p className="login-link" style={{ textAlign: "center" }}>
+            already having an account?{" "}
+            <span>
+              <Link to="/login">SignIn here</Link>
+            </span>
+          </p>
+          <Link
+            to="/EmployerRegister"
+            className="employer-register-link"
+            style={{ textAlign: "center" }}
+          >
+            <button type="button" className="employer-btn">
+              Or Register as Employer
+            </button>
+          </Link>
         </form>
-
-        <Link to="/EmployerRegister" className="employer-register-link">
-          <button type="button" className="employer-btn">
-            Or Register as Employer
-          </button>
-        </Link>
-
-        <div className="social-login">
-          <p>Sign Up With</p>
-          <button className="linkedin">LinkedIn</button>
-          <button className="google">Google</button>
-        </div>
-        <p className="login-link">
-          already having an account?{" "}
-          <span>
-            <Link to="/login">SignIn here</Link>
-          </span>
-        </p>
       </div>
     </div>
   );

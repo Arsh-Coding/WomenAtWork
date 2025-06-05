@@ -61,7 +61,7 @@ const JobList = ({ initialJobs }) => {
           {displayJobs.length > 0 ? (
             displayJobs.map((job) => <JobCard key={job.id} job={job} />)
           ) : (
-            <p>No jobs found matching your criteria.</p>
+            <p></p>
           )}
         </div>
       </div>

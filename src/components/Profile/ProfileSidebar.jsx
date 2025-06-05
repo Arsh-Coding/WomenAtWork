@@ -184,12 +184,8 @@ const ProfileSidebar = () => {
               {user?.role === "employer" ? "Manage Jobs" : "Applied Jobs"}
             </li>
           </Link>
-          <Link to="/dashboard/membership-plans">
-            <li
-              className={
-                currentPath === "/dashboard/membership-plans" ? "active" : ""
-              }
-            >
+          <Link to="/membership-plans">
+            <li className={currentPath === "/membership-plans" ? "active" : ""}>
               Pricing Plans
             </li>
           </Link>

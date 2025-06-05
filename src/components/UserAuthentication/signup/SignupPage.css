@@ -65,7 +65,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .signup-right h2 {
@@ -88,13 +88,24 @@
   border-radius: 5px;
   cursor: pointer;
 } */
-
+.login-header h2 {
+  font-weight: 700;
+  font-size: 56px;
+}
+.login-header h2::after {
+  display: block;
+  content: "";
+  background-color: rgba(191, 73, 179, 1);
+  margin: 5px 0;
+  width: 7%;
+  height: 5px;
+}
 .social-login {
-  margin-top: 20px;
+  margin-top: -7px;
   display: flex;
   align-items: center;
-  margin: 30px;
-  gap: 20px;
+  /* margin: 30px; */
+  gap: 5px;
   /* flex-direction: column; */
 }
 .social-login p {
@@ -195,11 +206,16 @@
 
 .employer-btn {
   margin: 5px 0;
+  background-color: rgba(191, 73, 179, 1);
+  color: white;
   padding: 10px 15px;
   font-size: 14px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+input::placeholder {
+  color: rgba(210, 210, 210, 1);
 }
 /* Responsive Styling */
 @media screen and (max-width: 768px) {
