@@ -57,7 +57,7 @@ const Navbar = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const isSignupPage =
+  const isSignupOrLogin =
     location.pathname === "/signup" || location.pathname === "/login";
 
   const getAuthButtonDetails = () => {
@@ -88,7 +88,7 @@ const Navbar = () => {
         >
           <div className="Links">
             <ul>
-              {!isSignupPage && ( // Render these links only if not on the Signup page
+              {!isSignupOrLogin && ( // Render these links only if not on the Signup page
                 <>
                   <li>
                     <Link to="/">Home</Link>
@@ -111,7 +111,7 @@ const Navbar = () => {
                 <div className="profile-icon">
                   <img
                     src={image ? image : "/profilePic.jpg"}
-                    alt="hello world"
+                    alt="Profile"
                     style={{
                       width: "30px",
                       height: "30px",
@@ -120,18 +120,32 @@ const Navbar = () => {
                   />
                 </div>
               </Link>
-              <button onClick={handleLogout}>Logout</button>
+              <button className="auth-btn logout-btn" onClick={handleLogout}>
+                Logout
+              </button>
             </>
           ) : (
-            <Link to={authButton.route}>
-              <button
-                className={
-                  location.pathname === "/signup" ? "login-btn" : "signup-btn"
-                }
-              >
-                {authButton.text}
-              </button>
-            </Link>
+            <>
+              {!["/signup", "/login"].includes(location.pathname) && (
+                <Link to="/signup">
+                  <button className="auth-btn">Sign Up</button>
+                </Link>
+              )}
+              {isSignupOrLogin && (
+                <>
+                  <span style={{ marginRight: "10px", color: "black" }}>
+                    {location.pathname === "/signup"
+                      ? "Already having an account?"
+                      : "Not a Member?"}
+                  </span>
+                  <Link to={authButton.route}>
+                    <button className="auth-btn white-bg-btn">
+                      {authButton.text}
+                    </button>
+                  </Link>
+                </>
+              )}
+            </>
           )}
         </div>
         <div className="hamburger" onClick={toggleMenu} ref={hamburgerRef}>

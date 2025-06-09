@@ -22,9 +22,9 @@ export const fetchCompanyById = createAsyncThunk(
   "company/fetchCompanyById",
   async (companyId, { rejectWithValue }) => {
     try {
-      console.log("Fetching company with ID:", companyId);
+      // console.log("Fetching company with ID:", companyId);
       const response = await httpGet(URLS.companies(companyId)); // e.g., /companies/:id
-      console.log("Fetched company data:", response);
+      // console.log("Fetched company data:", response);
       return response;
     } catch (error) {
       return rejectWithValue(

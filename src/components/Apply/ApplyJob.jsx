@@ -98,7 +98,7 @@ const ApplyJob = () => {
           const applicantsData = await httpGet(
             `${apiEndpoint}applicants/${jobId}`
           );
-          console.log(applicantsData);
+          // console.log(applicantsData);
 
           setApplicants(applicantsData);
         }

@@ -22,7 +22,7 @@ const UserCard = () => {
   }
 
   const matchedJob = user?.jobDescription;
-  console.log(matchedJob);
+  // console.log(matchedJob);
 
   return (
     <>

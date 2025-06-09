@@ -5,7 +5,7 @@ import { URLS } from "../../services/urls";
 import axios from "axios";
 // import "./JobFilter.css";
 
-const JobFilter = ({ width, height, initialFilters }) => {
+const JobFilter = ({ initialFilters }) => {
   const navigate = useNavigate();
   const [filters, setFilters] = useState(
     initialFilters || {
@@ -29,7 +29,7 @@ const JobFilter = ({ width, height, initialFilters }) => {
           httpGet(URLS.categories),
           httpGet(URLS.alljobs),
         ]);
-        console.log(categoryResponse, "and ", jobResponse.jobs);
+        // console.log(categoryResponse, "and ", jobResponse.jobs);
         setCategories(categoryResponse);
         setLocations([
           ...new Set(jobResponse?.jobs.map((job) => job.location)),
@@ -53,7 +53,7 @@ const JobFilter = ({ width, height, initialFilters }) => {
   // console.log("filters33333", filters);
 
   return (
-    <div className="filter-box" style={{ width, height }}>
+    <div className="filter-box">
       <div className="section">
         <label>Keywords</label>
         <input

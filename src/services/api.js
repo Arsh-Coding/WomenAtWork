@@ -15,7 +15,7 @@ export const httpGet = async (url, options = {}) => {
 };
 
 export const httpPost = async (url, data = {}, options = {}) => {
-  console.log("api js post called ", url);
+  // console.log("api js post called ", url);
 
   try {
     let response = await axiosInstance.post(url, data, {
@@ -28,7 +28,7 @@ export const httpPost = async (url, data = {}, options = {}) => {
     });
     return response.data;
   } catch (e) {
-    console.log("API post error: ", e);
+    // console.log("API post error: ", e);
     throw e;
   }
 };
@@ -44,7 +44,7 @@ export const httpPut = async (url, data = {}, options = {}) => {
     });
     return response.data;
   } catch (e) {
-    console.log("API put error: ", e);
+    // console.log("API put error: ", e);
     throw e;
   }
 };
@@ -60,7 +60,7 @@ export const httpFormPost = async (url, formData, options = {}) => {
     });
     return response.data;
   } catch (err) {
-    console.log("API from post error", err);
+    // console.log("API from post error", err);
     throw err;
   }
 };

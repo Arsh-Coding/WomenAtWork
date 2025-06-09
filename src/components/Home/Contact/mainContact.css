@@ -28,3 +28,6 @@
 .middle-contact-text {
   text-align: center;
 }
+.middle-contact-text p {
+  width: 100%;
+}

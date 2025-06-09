@@ -1,13 +1,13 @@
 .impowerment-title {
   font-family: "Zilla Slab", serif;
-  margin: 10px 10px 30px 130px;
+  margin: 10px 10px 30px 12vw;
   font-weight: 400;
 }
 
 .impowerment-title::after {
   content: "";
   display: block;
-  background-color: #DCDCDC;
+  background-color: #dcdcdc;
   width: 5%;
   height: 5px;
   margin-top: 5px;
@@ -20,7 +20,7 @@
   padding: 50px;
   width: 60%;
   margin-bottom: 100px;
-  background-color: #BF49B3;
+  background-color: #bf49b3;
   color: white;
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
@@ -31,6 +31,7 @@
 .text-container {
   flex: 1;
   padding: 20px;
+  margin-left: 2vw;
   color: #ffffff;
 }
 
@@ -41,7 +42,7 @@
 }
 
 .text-container p {
-  width: 400px;
+  width: 600px;
   padding-left: 60px;
   margin-bottom: 15px;
   line-height: 1.6;
@@ -150,5 +151,13 @@
   .more-about-button {
     padding: 8px 12px;
     font-size: 11px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .text-container {
+    margin-left: 6.5vw;
+  }
+  .text-container p {
+    width: 800px;
   }
 }

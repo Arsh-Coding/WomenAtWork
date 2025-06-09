@@ -22,7 +22,7 @@ const JobAppliedChart = () => {
   const { companyDetails, loading, error } = useSelector(
     (state) => state.company
   );
-  console.log("companies: ", user);
+  // console.log("companies: ", user);
   useEffect(() => {
     if (companyId) {
       dispatch(fetchCompanyById(companyId));
@@ -30,7 +30,7 @@ const JobAppliedChart = () => {
   }, [dispatch, companyId]);
 
   const jobsPosted = companyDetails?.jobsPosted || [];
-  console.log("jobs posted: ", jobsPosted);
+  // console.log("jobs posted: ", jobsPosted);
 
   const appliedJobs = user?.appliedJobs || [];
 

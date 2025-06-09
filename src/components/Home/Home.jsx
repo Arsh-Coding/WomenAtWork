@@ -78,7 +78,7 @@ const Home = () => {
         </div>
       </div>
       <div className="job-filter-home">
-        <JobFilter width={1050} height={150} initialFilters={filters} />
+        <JobFilter initialFilters={filters} />
       </div>
       <WomanCard />
       <Jobs />

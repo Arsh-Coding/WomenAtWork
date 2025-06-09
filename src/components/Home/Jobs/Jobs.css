@@ -6,7 +6,7 @@
 .home-job-header {
   font-family: "Zilla Slab", serif;
   font-size: 24px;
-  margin-left: 100px;
+  margin-left: calc(12vw - 40px);
   font-weight: 400;
   margin-bottom: 20px;
   color: #333;

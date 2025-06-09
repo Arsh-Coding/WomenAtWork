@@ -60,9 +60,7 @@ export default function Test() {
           justifyContent: "space-between",
           marginBottom: "10vh",
         }}
-      >
-        
-      </div>
+      ></div>
     </>
   );
 }

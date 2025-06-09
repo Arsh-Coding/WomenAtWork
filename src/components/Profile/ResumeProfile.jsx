@@ -11,7 +11,7 @@ const ResumeUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileUrl, setFileUrl] = useState("");
   const user = useSelector((state) => state.profile.user);
-  console.log("resume user details: ", user);
+  // console.log("resume user details: ", user);
 
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");

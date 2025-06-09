@@ -290,7 +290,7 @@ const Profile = () => {
       const response = await httpFormPost(URLS.uploadProfilePic, formData, {
         headers: getAuthHeader(),
       });
-      console.log(response.imageUrl);
+      // console.log(response.imageUrl);
 
       setProfile((prevProfile) => ({
         ...prevProfile,
@@ -434,7 +434,7 @@ const Profile = () => {
 
   const handleSubmit = useCallback(() => {
     // e.preventDefault();
-    console.log("clicked");
+    // console.log("clicked");
     const newErrors = {};
     Object.keys(profile).forEach((field) => {
       const error = validateField(field, profile[field]);
@@ -443,7 +443,7 @@ const Profile = () => {
     setErrors(newErrors);
 
     if (profileCompletion === 100 && Object.keys(newErrors).length === 0) {
-      console.log("Updated Profile:", profile);
+      // console.log("Updated Profile:", profile);
       setShowPopup(true);
     } else {
       toast.current.show({

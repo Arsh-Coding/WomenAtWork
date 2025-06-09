@@ -63,7 +63,7 @@ function App() {
 
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<Dashboard />} />
-            <Route path="candidate-profile" element={<Profile />} />
+            <Route path="candidate profile" element={<Profile />} />
             <Route path="resumeUpload" element={<ResumeUpload />} />
             <Route path="applied-jobs" element={<AppliedJobs />} />
             <Route

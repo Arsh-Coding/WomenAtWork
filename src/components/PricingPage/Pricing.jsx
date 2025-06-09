@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const Pricing = () => {
   const dispatch = useDispatch();
   const { data: plans, loading, error } = useSelector((state) => state.plans);
-  console.log(plans);
+  // console.log(plans);
 
   useEffect(() => {
     dispatch(fetchPlans());

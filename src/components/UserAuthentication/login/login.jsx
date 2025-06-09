@@ -80,62 +80,64 @@ const LoginPage = () => {
         </div>
       </div>
       <div className="login-right">
-        <div className="login-header">
-          <h2>Login </h2>
-          <p>Please login to your account</p>
-        </div>
-        <form onSubmit={handleSubmit} className="login-form">
-          <p
-            style={{
-              margin: "2px 0 2px 10px",
-              color: "rgba(107, 107, 107, 1)",
-            }}
-          >
-            E-mail address
-          </p>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your Email here"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          <p
-            style={{
-              margin: "2px 0 2px 10px",
-              color: "rgba(107, 107, 107, 1)",
-            }}
-          >
-            Password
-          </p>
-          <div className="password-field">
+        <div className="form-wrapper">
+          <div className="login-header">
+            <h2>Login </h2>
+            <p>Please login to your account</p>
+          </div>
+          <form onSubmit={handleSubmit} className="login-form">
+            <p
+              style={{
+                margin: "2px 0 2px 10px",
+                color: "rgba(107, 107, 107, 1)",
+              }}
+            >
+              E-mail address
+            </p>
             <input
-              type="password"
-              name="password"
-              placeholder="Enter your password here"
-              value={formData.password}
+              type="email"
+              name="email"
+              placeholder="Enter your Email here"
+              value={formData.email}
               onChange={handleChange}
             />
-            <span className="toggle-password">🔒</span>
-          </div>
-          <div className="form-options">
-            <label>
-              <input type="checkbox" /> Remember me
-            </label>
-            <a href="/forgot-password">Forgot password?</a>
-          </div>
-          <div className="numberContainer">
-            <button className="loginbtn" type="submit">
-              Login
-            </button>
-            <div className="social-login">
-              <p>Login With</p>
-              <div className="linkedin">LinkedIn</div>
-              <div className="google">Google</div>
+            <p
+              style={{
+                margin: "2px 0 2px 10px",
+                color: "rgba(107, 107, 107, 1)",
+              }}
+            >
+              Password
+            </p>
+            <div className="password-field">
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter your password here"
+                value={formData.password}
+                onChange={handleChange}
+              />
+              <span className="toggle-password">🔒</span>
             </div>
-          </div>
-        </form>
-        <p className="signup-link">Not a Member?</p>
+            <div className="form-options">
+              <label>
+                <input type="checkbox" /> Remember me
+              </label>
+              <a href="/forgot-password">Forgot password?</a>
+            </div>
+            <div className="numberContainer">
+              <button className="loginbtn" type="submit">
+                Login
+              </button>
+              <div className="social-login">
+                <p>Login With</p>
+                <div className="linkedin">LinkedIn</div>
+                <div className="google">Google</div>
+              </div>
+            </div>
+          </form>
+        </div>
+        {/* <p className="signup-link">Not a Member?</p> */}
       </div>
     </div>
   );

@@ -43,8 +43,8 @@
   background-color: #fffffff2;
 }
 .filterBox-entry {
-  flex: 1;
-  min-width: 250px;
+  /* flex: 1; */
+  min-width: 20vw;
   height: 48px;
   max-width: 300px;
   padding: 10px;

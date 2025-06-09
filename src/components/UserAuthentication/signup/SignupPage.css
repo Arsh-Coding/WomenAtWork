@@ -61,24 +61,43 @@
 .signup-right {
   flex: 1;
   padding: 40px;
-  margin-top: 15vh;
+  margin-top: 20vh;
   display: flex;
+  text-align: left;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  /* width: 100%; */
   /* align-items: center; */
+}
+.form-wrapper {
+  width: 100%;
+  max-width: 500px; /* 👈 restricts width on big screens */
+  display: flex;
+  flex-direction: column;
 }
 
 .signup-right h2 {
   margin-bottom: 10px;
+  /* max-width: 400px; */
   font-size: 24px;
+  text-align: left; /* 👈 Add this line */
+  /* width: 30vw; */
   color: #333;
 }
 
 .signup-right p {
+  /* position */
   margin-bottom: 20px;
   color: #555;
+  text-align: left;
+  /* align-items: flex-start; */
+  /* width: 30vw; */
 }
-
+.signup-right sr-h2,
+sr-p {
+  width: 80%;
+}
 /* form button {
   padding: 10px;
   font-size: 16px;
@@ -205,7 +224,7 @@
 }
 
 .employer-btn {
-  margin: 5px 0;
+  margin: 15px 0;
   background-color: rgba(191, 73, 179, 1);
   color: white;
   padding: 10px 15px;
@@ -298,5 +317,13 @@ input::placeholder {
   .social-login button {
     font-size: 14px;
     padding: 8px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .form-wrapper {
+    max-width: 500px; /* ✅ makes it bigger on desktops */
+  }
+  .signup-right {
+    margin-top: 0;
   }
 }

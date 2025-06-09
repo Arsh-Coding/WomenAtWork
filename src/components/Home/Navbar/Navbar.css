@@ -89,6 +89,30 @@
   padding-right: 10vw;
 }
 
+.auth-btn {
+  padding: 10px 20px;
+  border-radius: 48px;
+  border: 1px solid black;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: transparent;
+  color: black;
+  transition: background 0.3s ease;
+}
+
+.white-bg-btn {
+  background-image: none !important;
+  background-color: white !important;
+  border-radius: 48px !important;
+  color: black !important;
+  border: 1px solid black !important;
+}
+
+.logout-btn {
+  background-color: black;
+  color: white;
+}
+
 @media (max-width: 488px) {
   .navbar {
     justify-content: space-between;
