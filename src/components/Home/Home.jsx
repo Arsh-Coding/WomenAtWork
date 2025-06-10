@@ -7,7 +7,7 @@ import "./Home.css";
 import Jobs from "./Jobs/Jobs";
 import Footer from "./Footer/Footer";
 import SectionWithVideoSlider from "./SectionWithVideoSlider/SectionWithVideoSlider";
-import HomeTestimonial from "./HomeTestimonial/homeTestimonial";
+import CompanyTestimonialsSection from "./HomeTestimonial/HomeTestimonial";
 import Contact from "./Contact/Contact";
 import JobFilter from "../JobFilter/JobFilter";
 
@@ -84,7 +84,7 @@ const Home = () => {
       <WomanCard />
       <Jobs />
       <SectionWithVideoSlider />
-      <HomeTestimonial />
+      <CompanyTestimonialsSection />
       <Contact />
       <Footer />
     </>
