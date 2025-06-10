@@ -16,7 +16,7 @@ const companies = [
   { src: "/logos/mahindra.png", alt: "Tech Mahindra" },
 ];
 
-const CompanyTestimonialsSection = () => {
+const HomeTestimonials = () => {
   return (
     <>
       <h3 className="home-testimonial-heading">
@@ -67,4 +67,4 @@ const CompanyTestimonialsSection = () => {
   );
 };
 
-export default CompanyTestimonialsSection;
+export default HomeTestimonials;
