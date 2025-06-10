@@ -409,7 +409,7 @@ input[type="file"] {
 }
 .applied-jobs .job-list {
   width: 94%;
-  margin-top: 20px;
+  margin-top: 15vh;
 }
 /*Dashboard*/
 .main-dashboard {
