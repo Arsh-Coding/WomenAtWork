@@ -3,8 +3,8 @@
 .job-details {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   max-width: 1000px;
-  margin: 10vh auto;
-  padding: 20px;
+  margin: 10vh 0;
+  /* padding: 20px; */
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -44,7 +44,9 @@
 .final-apply:hover {
   background-color: #9c2a92;
 }
-
+.job-details ul {
+  margin-left: 1vw;
+}
 .job-details h2::after {
   content: "";
   display: block;
@@ -103,9 +105,9 @@
 /* .footer {
   margin-top: 60px;
   /* text-align: center; */
-  /* padding: 20px; */
-  /* background-color: rgba(30, 30, 30, 1); */
-  /* color: white; */
+/* padding: 20px; */
+/* background-color: rgba(30, 30, 30, 1); */
+/* color: white; */
 /* } */
 .pagination button:disabled {
   opacity: 0.5;

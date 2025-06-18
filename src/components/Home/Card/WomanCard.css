@@ -3,7 +3,7 @@
 .wcTitle {
   position: relative;
   top: 12vh;
-  margin: 5vw 0 5vw 12vw;
+  /* margin: 5vw 0 5vw 12vw; */
   font-family: "Zilla Slab", serif;
 
   font-size: 24px;
@@ -21,7 +21,7 @@
 }
 
 .womanApp {
-  padding: 20px;
+  padding: 20px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,9 +29,9 @@
 
 .card-container {
   display: flex;
-  margin: 10vh 0 0 50px;
-  gap: 20px;
-  flex-wrap: wrap;
+  margin: 10vh 0 0 0;
+  gap: 3vw;
+  /* flex-wrap: wrap; */
   justify-content: center;
 }
 
@@ -42,7 +42,8 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   padding: 20px;
-  max-width: 19vw;
+  width: 18vw;
+  max-width: 17.5vw;
   border-radius: 40px;
   transition: transform 0.3s ease-in-out;
 }

@@ -1,13 +1,13 @@
 .impowerment-title {
   font-family: "Zilla Slab", serif;
-  margin: 10px 10px 30px 12vw;
+  margin: 10px 10px 30px 0;
   font-weight: 400;
 }
 
 .impowerment-title::after {
   content: "";
   display: block;
-  background-color: #dcdcdc;
+  background-color: rgb(220, 220, 220);
   width: 5%;
   height: 5px;
   margin-top: 5px;
@@ -15,24 +15,22 @@
 
 .section-container {
   display: flex;
-  justify-content: space-between;
+  position: relative;
   align-items: center;
-  padding: 50px;
-  width: 60%;
-  margin-bottom: 100px;
-  background-color: #bf49b3;
-  color: white;
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
-  gap: 20px;
+  padding: 2rem 0;
 }
 
 .text-container {
   flex: 1;
-  padding: 20px;
-  margin-left: 2vw;
-  color: #ffffff;
+  background-color: #bd35b4; /* adjust this to match exact purple */
+  padding: calc(11.5% - 2rem);
+  margin-left: calc(-11% - 2rem);
+  margin-right: 0;
+  color: white;
+  position: relative;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  z-index: 1;
 }
 
 .text-container h2 {
@@ -42,15 +40,15 @@
 }
 
 .text-container p {
-  width: 600px;
-  padding-left: 60px;
+  min-width: 600px;
+  padding-left: 58px;
   margin-bottom: 15px;
   line-height: 1.6;
   font-size: 16px;
 }
 
 .more-about-button {
-  margin-left: 60px;
+  margin-left: 58px;
   padding: 10px 20px;
   background-color: white;
   color: rgba(191, 73, 179, 1);
@@ -65,8 +63,10 @@
 }
 
 .slider-container {
-  position: relative;
   flex: 1;
+  position: relative;
+  margin-left: -2.3em; /* adjust as per overlap needed */
+  z-index: 2;
 }
 
 /* Media Queries for Responsive Design */
@@ -153,11 +153,11 @@
     font-size: 11px;
   }
 }
-@media screen and (min-width: 1440px) {
+/* @media screen and (min-width: 1440px) {
   .text-container {
     margin-left: 6.5vw;
   }
   .text-container p {
     width: 800px;
   }
-}
+} */

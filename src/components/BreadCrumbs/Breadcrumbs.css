@@ -1,8 +1,11 @@
 .breadcrumbs {
+  width: 100%;
   display: flex;
+  justify-content: center;
   gap: 5px;
+
   font-size: 14px;
-  padding: 5px 0;
+  padding: 5px 10% 5px 0;
   /* margin-bottom: 16px; */
 }
 
@@ -16,11 +19,22 @@
 }
 
 .breadcrumb-item {
+  /* margin-left: -10%; */
   color: #ffffff;
   font-weight: bold;
 }
+
+.breadcrumb-container {
+  width: 80%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  color: white;
+}
 @media (max-width: 768px) {
-  .profile-header{
+  .profile-header {
     margin-top: 10vh;
   }
 }

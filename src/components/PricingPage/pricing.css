@@ -9,20 +9,22 @@
 .background-pricing {
   background-image: url("/employer1.png");
   background-repeat: no-repeat;
-  width: 100%;
+  width: 99vw;
+  margin-left: -10vw;
   height: 300px;
   background-size: cover;
   /* background-size: ; */
 }
+
 .benefits-pricing {
   position: relative;
   background-color: #f9f9f9;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 80vw;
+  width: 88.6%;
   height: fit-content;
-  margin: 20px auto;
+  margin: 20px 0;
   max-height: 333px;
 }
 .benefits-img {
@@ -70,10 +72,12 @@
   overflow: visible;
   bottom: 7vh;
 }
+
 .description-container p {
   position: relative;
   left: 10vw;
 }
+
 .description-container p::before {
   content: "•"; /* Unicode bullet */
   color: rgb(20, 0, 201);
@@ -82,11 +86,13 @@
   width: 1em;
   margin-left: -1em;
 }
+
 .description-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .description-content button {
   position: relative;
   cursor: pointer;
@@ -98,6 +104,7 @@
   width: 205px;
   height: 45px;
 }
+
 .description-content button:hover {
   color: rgba(0, 0, 184, 0.226);
   background-color: rgba(196, 90, 185, 0.562);
@@ -111,13 +118,14 @@
 .cards-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
+  width: 89%;
+  /* gap: 2.6rem; */
+  justify-content: space-between;
   margin-top: 1.5rem;
 }
 
 .card-pricing-plan {
-  width: 250px;
+  max-width: 19vw;
   border: 1px solid #ddd;
   border-radius: 10px;
   overflow: hidden;

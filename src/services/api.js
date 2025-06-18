@@ -125,3 +125,7 @@ export const updateJob = async (id, jobData, token) => {
   });
   return response.data;
 };
+
+export const resetPassword = async (email) => {
+  return await httpPost(URLS.forgotPassword, { email });
+};

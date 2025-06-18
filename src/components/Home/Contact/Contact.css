@@ -2,13 +2,13 @@
 
 .contacts {
   display: flex;
-  padding: 20px;
-  justify-content: center;
+  padding: 40px 0;
+  justify-content: space-between;
 }
 
 .contact-section1 {
   display: grid;
-  width: 40%;
+  width: 50%;
 }
 
 .contact-heading {
@@ -35,19 +35,19 @@
 }
 
 .contact-heading p {
-  max-width: 509px;
+  max-width: 40vw;
   font-size: 18px;
 }
 
 .contact-form {
   padding: 50px 0;
-  max-width: 509px;
+  max-width: 40vw;
 }
 
 .contact-name {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  gap: 10px;
 }
 
 .contact-name input {

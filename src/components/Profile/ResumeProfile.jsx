@@ -80,7 +80,7 @@ const ResumeUpload = () => {
             <iframe
               src={user?.resumeUrl || fileUrl}
               title="Resume Preview"
-              width={700}
+              width={600}
               height={500}
             />
           ) : (

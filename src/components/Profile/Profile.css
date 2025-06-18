@@ -3,7 +3,7 @@
   display: grid;
   /* justify-content: center; */
   margin: auto;
-  border: 1px solid lightgray;
+  /* border: 1px solid lightgray; */
   font-family: Arial, sans-serif;
 }
 
@@ -11,7 +11,8 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
   top: 10.5vh;
   background: #e91e63;
   padding: 15px;
@@ -21,14 +22,14 @@
   /* outline: 1px solid lightgray; */
 }
 .profile-header h2 {
-  margin-left: 8vw;
+  margin-left: 10%;
 }
 .profile-content {
   display: flex;
   position: relative;
   /* left: 3vw; */
   width: 100%;
-  justify-content: center;
+  /* justify-content: center; */
   margin-top: 20px;
   /* outline: 1px solid lightgray; */
 }
@@ -36,7 +37,7 @@
 .profile-sidebar {
   width: 20vw;
   position: relative;
-  left: 3vw;
+  /* left: 3vw; */
   background: #f8f8f8;
   height: fit-content;
   /* padding: 20px; */
@@ -91,10 +92,10 @@
   padding-left: 0;
 }
 .profile-main {
-  width: 67%;
+  width: 80%;
   position: relative;
-  left: 3.5vw;
-  padding: 0 30px 30px 30px;
+  /* left: 3.5vw; */
+  padding: 0 0 30px 30px;
 }
 /* .profile-form {
   display: flex;
@@ -302,19 +303,17 @@
 .profile-resume-container {
   display: flex;
   min-height: 100vh;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   margin-top: 60px;
-  justify-content: space-evenly;
-  /* border: 1px solid #ddd; */
-  padding: 10px;
+  justify-content: space-between;
+  /* padding: 10px; */
   border-radius: 5px;
-  background-color: white;
 }
 
 .profile-resume-main {
   display: grid;
   flex: 1;
-  max-width: 60%;
+  max-width: 70%;
   padding: 20px;
   justify-content: center;
   background: white;
@@ -378,15 +377,15 @@ input[type="file"] {
   display: flex;
   width: 90vw;
   gap: 2vw;
-  left: 6vw;
+  /* left: 6vw; */
   /* top: 15vh; */
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .applied-jobs {
   position: relative;
-  left: 2vw;
-  width: 60vw;
+  /* left: 2vw; */
+  width: 62%;
   text-align: center;
   border: none;
   border-radius: 10px;
@@ -416,17 +415,19 @@ input[type="file"] {
   display: flex;
   /* grid-template-columns: 10vw 10vw; */
   position: relative;
-  padding-left: 5vw;
+  /* padding-left: 5vw; */
   margin-top: 6vh;
-  justify-content: center;
+  /* justify-content: center; */
 }
 .main-dashboard-contentMain {
+  max-width: 76%;
+  overflow: hidden;
   display: grid;
   grid-template-columns: 30vw 30vw;
   height: min-content;
   margin-top: 5vh;
   padding-left: 2vw;
-  gap: 2vw;
+  /* gap: 2vw; */
 }
 .notifications {
   display: grid;
@@ -435,7 +436,7 @@ input[type="file"] {
   text-align: left;
   border-radius: 20px;
   gap: 20px;
-  padding: 0 20px;
+  /* padding: 0 20px; */
 }
 .notifications h2 {
   max-height: fit-content;
@@ -544,7 +545,13 @@ input[type="file"] {
     margin-top: 15px;
   }
 }
-
+.css-3vow6v-MuiPaper-root-MuiCard-root {
+  margin-right: 0 !important ;
+}
+.css-1lt5qva-MuiCardContent-root,
+.css-1lt5qva-MuiCardContent-root {
+  padding: 0;
+}
 @media (max-width: 480px) {
   .profile-header h2 {
     font-size: 18px;

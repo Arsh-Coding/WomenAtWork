@@ -2,9 +2,16 @@
 
 .Hero {
   display: grid;
-  width: 100%;
-  height: 67vh;
   position: relative;
+  width: 99vw;
+  height: 67vh;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  position: relative;
+  overflow: hidden;
+  /* z-index: 0; */
   /* margin: 10vw; */
 }
 
@@ -13,7 +20,7 @@
   display: grid;
   max-width: 400px;
   top: 20vh;
-  left: 12vw;
+  left: 10.5%;
   transition: color 0.3s;
 }
 
@@ -21,7 +28,7 @@
   position: absolute;
   display: grid;
   top: 20vh;
-  left: 12vw;
+  left: 10.5%;
   max-width: 400px;
   color: #0b00a3;
 }
@@ -57,7 +64,7 @@
   color: white;
   border-radius: 4px;
   background-color: #bf49b3;
-  margin: 40px 20px 20px 10px;
+  margin: 40px 20px 20px 0px;
   cursor: pointer;
   z-index: 1000;
 }
@@ -177,13 +184,11 @@ h1 {
   background-color: #b329e0;
 }
 .job-filter-home {
-  position: absolute;
+  position: relative; /* place it in normal flow */
   width: 100%;
-  max-width: 80vw;
-  top: 48vh;
-  /* width: %; */
-  left: 13vw;
-  right: 0vw;
+  max-width: 100%;
+  margin: -40px auto -25vh auto; /* pulls up into Hero section slightly */
+  z-index: 10; /* stays above slideshow */
 }
 /* Media Queries for Responsive Design */
 .hero-text,

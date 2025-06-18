@@ -465,7 +465,7 @@ const Profile = () => {
       <div className="profile-container">
         <div className="profile-header">
           <h2>Edit Candidate Profile</h2>
-          <div style={{ marginRight: "8vw", width: "fit-content" }}>
+          <div>
             <Breadcrumbs />
           </div>
         </div>
@@ -761,7 +761,7 @@ const Profile = () => {
             </form>
           </div>
         </div>
-        <div className="profile-apply-class">
+        {/* <div className="profile-apply-class">
           <div>
             <h2>Looking for a job?</h2>
             <p>
@@ -776,7 +776,7 @@ const Profile = () => {
           >
             Submit
           </button>
-        </div>
+        </div> */}
         {/* Thank You Popup - Only shows if profile is 100% completed */}
         {showPopup && (
           <div className="popup-overlay">

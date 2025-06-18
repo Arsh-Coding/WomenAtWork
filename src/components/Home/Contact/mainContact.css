@@ -2,7 +2,8 @@
   display: grid;
   position: relative;
   top: 10vh;
-  justify-content: center;
+  width: 100%;
+  /* justify-content: ; */
   gap: 5vh;
   /* text-align: center; */
 }
@@ -10,9 +11,13 @@
   background-image: url("/contactHero.png");
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 11vw;
+  padding: 10vw 0;
   width: 100vw;
+  margin-left: calc(-50vw + 49%);
   height: 55vh;
+}
+.contact-hero-heading {
+  /* margin-left: 10vw; */
 }
 .contact-hero-heading::after {
   display: block;
@@ -24,6 +29,7 @@
 }
 .text-contact {
   width: 35vw;
+  padding-left: 11.2%;
 }
 .middle-contact-text {
   text-align: center;

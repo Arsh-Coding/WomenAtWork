@@ -29,11 +29,11 @@ const Dashboard = () => {
             <ProfileSidebar />
           </div>
           <div className="main-dashboard-contentMain">
-            <div>
+            <div style={{ maxWidth: "90%" }}>
               <UserCard />
               <JobAppliedChart />
             </div>
-            <div>
+            <div style={{ maxWidth: "90%" }}>
               <NotificationsPanel />
               <JobPieChart />
             </div>

@@ -1,12 +1,12 @@
 .jobApp {
-  padding: 40px;
+  padding: 40px 0;
   /* text-align: center; */
 }
 
 .home-job-header {
   font-family: "Zilla Slab", serif;
   font-size: 24px;
-  margin-left: calc(12vw - 40px);
+  /* margin-left: calc(12vw - 40px); */
   font-weight: 400;
   margin-bottom: 20px;
   color: #333;
@@ -59,9 +59,9 @@
 /* Categories grid */
 .categories-grid {
   display: grid;
-  margin: 0 auto;
-  padding-left: 3vw;
-  justify-content: center;
+  /* margin: 0 auto; */
+  /* padding-left: 3vw; */
+  justify-content: space-between;
   grid-template-columns: repeat(4, 0.22fr);
   gap: 20px;
 }

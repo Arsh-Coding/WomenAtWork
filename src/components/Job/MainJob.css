@@ -5,7 +5,7 @@
   text-align: center;
   align-items: center;
   position: relative;
-  top: 15vh;
+  /* top: 15vh; */
 }
 .job-Heading {
   display: grid;
@@ -29,9 +29,9 @@
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  top: 12vh;
+  /* top: 12vh; */
   /* left: 1vw; */
-  right: 2.2vw;
+  /* right: 2.2vw; */
   /* width: 70%; */
   height: auto;
   margin: 0 auto;
@@ -77,7 +77,9 @@
   transition: 0.2s ease-in;
 }
 .jobFilter-prop {
-  margin-left: 8vw;
+  position: relative;
+  top: 13vh;
+  /* margin-left: 8vw; */
 }
 @media (max-width: 488px) {
   .filter-box {

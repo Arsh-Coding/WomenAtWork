@@ -2,16 +2,16 @@
 .signup-container {
   display: flex;
   height: 100vh;
-
   font-family: Arial, sans-serif;
 }
 
 /* Left Section */
 .signup-left {
   flex: 1;
-  background: #f5f5f5;
+  /* background: #f5f5f5; */
   display: flex;
-  max-width: 45%;
+  max-width: 65%;
+  margin-left: calc(-50% + 25vw);
   /* align-items: center; */
   /* justify-content: center; */
 }
@@ -24,8 +24,8 @@
 .woman-with-telescope {
   position: absolute;
   bottom: 0px;
-  width: 45vw;
-  height: 70vh;
+  width: 50vw;
+  height: 80%;
   background: url("/loginimage.png") no-repeat;
   background-size: cover;
 }
@@ -60,13 +60,13 @@
 /* Right Section */
 .signup-right {
   flex: 1;
-  padding: 40px;
+  /* padding: 40px; */
   margin-top: 20vh;
   display: flex;
   text-align: left;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   /* width: 100%; */
   /* align-items: center; */
 }

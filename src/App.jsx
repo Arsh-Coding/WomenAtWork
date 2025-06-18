@@ -23,6 +23,8 @@ import AddJobs from "./components/EmployerRegister/AddJobs";
 import CompanyDetailsDashboard from "./components/Profile/Dashboard/CompanyDetailsDashboard";
 import JobsManager from "./components/Profile/Dashboard/JobsManager";
 import DashboardLayout from "./components/Profile/Dashboard/DashboardLayout";
+import ForgotPassword from "./components/UserAuthentication/ForgotPassword/ForgotPassword";
+import ResetPassword from "./services/ResetPassword";
 
 function App() {
   function ErrorFallback({ error, resetErrorBoundary }) {
@@ -47,32 +49,37 @@ function App() {
     <>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/JobPage" element={<JobPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/apply-job/:jobId/:companyId" element={<ApplyJob />} />
-          <Route path="/company-details" element={<CompanyDetail />} />
-          <Route path="/contactUs" element={<MainContact />} />
-          <Route path="/aboutUs" element={<AboutUs />} />
-          <Route path="/testimonials" element={<Wow />} />
-          <Route path="/EmployerRegister" element={<EmployerRegister />} />
+        <div className="global-container">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/JobPage" element={<JobPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/apply-job/:jobId/:companyId" element={<ApplyJob />} />
+            <Route path="/company-details" element={<CompanyDetail />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
 
-          <Route path="/membership-plans" element={<Pricing />} />
+            <Route path="/contactUs" element={<MainContact />} />
+            <Route path="/aboutUs" element={<AboutUs />} />
+            <Route path="/testimonials" element={<Wow />} />
+            <Route path="/EmployerRegister" element={<EmployerRegister />} />
 
-          <Route path="/dashboard" element={<DashboardLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="candidate profile" element={<Profile />} />
-            <Route path="resumeUpload" element={<ResumeUpload />} />
-            <Route path="applied-jobs" element={<AppliedJobs />} />
-            <Route
-              path="company-details"
-              element={<CompanyDetailsDashboard />}
-            />
-            <Route path="Jobs-Manager" element={<JobsManager />} />
-          </Route>
-        </Routes>
+            <Route path="/membership-plans" element={<Pricing />} />
+
+            <Route path="/dashboard" element={<DashboardLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="candidate profile" element={<Profile />} />
+              <Route path="resumeUpload" element={<ResumeUpload />} />
+              <Route path="applied-jobs" element={<AppliedJobs />} />
+              <Route
+                path="company-details"
+                element={<CompanyDetailsDashboard />}
+              />
+              <Route path="Jobs-Manager" element={<JobsManager />} />
+            </Route>
+          </Routes>
+        </div>
       </ErrorBoundary>
     </>
   );
