@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -16,26 +16,42 @@ const MainJob = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const filters = location.state || {
-    keyword: "",
-    location: "",
-    categoryId: "",
-  };
+  // Filters from route state
+  const filters = useMemo(() => {
+    return {
+      keyword: location.state?.keyword || "",
+      location: location.state?.location || "",
+      categoryId: location.state?.categoryId || "",
+    };
+  }, [location.state]);
 
-  const jobs = useSelector((state) => state.jobs.jobs.jobs);
-  const jobStatus = useSelector((state) => state.jobs.status);
-  const [filteredJobs, setFilteredJobs] = useState([]);
-  const [categories, setCategories] = useState([]);
   const [page, setPage] = useState(1);
   const jobsPerPage = 10;
-  // console.log("main job page: ", jobs);
-  useEffect(() => {
-    // Fetch jobs using redux only if not already fetched
-    dispatch(
-      fetchJobs({ offset: (page - 1) * jobsPerPage, limit: jobsPerPage })
-    );
 
-    // Fetch categories locally
+  const jobsData = useSelector((state) => state.jobs.jobs); // Actual job data
+  const totalJobs = useSelector((state) => state.jobs.totalJobs); // Count from backend
+  const jobStatus = useSelector((state) => state.jobs.status);
+
+  const totalPages = Math.ceil(totalJobs / jobsPerPage); // Total pages
+
+  // Fetch jobs with filters and pagination
+  useEffect(() => {
+    const offset = (page - 1) * jobsPerPage;
+
+    const params = {
+      offset,
+      limit: jobsPerPage,
+      keyword: filters.keyword || "",
+      location: filters.location || "",
+      categoryId: filters.categoryId || "",
+    };
+
+    dispatch(fetchJobs(params));
+  }, [dispatch, page, filters]);
+
+  // Fetch categories only once (you can move this to a slice later)
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
     const fetchCategories = async () => {
       try {
         const response = await httpGet(URLS.categories);
@@ -45,37 +61,15 @@ const MainJob = () => {
         console.error("Error fetching categories", error);
       }
     };
-
     fetchCategories();
-  }, [dispatch, page]);
+  }, []);
 
+  // Auto-correct if page is too high
   useEffect(() => {
-    let filtered = jobs;
-
-    if (filters.keyword) {
-      filtered = filtered.filter((job) =>
-        job.title.toLowerCase().includes(filters.keyword.toLowerCase())
-      );
+    if (page > totalPages && totalPages > 0) {
+      setPage(totalPages);
     }
-
-    if (filters.location) {
-      filtered = filtered.filter((job) =>
-        job.location.toLowerCase().includes(filters.location.toLowerCase())
-      );
-    }
-
-    if (filters.categoryId) {
-      filtered = filtered.filter((job) =>
-        job.categoryIds.includes(Number(filters.categoryId))
-      );
-    }
-
-    setFilteredJobs(filtered);
-  }, [filters, jobs]);
-
-  const totalPages = Math.ceil(
-    useSelector((state) => state.jobs.totalJobs) / jobsPerPage
-  );
+  }, [totalPages]);
 
   return (
     <div className="job-search-container">
@@ -90,52 +84,58 @@ const MainJob = () => {
         <LoadingJobs />
       ) : (
         <JobList
-          initialJobs={Array.isArray(filteredJobs) ? filteredJobs : []}
+          initialJobs={Array.isArray(jobsData) ? jobsData : []}
+          page={page}
+          setPage={setPage}
+          totalPages={totalPages}
         />
       )}
-      <div className="pagination">
-        <button onClick={() => setPage(page - 1)} disabled={page === 1}>
-          &lt;
-        </button>
+      {/* {totalPages > 1 && (
+        <div className="pagination">
+          <button
+            onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+            disabled={page === 1}
+          >
+            &lt;
+          </button>
 
-        {Array.from({ length: totalPages }, (_, i) => i + 1)
-          .filter((pageNum) => {
-            // Show first, last, current, and 1 before/after current
-            return (
-              pageNum === 1 ||
-              pageNum === totalPages ||
-              Math.abs(pageNum - page) <= 1
-            );
-          })
-          .reduce((acc, curr, i, arr) => {
-            // Add ellipsis if there's a gap between numbers
-            if (i > 0 && curr - arr[i - 1] > 1) acc.push("ellipsis");
-            acc.push(curr);
-            return acc;
-          }, [])
-          .map((item, i) =>
-            item === "ellipsis" ? (
-              <span key={`ellipsis-${i}`} className="ellipsis">
-                ...
-              </span>
-            ) : (
-              <button
-                key={item}
-                onClick={() => setPage(item)}
-                className={page === item ? "active" : ""}
-              >
-                {item}
-              </button>
+          {Array.from({ length: totalPages }, (_, i) => i + 1)
+            .filter(
+              (pageNum) =>
+                pageNum === 1 ||
+                pageNum === totalPages ||
+                Math.abs(pageNum - page) <= 1
             )
-          )}
+            .reduce((acc, curr, i, arr) => {
+              if (i > 0 && curr - arr[i - 1] > 1) acc.push("ellipsis");
+              acc.push(curr);
+              return acc;
+            }, [])
+            .map((item, i) =>
+              item === "ellipsis" ? (
+                <span key={`ellipsis-${i}`} className="ellipsis">
+                  ...
+                </span>
+              ) : (
+                <button
+                  key={item}
+                  onClick={() => setPage(item)}
+                  className={page === item ? "active" : ""}
+                >
+                  {item}
+                </button>
+              )
+            )}
 
-        <button
-          onClick={() => setPage(page + 1)}
-          disabled={page === totalPages}
-        >
-          &gt;
-        </button>
-      </div>
+          <button
+            onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
+            disabled={page === totalPages}
+          >
+            &gt;
+          </button>
+        </div>
+      )} */}
+
       <Footer />
     </div>
   );

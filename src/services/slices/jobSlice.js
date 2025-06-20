@@ -19,6 +19,7 @@ export const fetchJobs = createAsyncThunk(
     }
   }
 );
+
 export const updateJobThunk = createAsyncThunk(
   "jobs/updateJob",
   async ({ id, jobData, token }, { rejectWithValue }) => {
@@ -32,6 +33,7 @@ export const updateJobThunk = createAsyncThunk(
     }
   }
 );
+
 const jobSlice = createSlice({
   name: "jobs",
   initialState: {
@@ -55,7 +57,7 @@ const jobSlice = createSlice({
       })
       .addCase(fetchJobs.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.jobs = action.payload;
+        state.jobs = action.payload.jobs;
         state.totalJobs = action.payload.totalJobs;
       })
       .addCase(fetchJobs.rejected, (state, action) => {

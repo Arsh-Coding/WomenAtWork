@@ -4,11 +4,12 @@ import Filters from "./Filters";
 import "../jobStyles/JobList.css";
 import { jobData, categories as categoryList } from "../JobData/JobData";
 
-const JobList = ({ initialJobs }) => {
+const JobList = ({ initialJobs, page, setPage, totalPages }) => {
   const [filters, setFilters] = useState({
     categories: [],
     jobTypes: [],
   });
+  console.log(initialJobs, page, setPage, totalPages);
 
   const [displayJobs, setDisplayJobs] = useState(initialJobs);
 
@@ -57,11 +58,60 @@ const JobList = ({ initialJobs }) => {
           selectedFilters={filters}
           onFilterChange={handleFilterChange}
         />
-        <div className="job-list">
-          {displayJobs.length > 0 ? (
-            displayJobs.map((job) => <JobCard key={job.id} job={job} />)
-          ) : (
-            <p></p>
+        <div className="job-list-wrapper">
+          <div className="job-list">
+            {displayJobs.length > 0 ? (
+              displayJobs.map((job) => <JobCard key={job.id} job={job} />)
+            ) : (
+              <p></p>
+            )}
+          </div>
+          {/* 👇 Pagination is placed here, right after the list */}
+          {totalPages > 1 && (
+            <div className="pagination" style={{ zIndex: "1000" }}>
+              <button
+                onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+                disabled={page === 1}
+              >
+                &lt;
+              </button>
+
+              {Array.from({ length: totalPages }, (_, i) => i + 1)
+                .filter(
+                  (pageNum) =>
+                    pageNum === 1 ||
+                    pageNum === totalPages ||
+                    Math.abs(pageNum - page) <= 1
+                )
+                .reduce((acc, curr, i, arr) => {
+                  if (i > 0 && curr - arr[i - 1] > 1) acc.push("ellipsis");
+                  acc.push(curr);
+                  return acc;
+                }, [])
+                .map((item, i) =>
+                  item === "ellipsis" ? (
+                    <span key={`ellipsis-${i}`} className="ellipsis">
+                      ...
+                    </span>
+                  ) : (
+                    <button
+                      key={item}
+                      onClick={() => setPage(item)}
+                      className={page === item ? "active" : ""}
+                    >
+                      {item}
+                    </button>
+                  )
+                )}
+              <button
+                onClick={() =>
+                  setPage((prev) => Math.min(prev + 1, totalPages))
+                }
+                disabled={page === totalPages}
+              >
+                &gt;
+              </button>
+            </div>
           )}
         </div>
       </div>

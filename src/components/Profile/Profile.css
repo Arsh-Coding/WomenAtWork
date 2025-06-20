@@ -385,7 +385,7 @@ input[type="file"] {
 .applied-jobs {
   position: relative;
   /* left: 2vw; */
-  width: 62%;
+  width: 63%;
   text-align: center;
   border: none;
   border-radius: 10px;
@@ -421,7 +421,7 @@ input[type="file"] {
 }
 .main-dashboard-contentMain {
   max-width: 76%;
-  overflow: hidden;
+  overflow: visible;
   display: grid;
   grid-template-columns: 30vw 30vw;
   height: min-content;

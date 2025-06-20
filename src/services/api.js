@@ -129,3 +129,10 @@ export const updateJob = async (id, jobData, token) => {
 export const resetPassword = async (email) => {
   return await httpPost(URLS.forgotPassword, { email });
 };
+
+export const changePassword = async (data) => {
+  const response = await httpPost(URLS.changePassword, data, {
+    headers: getAuthHeader(),
+  });
+  return response;
+};

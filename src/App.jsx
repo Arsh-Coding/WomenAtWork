@@ -59,14 +59,12 @@ function App() {
             <Route path="/company-details" element={<CompanyDetail />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password/:token" element={<ResetPassword />} />
-
             <Route path="/contactUs" element={<MainContact />} />
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/testimonials" element={<Wow />} />
             <Route path="/EmployerRegister" element={<EmployerRegister />} />
-
             <Route path="/membership-plans" element={<Pricing />} />
-
+            <Route path="edit-job/:jobId" element={<AddJobs />} />
             <Route path="/dashboard" element={<DashboardLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="candidate profile" element={<Profile />} />

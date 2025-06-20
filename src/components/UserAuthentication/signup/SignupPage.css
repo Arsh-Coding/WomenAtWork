@@ -23,7 +23,8 @@
 
 .woman-with-telescope {
   position: absolute;
-  bottom: 0px;
+  /* bottom: 0px; */
+  bottom: -30vh;
   width: 50vw;
   height: 80%;
   background: url("/loginimage.png") no-repeat;

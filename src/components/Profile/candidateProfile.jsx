@@ -14,6 +14,7 @@ import {
   getCountries,
   getCitiesByState,
   getStatesByCountry,
+  changePassword,
 } from "../../services/api";
 import {
   fetchUserProfile,
@@ -189,7 +190,41 @@ const Profile = () => {
           verificationEmail: profile.verificationEmail,
         })
       ).unwrap();
+      if (
+        profile.newPassword &&
+        profile.currentPassword &&
+        profile.repeatNewPassword
+      ) {
+        if (profile.newPassword !== profile.repeatNewPassword) {
+          toast.current.show({
+            severity: "error",
+            summary: "Error",
+            detail: "New passwords do not match",
+            life: 3000,
+          });
+          return;
+        }
 
+        await changePassword({
+          currentPassword: profile.currentPassword,
+          newPassword: profile.newPassword,
+        });
+
+        toast.current.show({
+          severity: "success",
+          summary: "Success",
+          detail: "Password changed successfully",
+          life: 3000,
+        });
+
+        // Clear password fields
+        setProfile((prev) => ({
+          ...prev,
+          currentPassword: "",
+          newPassword: "",
+          repeatNewPassword: "",
+        }));
+      }
       dispatch(fetchUserProfile());
 
       setTimeout(() => {
@@ -207,7 +242,13 @@ const Profile = () => {
       if (profile.state) getCitiesByState(profile.state);
     } catch (error) {
       console.error("Error updating profile:", error);
-      alert(error.response?.message || "Failed to update profile.");
+      console.error("Error:", error);
+      toast.current.show({
+        severity: "error",
+        summary: "Error",
+        detail: error?.response?.data?.message || "Update failed",
+        life: 3000,
+      });
     }
   };
 
