@@ -8,14 +8,14 @@
 ## 📌 Table of Contents
 
 * [About the Project](#-about-the-project)
-* [Features](#features)
-* [Tech Stack](#tech-stack)
-* [Project Structure](#project-structure)
-* [Installation](#installation)
-* [Usage](#usage)
-* [Screenshots](#screenshots)
-* [Contributing](#contributing)
-* [License](#license)
+* [Features](#-features)
+* [Tech Stack](#-tech-stack)
+* [Project Structure](#-project-structure)
+* [Installation](#-installation)
+* [Usage](#-usage)
+* [Screenshots](#-screenshots)
+* [Contributing](#-contributing)
+* [License](#-license)
 
 ---
 
