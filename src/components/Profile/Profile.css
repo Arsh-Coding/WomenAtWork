@@ -97,10 +97,10 @@
   /* left: 3.5vw; */
   padding: 0 0 30px 30px;
 }
-/* .profile-form {
-  display: flex;
-  width: 100%;
-} */
+.profile-form {
+  /* display: flex; */
+  min-width: 80%;
+}
 .profile-section,
 .profile-section_main {
   margin-bottom: 30px;
@@ -385,7 +385,7 @@ input[type="file"] {
 .applied-jobs {
   position: relative;
   /* left: 2vw; */
-  width: 63%;
+  /* width: 63%; */
   text-align: center;
   border: none;
   border-radius: 10px;

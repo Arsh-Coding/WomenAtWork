@@ -1,7 +1,7 @@
 .form-container {
   padding: 24px;
-  max-width: 640px;
-  margin: 10vh auto;
+  /* max-width: 640px; */
+  margin: 10vh 0;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);

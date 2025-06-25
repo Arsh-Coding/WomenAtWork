@@ -12,7 +12,7 @@ import Profile from "./components/Profile/candidateProfile";
 import MainContact from "./components/Home/Contact/MainContact";
 import AboutUs from "./components/AboutUs/AboutUs";
 import Wow from "./components/Wow/wow";
-import ProtectedRoute from "./ProtectedRoute";
+// import ProtectedRoute from "./ProtectedRoute";
 import ResumeUpload from "./components/Profile/ResumeProfile";
 import Dashboard from "./components/Profile/Dashboard";
 import AppliedJobs from "./components/Profile/AppliedJobs";

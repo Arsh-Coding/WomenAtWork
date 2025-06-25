@@ -93,8 +93,6 @@ const CompanyForm = () => {
     <form
       onSubmit={handleSubmit}
       style={{
-        maxWidth: "600px",
-
         margin: "12vh auto",
         outline: " 1px solid lightGrey",
         // padding: "0 10px",

@@ -1,7 +1,7 @@
 /* General Container */
 .signup-container {
   display: flex;
-  height: 100vh;
+  height: fit-content;
   font-family: Arial, sans-serif;
 }
 
@@ -10,7 +10,7 @@
   flex: 1;
   /* background: #f5f5f5; */
   display: flex;
-  max-width: 65%;
+  max-width: 30%;
   margin-left: calc(-50% + 25vw);
   /* align-items: center; */
   /* justify-content: center; */
@@ -24,7 +24,7 @@
 .woman-with-telescope {
   position: absolute;
   /* bottom: 0px; */
-  bottom: -30vh;
+  bottom: -10vh;
   width: 50vw;
   height: 80%;
   background: url("/loginimage.png") no-repeat;
@@ -71,11 +71,13 @@
   /* width: 100%; */
   /* align-items: center; */
 }
+
 .form-wrapper {
-  width: 100%;
-  max-width: 500px; /* 👈 restricts width on big screens */
-  display: flex;
-  flex-direction: column;
+  /* width: 100%; */
+  max-width: 50vw; /* 👈 restricts width on big screens */
+  /* display: flex; */
+  /* margin: 0 auto; */
+  /* flex-direction: column; */
 }
 
 .signup-right h2 {
@@ -95,10 +97,12 @@
   /* align-items: flex-start; */
   /* width: 30vw; */
 }
+
 .signup-right sr-h2,
 sr-p {
   width: 80%;
 }
+
 /* form button {
   padding: 10px;
   font-size: 16px;
@@ -108,10 +112,12 @@ sr-p {
   border-radius: 5px;
   cursor: pointer;
 } */
+
 .login-header h2 {
   font-weight: 700;
   font-size: 56px;
 }
+
 .login-header h2::after {
   display: block;
   content: "";
@@ -120,6 +126,7 @@ sr-p {
   width: 7%;
   height: 5px;
 }
+
 .social-login {
   margin-top: -7px;
   display: flex;
@@ -128,11 +135,13 @@ sr-p {
   gap: 5px;
   /* flex-direction: column; */
 }
+
 .social-login p {
   position: relative;
   top: 10px;
   align-items: center;
 }
+
 .social-login button {
   margin: 5px 0;
   padding: 10px 15px;
@@ -325,6 +334,6 @@ input::placeholder {
     max-width: 500px; /* ✅ makes it bigger on desktops */
   }
   .signup-right {
-    margin-top: 0;
+    margin-top: 11vh;
   }
 }

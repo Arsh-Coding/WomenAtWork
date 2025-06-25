@@ -93,14 +93,37 @@ const Navbar = () => {
                   <li>
                     <Link to="/">Home</Link>
                   </li>
-                  <Link to="/aboutUs">About Us</Link>
-                  <li>
-                    <Link to="/JobPage">Jobs</Link>
-                  </li>
-                  <Link to="/membership-plans">Pricing</Link>
-                  <li>
-                    <Link to="/contactUs">Contact</Link>
-                  </li>
+                  {user?.role === "employer" ? (
+                    <>
+                      <li>
+                        <Link to="/aboutUs">About Us</Link>
+                      </li>
+                      <li>
+                        <Link to="/dashboard/Jobs-Manager">Manage Jobs</Link>
+                      </li>
+                      <li>
+                        <Link to="/membership-plans">Pricing</Link>
+                      </li>
+                      <li>
+                        <Link to="/contactUs">Contact</Link>
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li>
+                        <Link to="/aboutUs">About Us</Link>
+                      </li>
+                      <li>
+                        <Link to="/JobPage">Jobs</Link>
+                      </li>
+                      <li>
+                        <Link to="/membership-plans">Pricing</Link>
+                      </li>
+                      <li>
+                        <Link to="/contactUs">Contact</Link>
+                      </li>
+                    </>
+                  )}
                 </>
               )}
             </ul>

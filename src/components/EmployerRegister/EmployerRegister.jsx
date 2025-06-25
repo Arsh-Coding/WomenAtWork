@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Toast } from "primereact/toast";
 import { signupUser } from "../../services/slices/authSlice";
 
-// import "./SignupPage.css";
+import "./EmployerRegister.css";
 
 const EmployerSignup = () => {
   const [formData, setFormData] = useState({
@@ -83,14 +83,11 @@ const EmployerSignup = () => {
   };
 
   return (
-    <div className="signup-container" style={{ marginTop: "10vh" }}>
+    <div className="signup-container">
       <Toast ref={toast} />
-      <div
-        className="signup-left"
-        
-      >
+      <div className="signup-left">
         <div className="illustration">
-          <div className="woman-with-telescope"></div>
+          <div className="woman-with-telescope-employer-register"></div>
           <div className="arrows">
             <div className="arrow purple"></div>
             <div className="arrow orange"></div>
@@ -98,135 +95,137 @@ const EmployerSignup = () => {
           </div>
         </div>
       </div>
-
+      {/* <div> */}
       <div className="signup-right">
-        <div className="form-wrapper" style={{ marginTop: "10vh" }}>
-          <h2 className="sr-h2">Sign Up</h2>
-          <p>Enter your details below</p>
-          <form onSubmit={handleSubmit} className="login-form">
-            <p
-              style={{
-                margin: "2px 0 2px 10px",
-                color: "rgba(107, 107, 107, 1)",
-              }}
-            >
-              Full Name
-            </p>
-            <input
-              type="text"
-              name="username"
-              placeholder="Enter your Full Name"
-              value={formData.username}
-              onChange={handleChange}
-              required
-            />
-            <p
-              style={{
-                margin: "2px 0 2px 10px",
-                color: "rgba(107, 107, 107, 1)",
-              }}
-            >
-              E-mail address
-            </p>
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your Email Address"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <p
-              style={{
-                margin: "2px 0 2px 10px",
-                color: "rgba(107, 107, 107, 1)",
-              }}
-            >
-              Company Name
-            </p>
-            <input
-              type="name"
-              name="companyName"
-              placeholder="Enter your Company Name"
-              value={formData.companyName}
-              onChange={handleChange}
-              required
-            />
-            <p
-              style={{
-                margin: "2px 0 2px 10px",
-                color: "rgba(107, 107, 107, 1)",
-              }}
-            >
-              Company Id
-            </p>
-            <input
-              type="name"
-              name="companyId"
-              placeholder="Enter Company Id "
-              value={formData.companyId}
-              onChange={handleChange}
-              required
-            />
-            <p
-              style={{
-                margin: "2px 0 2px 10px",
-                color: "rgba(107, 107, 107, 1)",
-              }}
-            >
-              Phone
-            </p>
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Enter your Phone number"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-            />
-            <p
-              style={{
-                margin: "2px 0 2px 10px",
-                color: "rgba(107, 107, 107, 1)",
-              }}
-            >
-              Password
-            </p>
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-            <p
-              style={{
-                margin: "2px 0 2px 10px",
-                color: "rgba(107, 107, 107, 1)",
-              }}
-            >
-              confirm Password
-            </p>
-            <input
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
-            />
-            <div className="numberContainer">
-              <button className="loginbtn" type="submit">
-                Sign Up
-              </button>
-              <div className="social-login">
-                <p>Sign Up With</p>
-                <button className="linkedin">LinkedIn</button>
-                <button className="google">Google</button>
+        <div className="Employer-registration-right-container" >
+          <div className="form-wrapper" >
+            <h2 className="sr-h2">Sign Up</h2>
+            <p>Enter your details below</p>
+            <form onSubmit={handleSubmit} className="login-form">
+              <p
+                style={{
+                  margin: "2px 0 2px 10px",
+                  color: "rgba(107, 107, 107, 1)",
+                }}
+              >
+                Full Name
+              </p>
+              <input
+                type="text"
+                name="username"
+                placeholder="Enter your Full Name"
+                value={formData.username}
+                onChange={handleChange}
+                required
+              />
+              <p
+                style={{
+                  margin: "2px 0 2px 10px",
+                  color: "rgba(107, 107, 107, 1)",
+                }}
+              >
+                E-mail address
+              </p>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your Email Address"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+              <p
+                style={{
+                  margin: "2px 0 2px 10px",
+                  color: "rgba(107, 107, 107, 1)",
+                }}
+              >
+                Company Name
+              </p>
+              <input
+                type="name"
+                name="companyName"
+                placeholder="Enter your Company Name"
+                value={formData.companyName}
+                onChange={handleChange}
+                required
+              />
+              <p
+                style={{
+                  margin: "2px 0 2px 10px",
+                  color: "rgba(107, 107, 107, 1)",
+                }}
+              >
+                Company Id
+              </p>
+              <input
+                type="name"
+                name="companyId"
+                placeholder="Enter Company Id "
+                value={formData.companyId}
+                onChange={handleChange}
+                required
+              />
+              <p
+                style={{
+                  margin: "2px 0 2px 10px",
+                  color: "rgba(107, 107, 107, 1)",
+                }}
+              >
+                Phone
+              </p>
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Enter your Phone number"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+              />
+              <p
+                style={{
+                  margin: "2px 0 2px 10px",
+                  color: "rgba(107, 107, 107, 1)",
+                }}
+              >
+                Password
+              </p>
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+              <p
+                style={{
+                  margin: "2px 0 2px 10px",
+                  color: "rgba(107, 107, 107, 1)",
+                }}
+              >
+                confirm Password
+              </p>
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                required
+              />
+              <div className="numberContainer">
+                <button className="loginbtn" type="submit">
+                  Sign Up
+                </button>
+                <div className="social-login">
+                  <p>Sign Up With</p>
+                  <button className="linkedin">LinkedIn</button>
+                  <button className="google">Google</button>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
 
           <p className="login-link">
             already having an account?{" "}
@@ -237,6 +236,7 @@ const EmployerSignup = () => {
         </div>
       </div>
     </div>
+    // </div>
   );
 };
 

@@ -182,7 +182,7 @@ const SignupPage = () => {
               </button>
             </Link>
           </form>
-        </div>
+        </div>  
       </div>
     </div>
   );

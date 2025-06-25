@@ -55,7 +55,7 @@ const AppliedJobs = () => {
         <div className="applied-jobs-sidebar">
           <ProfileSidebar />
         </div>
-        <div className="applied-jobs">
+        <div className="applied-jobs" style={{ width: "63%" }}>
           <h1>Applied Jobs</h1>
           {appliedJobList.length === 0 ? (
             <p>No applied jobs found.</p>

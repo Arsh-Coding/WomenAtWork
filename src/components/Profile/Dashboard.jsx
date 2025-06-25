@@ -20,7 +20,7 @@ const Dashboard = () => {
       <div>
         <div className="profile-header">
           <h2>Dashboard</h2>
-          <div style={{ marginRight: "8vw", width: "fit-content" }}>
+          <div style={{ marginRight: "8%" }}>
             <Breadcrumbs />
           </div>
         </div>

@@ -37,9 +37,15 @@ const JobCard = ({ job }) => {
   const user = useSelector((state) => state.profile);
   const userProfile = user.user;
   const companyRole = userProfile?.role;
-  const isEmployer = companyRole === "employer" ? true : false;
+  const isEmployer = companyRole === "employer";
 
-  // console.log(isEmployer);
+  const jobCompany = parseInt(job?.companyId);
+  const userCompanyId = userProfile?.companyDetails?.companyId
+    ? parseInt(userProfile.companyDetails.companyId)
+    : null;
+  // console.log(jobCompany === userCompanyId);
+
+  console.log(isEmployer);
 
   const handleApply = () => {
     navigate(`/apply-job/${job.id}/${job.companyId}`, { state: { job } });
@@ -116,6 +122,7 @@ const JobCard = ({ job }) => {
     }
   }
   // console.log("applied date: ", userProfile?.appliedJobs?.length);
+  const isOwnJob = isEmployer && jobCompany === userCompanyId;
 
   return (
     <div className={`job-card ${job.featured ? "featured" : ""}`}>
@@ -128,22 +135,36 @@ const JobCard = ({ job }) => {
         </div>
       </div>
       <div className="button-job-container">
-        {!(isAppliedPage || isEmployer) ? (
+        {!isAppliedPage && !isEmployer ? (
           <>
             <p className="date-posted">{dateOnly}</p>
             <button onClick={handleApply}>Apply</button>
           </>
-        ) : (
+        ) : isOwnJob ? (
           <>
-            <p className="date-posted" style={{ margin: "auto" }}>
-              {isAppliedPage
-                ? `Applied on: ${appliedDate || "N/A"}`
-                : `Posted on: ${dateOnly}`}
-            </p>
+            <p className="date-posted">{`Posted on: ${dateOnly}`}</p>
             <button onClick={handleDetails}>Edit</button>
             <button onClick={handleRemove} className="remove-btn">
               Remove Job
             </button>
+          </>
+        ) : !isEmployer ? (
+          <>
+            <p className="date-posted">{dateOnly}</p>
+            <button onClick={handleApply}>View</button>
+          </>
+        ) : (
+          <>
+            <>
+              <p className="date-posted">{dateOnly}</p>
+              <button
+                onClick={handleApply}
+                disabled
+                style={{ display: "none" }}
+              >
+                View
+              </button>
+            </>
           </>
         )}
       </div>

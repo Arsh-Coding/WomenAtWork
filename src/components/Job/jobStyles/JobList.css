@@ -8,7 +8,7 @@
   position: relative;
   width: 98.8%;
   /* justify-content: center; */
-  justify-content: space-between;
+  /* justify-content: space-between; */
   /* padding-left: 4vw; */
   z-index: 20;
 }
@@ -26,6 +26,9 @@
   height: fit-content;
   /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
   /* gap: 10px; */
+}
+.job-list-wrapper {
+  width: 100%;
 }
 @media screen and (max-width: 768px) {
   .job-list-container {

@@ -13,7 +13,7 @@
   display: flex;
   padding-left: 10%;
   align-items: center;
-  width: 40%;
+  width: 25%;
 }
 
 .logo img {
@@ -22,7 +22,7 @@
 
 .navLinks {
   height: 100%;
-  width: 60%;
+  width: 75%;
   display: flex;
   justify-content: end;
   padding-right: 10%;
@@ -68,10 +68,10 @@
 }
 
 .Links ul {
-  max-width: 400px;
+  /* max-width: 400px; */
   list-style-type: none;
   display: flex;
-  gap: 25px;
+  gap: 18px;
 }
 
 .Links ul li {

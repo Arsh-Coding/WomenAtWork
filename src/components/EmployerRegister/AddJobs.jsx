@@ -144,7 +144,7 @@ const AddJobForm = () => {
   }));
 
   return (
-    <div className="form-container">
+    <div className="form-container" style={{ margin: "auto" }}>
       <h2 className="form-title">Post a New Job</h2>
       <form onSubmit={handleSubmit} className="form-wrapper">
         <input
