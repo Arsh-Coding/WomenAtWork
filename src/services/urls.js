@@ -14,7 +14,7 @@ export const URLS = {
   getAllCompanies: `${apiEndpoint}companies/get`,
   updateCompany: (id) => `${apiEndpoint}companies/${companyId}`,
   createOrUpdateCompany: `${apiEndpoint}companies`,
-  alljobs: `${apiEndpoint}jobs`,
+  alljobs: `${apiEndpoint}jobs/getJobs`,
   postJob: `${apiEndpoint}jobs`,
   categories: `${apiEndpoint}categories`,
   createCompany: `${apiEndpoint}companies`,

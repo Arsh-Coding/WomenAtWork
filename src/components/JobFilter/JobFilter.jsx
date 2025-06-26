@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { httpGet } from "../../services/api";
 import { URLS } from "../../services/urls";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 // import "./JobFilter.css";
 
@@ -17,7 +18,7 @@ const JobFilter = ({ initialFilters }) => {
 
   const [categories, setCategories] = useState([]);
   const [locations, setLocations] = useState([]);
-
+  // console.log("Filters from JobFilter:", location.state);
   useEffect(() => {
     setFilters(initialFilters || { keyword: "", location: "", categoryId: "" });
   }, [initialFilters]);

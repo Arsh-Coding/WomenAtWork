@@ -9,7 +9,7 @@ const JobList = ({ initialJobs, page, setPage, totalPages }) => {
     categories: [],
     jobTypes: [],
   });
-  console.log(initialJobs, page, setPage, totalPages);
+  // console.log(initialJobs, page, setPage, totalPages);
 
   const [displayJobs, setDisplayJobs] = useState(initialJobs);
 

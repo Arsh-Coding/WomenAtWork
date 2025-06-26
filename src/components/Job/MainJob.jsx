@@ -71,6 +71,8 @@ const MainJob = () => {
     }
   }, [totalPages]);
 
+  // console.log("Filters from JobFilter:", location.state);
+
   return (
     <div className="job-search-container">
       <div className="job-Heading">

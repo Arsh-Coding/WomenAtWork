@@ -6,11 +6,20 @@ import { URLS } from "../urls";
 
 export const fetchJobs = createAsyncThunk(
   "jobs/fetchJobs",
-  async ({ offset = 0, limit = 10 }, { rejectWithValue }) => {
+  async (
+    { offset = 0, limit = 10, keyword = "", location = "", categoryId = "" },
+    { rejectWithValue }
+  ) => {
     try {
-      const response = await httpGet(
-        `${URLS.alljobs}?offset=${offset}&limit=${limit}`
-      );
+      const query = new URLSearchParams({
+        offset,
+        limit,
+        keyword,
+        location,
+        categoryId,
+      }).toString();
+
+      const response = await httpGet(`${URLS.alljobs}?${query}`);
       return response;
     } catch (error) {
       return rejectWithValue(

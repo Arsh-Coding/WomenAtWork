@@ -45,7 +45,7 @@ const JobCard = ({ job }) => {
     : null;
   // console.log(jobCompany === userCompanyId);
 
-  console.log(isEmployer);
+  // console.log(isEmployer);
 
   const handleApply = () => {
     navigate(`/apply-job/${job.id}/${job.companyId}`, { state: { job } });
