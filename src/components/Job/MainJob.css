@@ -81,6 +81,58 @@
   top: 13vh;
   /* margin-left: 8vw; */
 }
+/* Outer container */
+.select__control {
+  min-width: 20vw;
+  max-width: 300px;
+  height: 48px;
+  padding: 2px 5px; /* reduce internal spacing */
+  border: 1px solid #ccc !important;
+  border-radius: 5px;
+  font-size: 14px;
+  box-shadow: none;
+}
+
+/* On focus */
+.select__control--is-focused {
+  border-color: #888;
+  box-shadow: none;
+}
+
+/* Value text */
+.select__value-container {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: nowrap !important; /* Prevent wrapping to new line */
+  overflow-x: auto !important; /* Enable horizontal scroll */
+  scrollbar-width: thin;
+  padding: 0;
+}
+
+/* Multi-value chips */
+.select__multi-value {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 13px;
+  flex-shrink: 0; /* Prevent chips from shrinking */
+  margin-right: 4px;
+}
+
+/* Placeholder */
+.select__placeholder {
+  color: #aaa;
+  font-size: 14px;
+}
+
+/* Input inside the Select */
+.select__input {
+  font-size: 14px;
+}
+.select__menu {
+  z-index: 1000;
+}
 @media (max-width: 488px) {
   .filter-box {
     display: grid;

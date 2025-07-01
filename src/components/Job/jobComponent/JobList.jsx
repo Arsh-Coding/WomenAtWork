@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import JobCard from "./JobCard";
 import Filters from "./Filters";
+import { httpGet } from "../../../services/api";
+import { URLS } from "../../../services/urls";
 import "../jobStyles/JobList.css";
 import { jobData, categories as categoryList } from "../JobData/JobData";
 
-const JobList = ({ initialJobs, page, setPage, totalPages }) => {
-  const [filters, setFilters] = useState({
-    categories: [],
-    jobTypes: [],
-  });
+const JobList = ({ initialJobs, page, setPage, filters, setFilters }) => {
+  const [totalJobs, setTotalJobs] = useState(0);
   // console.log(initialJobs, page, setPage, totalPages);
-
+  const limit = 10;
   const [displayJobs, setDisplayJobs] = useState(initialJobs);
-
+  const totalPages = Math.ceil(totalJobs / limit);
   // Extract unique job types dynamically from jobData
   const jobTypes = [...new Set(jobData.map((job) => job.jobType))];
 
@@ -28,24 +27,39 @@ const JobList = ({ initialJobs, page, setPage, totalPages }) => {
 
       return { ...prev, [type]: updated };
     });
+    setPage(1); // Reset page when filters change 🟢
   };
 
   useEffect(() => {
-    const filteredJobs = initialJobs.filter((job) => {
-      const matchesCategory =
-        filters.categories.length === 0 ||
-        job.categoryIds.some((id) =>
-          filters.categories.includes(id.toString())
+    const fetchFilteredJobs = async () => {
+      try {
+        const queryParams = new URLSearchParams();
+
+        if (filters.categories.length > 0) {
+          queryParams.append("categoryId", filters.categories.join(","));
+        }
+
+        if (filters.jobTypes.length > 0) {
+          queryParams.append("jobType", filters.jobTypes.join(","));
+        }
+
+        queryParams.append("offset", (page - 1) * 10); // assuming 10 per page
+        queryParams.append("limit", 10);
+
+        const response = await httpGet(
+          `${URLS.alljobs}?${queryParams.toString()}`
         );
+        setDisplayJobs(response.jobs);
+        setTotalJobs(response.totalJobs);
+        // Update totalPages if your response includes total count
+        // setTotalPages(Math.ceil(response.totalJobs / 10));
+      } catch (error) {
+        console.error("Failed to fetch filtered jobs", error);
+      }
+    };
 
-      const matchesJobType =
-        filters.jobTypes.length === 0 || filters.jobTypes.includes(job.jobType);
-
-      return matchesCategory && matchesJobType;
-    });
-
-    setDisplayJobs(filteredJobs);
-  }, [filters, initialJobs]);
+    fetchFilteredJobs();
+  }, [filters, page]);
 
   // console.log("initialJobs", initialJobs);
 

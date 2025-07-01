@@ -40,28 +40,29 @@ const ForgotPassword = () => {
 
         {/* Right side form */}
         <div className="fp-right">
-          <h2 className="fp-title">Forgot Password</h2>
-          <p className="fp-subtitle">
-            Enter your registered email to receive a reset link
-          </p>
+          <div className="fp-wrapper">
+            <h2 className="fp-title">Forgot Password</h2>
+            <p className="fp-subtitle">
+              Enter your registered email to receive a reset link
+            </p>
 
-          <form onSubmit={handleSubmit}>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="fp-input"
-            />
+            <form onSubmit={handleSubmit}>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="fp-input"
+              />
 
-            <button type="submit" className="fp-button" disabled={loading}>
-              {loading ? "Sending..." : "Send Reset Link"}
-            </button>
-          </form>
-
-          <div className="fp-back-link">
-            <a href="/login">Back to Login</a>
+              <button type="submit" className="fp-button" disabled={loading}>
+                {loading ? "Sending..." : "Send Reset Link"}
+              </button>
+              <div className="fp-back-link">
+                <a href="/login">Back to Login</a>
+              </div>
+            </form>
           </div>
         </div>
       </div>

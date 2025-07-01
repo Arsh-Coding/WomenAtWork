@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { httpGet } from "../../services/api";
 import { URLS } from "../../services/urls";
-import { useLocation } from "react-router-dom";
+import Select from "react-select";
+import { useLocation, useSearchParams } from "react-router-dom";
 import axios from "axios";
 // import "./JobFilter.css";
 
@@ -22,6 +23,16 @@ const JobFilter = ({ initialFilters }) => {
   useEffect(() => {
     setFilters(initialFilters || { keyword: "", location: "", categoryId: "" });
   }, [initialFilters]);
+  const location = useLocation();
+
+  useEffect(() => {
+    const routeFilters = location?.state || {};
+    setFilters({
+      keyword: routeFilters.keyword || "",
+      location: routeFilters.location || [],
+      categoryId: routeFilters.categoryId || "",
+    });
+  }, [location?.state]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,15 +43,28 @@ const JobFilter = ({ initialFilters }) => {
         ]);
         // console.log(categoryResponse, "and ", jobResponse.jobs);
         setCategories(categoryResponse);
-        setLocations([
+        const uniqueLocations = [
           ...new Set(jobResponse?.jobs.map((job) => job.location)),
-        ]);
+        ];
+        setLocations(
+          uniqueLocations.map((loc) => ({ label: loc, value: loc }))
+        );
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchData();
   }, []);
+
+  const handleLocationChange = (selectedOptions) => {
+    const values = selectedOptions
+      ? selectedOptions.map((opt) => opt.value)
+      : [];
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      location: values,
+    }));
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -68,7 +92,19 @@ const JobFilter = ({ initialFilters }) => {
       </div>
       <div className="section">
         <label>Location</label>
-        <select
+        <Select
+          isMulti
+          name="location"
+          options={locations}
+          value={locations.filter((opt) =>
+            filters.location.includes(opt.value)
+          )}
+          onChange={handleLocationChange}
+          className="basic-multi-select"
+          classNamePrefix="select"
+          placeholder="Select or type locations"
+        />
+        {/* <select
           name="location"
           value={filters.location}
           onChange={handleInputChange}
@@ -80,7 +116,7 @@ const JobFilter = ({ initialFilters }) => {
               {location}
             </option>
           ))}
-        </select>
+        </select> */}
       </div>
       <div className="section">
         <label>Area of Expertise</label>
