@@ -1,19 +1,19 @@
 /* General Container */
 .signup-container {
   display: flex;
-  height: fit-content;
+  /* height: fit-content; */
   font-family: Arial, sans-serif;
 }
 
 /* Left Section */
 .signup-left {
   flex: 1;
-  /* background: #f5f5f5; */
   display: flex;
-  max-width: 30%;
+  align-items: center;
+  max-width: 50% !important;
   margin-left: calc(-50% + 25vw);
-  /* align-items: center; */
-  /* justify-content: center; */
+  justify-content: center;
+  position: relative; /* Add this for absolute positioning inside */
 }
 
 .illustration {
@@ -23,12 +23,13 @@
 
 .woman-with-telescope {
   position: absolute;
-  /* bottom: 0px; */
-  bottom: -10vh;
-  width: 50vw;
-  height: 80%;
+  width: 45vw;
+  height: 79vh;
+  max-width: 100vh;
   background: url("/loginimage.png") no-repeat;
   background-size: cover;
+  left: -24vw;
+  top: -20vh;
 }
 
 .arrows {
@@ -65,6 +66,7 @@
   margin-top: 20vh;
   display: flex;
   text-align: left;
+  height: fit-content;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
@@ -237,10 +239,11 @@ sr-p {
   margin: 15px 0;
   background-color: rgba(191, 73, 179, 1);
   color: white;
-  padding: 10px 15px;
-  font-size: 14px;
+  padding: 10px 30px;
+  font-size: 18px;
   border: none;
-  border-radius: 5px;
+  width: 170px;
+  border-radius: 48px;
   cursor: pointer;
 }
 input::placeholder {
@@ -331,9 +334,9 @@ input::placeholder {
 }
 @media screen and (min-width: 1440px) {
   .form-wrapper {
-    max-width: 500px; /* ✅ makes it bigger on desktops */
+    width: 60%;
   }
-  .signup-right {
+  /* .signup-right {
     margin-top: 11vh;
-  }
+  } */
 }

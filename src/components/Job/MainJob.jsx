@@ -25,6 +25,10 @@ const MainJob = () => {
     };
   }, [location.state]);
 
+  const [sideFilters, setSideFilters] = useState({
+    categories: [],
+    jobTypes: [],
+  });
   const [page, setPage] = useState(1);
   const jobsPerPage = 10;
 
@@ -90,6 +94,8 @@ const MainJob = () => {
           page={page}
           setPage={setPage}
           totalPages={totalPages}
+          filters={sideFilters}
+          setFilters={setSideFilters}
         />
       )}
       {/* {totalPages > 1 && (

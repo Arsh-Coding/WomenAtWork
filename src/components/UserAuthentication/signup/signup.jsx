@@ -160,11 +160,13 @@ const SignupPage = () => {
               <button className="loginbtn" type="submit">
                 Sign Up
               </button>
+              {/* Social login disabled until Google/LinkedIn auth is implemented
               <div className="social-login">
                 <p>Login With</p>
                 <div className="linkedin">LinkedIn</div>
                 <div className="google">Google</div>
               </div>
+              */}
             </div>
             <p className="login-link" style={{ textAlign: "center" }}>
               already having an account?{" "}

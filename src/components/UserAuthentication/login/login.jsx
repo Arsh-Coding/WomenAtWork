@@ -129,11 +129,13 @@ const LoginPage = () => {
               <button className="loginbtn" type="submit">
                 Login
               </button>
+              {/* Social login disabled until Google/LinkedIn auth is implemented
               <div className="social-login">
                 <p>Login With</p>
                 <div className="linkedin">LinkedIn</div>
                 <div className="google">Google</div>
               </div>
+              */}
             </div>
           </form>
         </div>

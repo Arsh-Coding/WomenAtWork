@@ -20,6 +20,7 @@ import {
   fetchUserProfile,
   updateUserProfile,
 } from "../../services/slices/profileSlice";
+
 const Profile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
